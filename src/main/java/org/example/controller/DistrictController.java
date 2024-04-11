@@ -2,11 +2,19 @@ package org.example.controller;
 
 import org.example.Container;
 
-import org.example.dto.Member;
-import org.example.dto.Seoul;
-import org.example.dto.SeoulFood;
-import org.example.dto.SeoulTown;
+import org.example.dto.Gyeonggi.Gyeonggi;
+import org.example.dto.Gyeonggi.GyeonggiFood;
+import org.example.dto.Gyeonggi.GyeonggiTown;
+import org.example.dto.Seoul.Seoul;
+import org.example.dto.Seoul.SeoulFood;
+import org.example.dto.Seoul.SeoulTown;
 import org.example.service.*;
+import org.example.service.Gyeonggi.GyeonggiFoodService;
+import org.example.service.Gyeonggi.GyeonggiService;
+import org.example.service.Gyeonggi.GyeonggiTownService;
+import org.example.service.Seoul.SeoulFoodService;
+import org.example.service.Seoul.SeoulService;
+import org.example.service.Seoul.SeoulTownService;
 import org.example.util.Util;
 
 import java.util.Scanner;
@@ -21,6 +29,9 @@ public class DistrictController extends Controller{
     public SeoulFoodService seoulFoodService;
 
     public SeoulTownService seoulTownService;
+    public GyeonggiService gyeonggiService;
+    public GyeonggiFoodService gyeonggiFoodService;
+    public GyeonggiTownService gyeonggiTownService;
 
     public DistrictController (Scanner sc) {
         this.sc = sc;
@@ -30,6 +41,10 @@ public class DistrictController extends Controller{
         seoulService = Container.seoulService;
         seoulFoodService = Container.seoulFoodService;
         seoulTownService = Container.seoulTownService;
+        gyeonggiService = Container.gyeonggiService;
+        gyeonggiFoodService = Container.gyeonggiFoodService;
+        gyeonggiTownService = Container.gyeonggiTwonService;
+
     }
     public void doAction(String cmd, String actionMethodName) {
         this.cmd = cmd;
@@ -92,6 +107,9 @@ public class DistrictController extends Controller{
         Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"만두" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
         Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"요리류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
         Container.seoulTownDao.add(new SeoulTown(Container.seoulTownDao.getNewId(), "국물요리" , "종로","합천돼지국밥","서울특별시 종로구 낙원동 290-1","02-742-4142"));
+        Container.gyeonggiDao.add(new Gyeonggi(Container.gyeonggiDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+        Container.gyeonggiFoodDao.add(new GyeonggiFood(Container.gyeonggiFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
+        Container.gyeonggiTownDao.add(new GyeonggiTown(Container.gyeonggiTownDao.getNewId(), "국물요리" , "종로","합천돼지국밥","서울특별시 종로구 낙원동 290-1","02-742-4142"));
     }
 
     public void showSeoul() {
@@ -133,6 +151,37 @@ public class DistrictController extends Controller{
     }
 
     private void showGyeonggi() {
+        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
+        System.out.printf("메뉴를 선택해 주세요\n");
+        String food = sc.nextLine();
+
+        Gyeonggi gyeonggi = gyeonggiService.getGyeonggiByFood(food);
+        if ( food == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        gyeonggiFood = gyeonggi;
+
+        System.out.printf("서울지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, gyeonggiFood.foodtype);
+        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        String foodtype = sc.nextLine();
+
+        GyeonggiFood gyeonggifood = gyeonggiFoodService.getGyeonggiFoodByFoodType(foodtype);
+        if ( foodtype == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        gyeonggiFoodType = gyeonggifood;
+        System.out.printf("서울지역에 %s 중 원하시는 위치를 입력해주세요.\n", gyeonggiFoodType.town);
+        String resname = sc.nextLine();
+
+        GyeonggiTown gyeonggitown = gyeonggiTownService.getSeoulTownByResname(resname);
+
+        gyeonggiTown = gyeonggitown;
+        System.out.println("번호 |  날짜  |  메뉴  |  지역  |   식당이름   |          주소          |    전화번호   |");
+        System.out.printf("%4d | %6s | %6s | %4s | %6s | %10s | %6s\n", gyeonggitown.id, gyeonggitown.regDate, gyeonggitown.food, gyeonggitown.town, gyeonggitown.resname, gyeonggitown.address, gyeonggitown.num);
     }
 
     private void showIncheon() {

@@ -1,8 +1,7 @@
 package org.example.dao;
 
 
-import org.example.dto.Member;
-import org.example.dto.Seoul;
+import org.example.dto.Seoul.Seoul;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,8 @@
-package org.example.service;
+package org.example.service.Seoul;
 
 import org.example.Container;
-import org.example.dao.MemberDao;
-import org.example.dao.SeoulDao;
-import org.example.dto.Seoul;
+import org.example.dao.Seoul.SeoulDao;
+import org.example.dto.Seoul.Seoul;
 
 public class SeoulService {
     private SeoulDao seoulDao;

@@ -1,7 +1,7 @@
-package org.example.dao;
+package org.example.dao.Seoul;
 
-import org.example.dto.Seoul;
-import org.example.dto.SeoulFood;
+import org.example.dao.Dao;
+import org.example.dto.Seoul.SeoulFood;
 
 import java.util.ArrayList;
 import java.util.List;

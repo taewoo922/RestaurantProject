@@ -1,8 +1,8 @@
-package org.example.service;
+package org.example.service.Seoul;
 
 import org.example.Container;
-import org.example.dao.SeoulTownDao;
-import org.example.dto.SeoulTown;
+import org.example.dao.Seoul.SeoulTownDao;
+import org.example.dto.Seoul.SeoulTown;
 
 
 public class SeoulTownService {

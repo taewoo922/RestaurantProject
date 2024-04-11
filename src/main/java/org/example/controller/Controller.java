@@ -1,9 +1,9 @@
 package org.example.controller;
 
 import org.example.dto.Member;
-import org.example.dto.Seoul;
-import org.example.dto.SeoulFood;
-import org.example.dto.SeoulTown;
+import org.example.dto.Seoul.Seoul;
+import org.example.dto.Seoul.SeoulFood;
+import org.example.dto.Seoul.SeoulTown;
 
 public abstract class Controller {
     public static Member loginedMember;

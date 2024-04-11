@@ -1,6 +1,8 @@
-package org.example.dto;
+package org.example.dto.Seoul;
 
-public class SeoulTown extends Dto{
+import org.example.dto.Dto;
+
+public class SeoulTown extends Dto {
     public String town;
     public String food;
     public String foodtype;
