@@ -26,6 +26,7 @@ public class App {
 
         articleController.makeTestData();
         memberController.makeTestData();
+        districtController.makeTestData();
 
         while ( true ) {
             System.out.printf("명령어) ");

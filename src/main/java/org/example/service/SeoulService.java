@@ -11,7 +11,8 @@ public class SeoulService {
         seoulDao =  Container.seoulDao;
     }
 
-    public String getSeoulByFood (String food) {
+    public Seoul getSeoulByFood (String food) {
+
         return seoulDao.getSeoulByFood(food);
     }
 }

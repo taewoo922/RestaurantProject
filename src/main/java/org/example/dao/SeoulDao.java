@@ -1,27 +1,53 @@
 package org.example.dao;
 
+import org.example.dto.Member;
 import org.example.dto.Seoul;
 import org.example.dto.SeoulFood;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SeoulDao {
+public class SeoulDao extends Dao {
     public List<Seoul> seouls;
 
     public SeoulDao() {
         seouls = new ArrayList<>();
     }
-    public String getSeoulByFood(String menu) {
 
+    public void add(Seoul seoul) {
+        seouls.add(seoul);
+        lastId++;
+    }
+
+    public int getSeoulIndexByFood(String food) {
         int i = 0;
 
         for ( Seoul seoul : seouls ) {
-            if (seoul.food.equals(menu)) {
-                return menu;
+            if ( seoul.food.equals(food) ) {
+                return i;
             }
             i++;
         }
-        return null;
+
+        return -1;
+    }
+    public Seoul getSeoulByFood(String menu) {
+
+//        int i = 0;
+//
+//        for ( Seoul seoul : seouls ) {
+//            if (seoul.food.equals(menu)) {
+//                return -1;
+//            }
+//            i++;
+//        }
+//        return null;
+        int index = getSeoulIndexByFood(menu);
+
+        if ( index == -1 ) {
+            return null;
+        }
+
+        return seouls.get(index);
     }
 }
