@@ -33,15 +33,7 @@ public class SeoulDao extends Dao {
     }
     public Seoul getSeoulByFood(String menu) {
 
-//        int i = 0;
-//
-//        for ( Seoul seoul : seouls ) {
-//            if (seoul.food.equals(menu)) {
-//                return -1;
-//            }
-//            i++;
-//        }
-//        return null;
+
         int index = getSeoulIndexByFood(menu);
 
         if ( index == -1 ) {

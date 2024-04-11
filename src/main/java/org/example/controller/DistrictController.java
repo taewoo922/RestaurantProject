@@ -5,10 +5,8 @@ import org.example.Container;
 import org.example.dto.Member;
 import org.example.dto.Seoul;
 import org.example.dto.SeoulFood;
-import org.example.service.DistrictService;
-import org.example.service.MemberService;
-import org.example.service.SeoulFoodService;
-import org.example.service.SeoulService;
+import org.example.dto.SeoulTown;
+import org.example.service.*;
 import org.example.util.Util;
 
 import java.util.Scanner;
@@ -22,6 +20,8 @@ public class DistrictController extends Controller{
     public SeoulService seoulService;
     public SeoulFoodService seoulFoodService;
 
+    public SeoulTownService seoulTownService;
+
     public DistrictController (Scanner sc) {
         this.sc = sc;
 
@@ -29,6 +29,7 @@ public class DistrictController extends Controller{
         districtService = Container.districtService;
         seoulService = Container.seoulService;
         seoulFoodService = Container.seoulFoodService;
+        seoulTownService = Container.seoulTownService;
     }
     public void doAction(String cmd, String actionMethodName) {
         this.cmd = cmd;
@@ -90,16 +91,11 @@ public class DistrictController extends Controller{
         Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"탕류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
         Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"만두" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
         Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"요리류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-
+        Container.seoulTownDao.add(new SeoulTown(Container.seoulTownDao.getNewId(), "국물요리" , "종로","합천돼지국밥","서울특별시 종로구 낙원동 290-1","02-742-4142"));
     }
 
     public void showSeoul() {
-        System.out.println("== 메뉴 목록 ==");
-        System.out.println("== 한식 ==");
-        System.out.println("== 양식 ==");
-        System.out.println("== 중식 ==");
-        System.out.println("== 일식 ==");
-        System.out.println("== 동남아 요리 ==");
+        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
         System.out.printf("메뉴를 선택해 주세요\n");
         String food = sc.nextLine();
 
@@ -123,8 +119,13 @@ public class DistrictController extends Controller{
 
         seoulFoodType = seoulfood;
         System.out.printf("서울지역에 %s 중 원하시는 위치를 입력해주세요.\n", seoulFoodType.town);
-        System.out.printf("원하시는 음식점을 입력해주세요.\n");
+        String resname = sc.nextLine();
 
+        SeoulTown seoultown = seoulTownService.getSeoulTownByResname(resname);
+
+        seoulTown = seoultown;
+        System.out.println("번호 |  날짜  |  메뉴  |  지역  |   식당이름   |          주소          |    전화번호   |");
+        System.out.printf("%4d | %6s | %6s | %4s | %6s | %10s | %6s\n", seoultown.id, seoultown.regDate, seoultown.food, seoultown.town, seoultown.resname, seoultown.address, seoultown.num);
 
 
 

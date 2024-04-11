@@ -89,10 +89,6 @@ public class App {
             controller.doAction(cmd, actionMethodName);
         }
 
-        System.out.printf("지역 목록 : 서울,대전,인천,수원,광주,대구,부산,울산\n");
-        System.out.printf("현재 지역을 입력하세요 : \n");
-        String district = sc.nextLine();
-
 
         sc.close();
         System.out.println("== 프로그램 끝 ==");
