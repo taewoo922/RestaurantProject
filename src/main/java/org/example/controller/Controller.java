@@ -8,6 +8,7 @@ public abstract class Controller {
     public static Member loginedMember;
     public static Seoul seoulFood;
 
+    public static SeoulFood seoulFoodType;
     public static boolean isLogined() {
         return loginedMember != null;
     }

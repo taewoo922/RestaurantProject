@@ -53,7 +53,7 @@ public class App {
             else if ( controllerName.equals("member") ) {
                 controller = memberController;
             }
-            else if ( controllerName.equals("district") ) {
+            else if ( controllerName.equals("지역") ) {
                 controller = districtController;
             }
             else {

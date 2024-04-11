@@ -1,13 +1,13 @@
 package org.example.dto;
 
 public class SeoulFood extends Dto{
-    public String food;
-//    public String foodtype;
+    public String foodtype;
+    public String town;
 
-    public SeoulFood(String food) {
+    public SeoulFood(int id, String regDate, String foodtype, String town) {
         this.id = id;
         this.regDate = regDate;
-        this.food = food;
-//        this.foodtype = foodtype;
+        this.foodtype = foodtype;
+        this.town = town;
     }
 }
