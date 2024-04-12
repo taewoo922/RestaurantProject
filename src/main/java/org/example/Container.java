@@ -2,6 +2,9 @@ package org.example;
 
 import org.example.dao.*;
 
+import org.example.dao.Daegu.DaeguDao;
+import org.example.dao.Daegu.DaeguFoodDao;
+import org.example.dao.Daegu.DaeguTownDao;
 import org.example.dao.Daejeon.DaejeonDao;
 import org.example.dao.Daejeon.DaejeonFoodDao;
 import org.example.dao.Daejeon.DaejeonTownDao;
@@ -17,6 +20,9 @@ import org.example.dao.Seoul.SeoulTownDao;
 import org.example.dto.Daejeon.DaejeonTown;
 import org.example.dto.Gyeonggi.Gyeonggi;
 import org.example.service.*;
+import org.example.service.Daegu.DaeguFoodService;
+import org.example.service.Daegu.DaeguService;
+import org.example.service.Daegu.DaeguTownService;
 import org.example.service.Daejeon.DaejeonFoodService;
 import org.example.service.Daejeon.DaejeonService;
 import org.example.service.Daejeon.DaejeonTownService;
@@ -46,6 +52,9 @@ public class Container {
     public static DaejeonDao daejeonDao;
     public static DaejeonFoodDao daejeonFoodDao;
     public static DaejeonTownDao daejeonTownDao;
+    public static DaeguDao daeguDao;
+    public static DaeguFoodDao daeguFoodDao;
+    public static DaeguTownDao daeguTownDao;
 
 
     public static ArticleService articleService;
@@ -63,6 +72,9 @@ public class Container {
     public static DaejeonService daejeonService;
     public static DaejeonFoodService daejeonFoodService;
     public static DaejeonTownService daejeonTownService;
+    public static DaeguService daeguService;
+    public static DaeguFoodService daeguFoodService;
+    public static DaeguTownService daeguTownService;
 
 
     static {
@@ -81,6 +93,9 @@ public class Container {
         daejeonDao = new DaejeonDao();
         daejeonFoodDao = new DaejeonFoodDao();
         daejeonTownDao = new DaejeonTownDao();
+        daeguDao = new DaeguDao();
+        daeguFoodDao = new DaeguFoodDao();
+        daeguTownDao = new DaeguTownDao();
 
         articleService = new ArticleService();
         memberService = new MemberService();
@@ -97,5 +112,8 @@ public class Container {
         daejeonService = new DaejeonService();
         daejeonFoodService = new DaejeonFoodService();
         daejeonTownService = new DaejeonTownService();
+        daeguService = new DaeguService();
+        daeguFoodService = new DaeguFoodService();
+        daeguTownService = new DaeguTownService();
     }
 }

@@ -1,5 +1,8 @@
 package org.example.controller;
 
+import org.example.dto.Daegu.Daegu;
+import org.example.dto.Daegu.DaeguFood;
+import org.example.dto.Daegu.DaeguTown;
 import org.example.dto.Daejeon.Daejeon;
 import org.example.dto.Daejeon.DaejeonFood;
 import org.example.dto.Daejeon.DaejeonTown;
@@ -37,6 +40,11 @@ public abstract class Controller {
     public static DaejeonFood daejeonFoodType;
 
     public  static DaejeonTown daejeonTown;
+    public static Daegu daeguFood;
+
+    public static DaeguFood daeguFoodType;
+
+    public  static DaeguTown daeguTown;
 
     public static boolean isLogined() {
         return loginedMember != null;
