@@ -2,6 +2,9 @@ package org.example;
 
 import org.example.dao.*;
 
+import org.example.dao.Daejeon.DaejeonDao;
+import org.example.dao.Daejeon.DaejeonFoodDao;
+import org.example.dao.Daejeon.DaejeonTownDao;
 import org.example.dao.Gyeonggi.GyeonggiDao;
 import org.example.dao.Gyeonggi.GyeonggiFoodDao;
 import org.example.dao.Gyeonggi.GyeonggiTownDao;
@@ -11,8 +14,12 @@ import org.example.dao.Incheon.IncheonTownDao;
 import org.example.dao.Seoul.SeoulDao;
 import org.example.dao.Seoul.SeoulFoodDao;
 import org.example.dao.Seoul.SeoulTownDao;
+import org.example.dto.Daejeon.DaejeonTown;
 import org.example.dto.Gyeonggi.Gyeonggi;
 import org.example.service.*;
+import org.example.service.Daejeon.DaejeonFoodService;
+import org.example.service.Daejeon.DaejeonService;
+import org.example.service.Daejeon.DaejeonTownService;
 import org.example.service.Gyeonggi.GyeonggiFoodService;
 import org.example.service.Gyeonggi.GyeonggiService;
 import org.example.service.Gyeonggi.GyeonggiTownService;
@@ -36,6 +43,9 @@ public class Container {
     public static IncheonDao incheonDao;
     public static IncheonFoodDao incheonFoodDao;
     public static IncheonTownDao incheonTownDao;
+    public static DaejeonDao daejeonDao;
+    public static DaejeonFoodDao daejeonFoodDao;
+    public static DaejeonTownDao daejeonTownDao;
 
 
     public static ArticleService articleService;
@@ -50,6 +60,9 @@ public class Container {
     public static IncheonService incheonService;
     public static IncheonFoodService incheonFoodService;
     public static IncheonTownService incheonTownService;
+    public static DaejeonService daejeonService;
+    public static DaejeonFoodService daejeonFoodService;
+    public static DaejeonTownService daejeonTownService;
 
 
     static {
@@ -65,6 +78,9 @@ public class Container {
         incheonDao = new IncheonDao();
         incheonFoodDao = new IncheonFoodDao();
         incheonTownDao = new IncheonTownDao();
+        daejeonDao = new DaejeonDao();
+        daejeonFoodDao = new DaejeonFoodDao();
+        daejeonTownDao = new DaejeonTownDao();
 
         articleService = new ArticleService();
         memberService = new MemberService();
@@ -78,5 +94,8 @@ public class Container {
         incheonService = new IncheonService();
         incheonFoodService = new IncheonFoodService();
         incheonTownService = new IncheonTownService();
+        daejeonService = new DaejeonService();
+        daejeonFoodService = new DaejeonFoodService();
+        daejeonTownService = new DaejeonTownService();
     }
 }

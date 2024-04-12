@@ -1,17 +1,19 @@
 package org.example.service.Daejeon;
 
 import org.example.Container;
+import org.example.dao.Daejeon.DaejeonDao;
 import org.example.dao.Gyeonggi.GyeonggiDao;
+import org.example.dto.Daejeon.Daejeon;
 import org.example.dto.Gyeonggi.Gyeonggi;
 
 public class DaejeonService {
-    private GyeonggiDao gyeonggiDao;
+    private DaejeonDao daejeonDao;
     public DaejeonService() {
-        gyeonggiDao =  Container.gyeonggiDao;
+        daejeonDao =  Container.daejeonDao;
     }
 
-    public Gyeonggi getGyeonggiByFood (String food) {
+    public Daejeon getDaejeonByFood (String food) {
 
-        return gyeonggiDao.getGyeonggiByFood(food);
+        return daejeonDao.getDaejeonByFood(food);
     }
 }

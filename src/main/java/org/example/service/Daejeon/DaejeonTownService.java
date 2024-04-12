@@ -1,18 +1,20 @@
 package org.example.service.Daejeon;
 
 import org.example.Container;
+import org.example.dao.Daejeon.DaejeonTownDao;
 import org.example.dao.Gyeonggi.GyeonggiTownDao;
+import org.example.dto.Daejeon.DaejeonTown;
 import org.example.dto.Gyeonggi.GyeonggiTown;
 
 
 public class DaejeonTownService {
-    private GyeonggiTownDao gyeonggiTownDao;
+    private DaejeonTownDao daejeonTownDao;
     public DaejeonTownService() {
-        gyeonggiTownDao = Container.gyeonggiTownDao;
+        daejeonTownDao = Container.daejeonTownDao;
     }
 
-    public GyeonggiTown getGyeonggiTownByResname (String resname) {
+    public DaejeonTown getDaejeonTownByResname (String resname) {
 
-        return gyeonggiTownDao.getGyeonggiTownByResname(resname);
+        return daejeonTownDao.getDaejeonTownByResname(resname);
     }
 }
