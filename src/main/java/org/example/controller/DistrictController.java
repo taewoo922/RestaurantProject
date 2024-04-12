@@ -5,6 +5,9 @@ import org.example.Container;
 import org.example.dto.Gyeonggi.Gyeonggi;
 import org.example.dto.Gyeonggi.GyeonggiFood;
 import org.example.dto.Gyeonggi.GyeonggiTown;
+import org.example.dto.Incheon.Incheon;
+import org.example.dto.Incheon.IncheonFood;
+import org.example.dto.Incheon.IncheonTown;
 import org.example.dto.Seoul.Seoul;
 import org.example.dto.Seoul.SeoulFood;
 import org.example.dto.Seoul.SeoulTown;
@@ -12,6 +15,9 @@ import org.example.service.*;
 import org.example.service.Gyeonggi.GyeonggiFoodService;
 import org.example.service.Gyeonggi.GyeonggiService;
 import org.example.service.Gyeonggi.GyeonggiTownService;
+import org.example.service.Incheon.IncheonFoodService;
+import org.example.service.Incheon.IncheonService;
+import org.example.service.Incheon.IncheonTownService;
 import org.example.service.Seoul.SeoulFoodService;
 import org.example.service.Seoul.SeoulService;
 import org.example.service.Seoul.SeoulTownService;
@@ -32,6 +38,9 @@ public class DistrictController extends Controller{
     public GyeonggiService gyeonggiService;
     public GyeonggiFoodService gyeonggiFoodService;
     public GyeonggiTownService gyeonggiTownService;
+    public IncheonService incheonService;
+    public IncheonFoodService incheonFoodService;
+    public IncheonTownService incheonTownService;
 
     public DistrictController (Scanner sc) {
         this.sc = sc;
@@ -44,6 +53,9 @@ public class DistrictController extends Controller{
         gyeonggiService = Container.gyeonggiService;
         gyeonggiFoodService = Container.gyeonggiFoodService;
         gyeonggiTownService = Container.gyeonggiTwonService;
+        incheonService = Container.incheonService;
+        incheonFoodService = Container.incheonFoodService;
+        incheonTownService = Container.incheonTownService;
 
     }
     public void doAction(String cmd, String actionMethodName) {
@@ -108,8 +120,12 @@ public class DistrictController extends Controller{
         Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"요리류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
         Container.seoulTownDao.add(new SeoulTown(Container.seoulTownDao.getNewId(), "국물요리" , "종로","합천돼지국밥","서울특별시 종로구 낙원동 290-1","02-742-4142"));
         Container.gyeonggiDao.add(new Gyeonggi(Container.gyeonggiDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-        Container.gyeonggiFoodDao.add(new GyeonggiFood(Container.gyeonggiFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-        Container.gyeonggiTownDao.add(new GyeonggiTown(Container.gyeonggiTownDao.getNewId(), "국물요리" , "종로","합천돼지국밥","서울특별시 종로구 낙원동 290-1","02-742-4142"));
+        Container.gyeonggiFoodDao.add(new GyeonggiFood(Container.gyeonggiFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "고양,부천,성남,의정부,하남,수원,용인,화성,남양주,이천"));
+        Container.gyeonggiTownDao.add(new GyeonggiTown(Container.gyeonggiTownDao.getNewId(), "국물요리" , "고양","정돈 도마수육 순대국","경기 고양시 일산서구 호수로856번길 73-14 1층","031-925-7772"));
+        Container.incheonDao.add(new Incheon(Container.incheonDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+        Container.incheonFoodDao.add(new IncheonFood(Container.incheonFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "중구,동구,서구,강화군,미추홀구,연수구,남동구,부평구,계양구"));
+        Container.incheonTownDao.add(new IncheonTown(Container.incheonTownDao.getNewId(), "국물요리" , "중구","기와집 굴 대구","인천 중구 운중로21번길 21 1층","032-752-7076"));
+
     }
 
     public void showSeoul() {
@@ -142,11 +158,8 @@ public class DistrictController extends Controller{
         SeoulTown seoultown = seoulTownService.getSeoulTownByResname(resname);
 
         seoulTown = seoultown;
-        System.out.println("번호 |  날짜  |  메뉴  |  지역  |   식당이름   |          주소          |    전화번호   |");
-        System.out.printf("%4d | %6s | %6s | %4s | %6s | %10s | %6s\n", seoultown.id, seoultown.regDate, seoultown.food, seoultown.town, seoultown.resname, seoultown.address, seoultown.num);
-
-
-
+        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
+        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", seoultown.id, seoultown.regDate, seoultown.food, seoultown.town, seoultown.resname, seoultown.address, seoultown.num);
 
     }
 
@@ -163,7 +176,7 @@ public class DistrictController extends Controller{
 
         gyeonggiFood = gyeonggi;
 
-        System.out.printf("서울지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, gyeonggiFood.foodtype);
+        System.out.printf("경기지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, gyeonggiFood.foodtype);
         System.out.printf("원하시는 종류를 입력해주세요.\n");
         String foodtype = sc.nextLine();
 
@@ -174,10 +187,10 @@ public class DistrictController extends Controller{
         }
 
         gyeonggiFoodType = gyeonggifood;
-        System.out.printf("서울지역에 %s 중 원하시는 위치를 입력해주세요.\n", gyeonggiFoodType.town);
+        System.out.printf("경기지역에 %s 중 원하시는 위치를 입력해주세요.\n", gyeonggiFoodType.town);
         String resname = sc.nextLine();
 
-        GyeonggiTown gyeonggitown = gyeonggiTownService.getSeoulTownByResname(resname);
+        GyeonggiTown gyeonggitown = gyeonggiTownService.getGyeonggiTownByResname(resname);
 
         gyeonggiTown = gyeonggitown;
         System.out.println("번호 |  날짜  |  메뉴  |  지역  |   식당이름   |          주소          |    전화번호   |");
@@ -185,37 +198,242 @@ public class DistrictController extends Controller{
     }
 
     private void showIncheon() {
-    }
+        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
+        System.out.printf("메뉴를 선택해 주세요\n");
+        String food = sc.nextLine();
 
-    private void showSuwon() {
+        Incheon incheon = incheonService.getIncheonByFood(food);
+        if ( food == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFood = incheon;
+
+        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheonFood.foodtype);
+        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        String foodtype = sc.nextLine();
+
+        IncheonFood incheonFood = incheonFoodService.getIncheonFoodByFoodType(foodtype);
+        if ( foodtype == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFoodType = incheonFood;
+        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFoodType.town);
+        String resname = sc.nextLine();
+
+        IncheonTown incheontown = incheonTownService.getIncheonTownByResname(resname);
+
+        incheonTown = incheontown;
+        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
+        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
+
     }
 
     private void showDaejeon() {
+        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
+        System.out.printf("메뉴를 선택해 주세요\n");
+        String food = sc.nextLine();
+
+        Daejeon daejeon = daejeonService.getIncheonByFood(food);
+        if ( food == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFood = incheon;
+
+        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheonFood.foodtype);
+        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        String foodtype = sc.nextLine();
+
+        IncheonFood incheonFood = incheonFoodService.getIncheonFoodByFoodType(foodtype);
+        if ( foodtype == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFoodType = incheonFood;
+        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFoodType.town);
+        String resname = sc.nextLine();
+
+        IncheonTown incheontown = incheonTownService.getIncheonTownByResname(resname);
+
+        incheonTown = incheontown;
+        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
+        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
     }
 
     private void showDaegu() {
+        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
+        System.out.printf("메뉴를 선택해 주세요\n");
+        String food = sc.nextLine();
+
+        Incheon incheon = incheonService.getIncheonByFood(food);
+        if ( food == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFood = incheon;
+
+        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheonFood.foodtype);
+        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        String foodtype = sc.nextLine();
+
+        IncheonFood incheonFood = incheonFoodService.getIncheonFoodByFoodType(foodtype);
+        if ( foodtype == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFoodType = incheonFood;
+        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFoodType.town);
+        String resname = sc.nextLine();
+
+        IncheonTown incheontown = incheonTownService.getIncheonTownByResname(resname);
+
+        incheonTown = incheontown;
+        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
+        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
     }
 
     private void showGwangju() {
+        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
+        System.out.printf("메뉴를 선택해 주세요\n");
+        String food = sc.nextLine();
+
+        Incheon incheon = incheonService.getIncheonByFood(food);
+        if ( food == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFood = incheon;
+
+        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheonFood.foodtype);
+        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        String foodtype = sc.nextLine();
+
+        IncheonFood incheonFood = incheonFoodService.getIncheonFoodByFoodType(foodtype);
+        if ( foodtype == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFoodType = incheonFood;
+        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFoodType.town);
+        String resname = sc.nextLine();
+
+        IncheonTown incheontown = incheonTownService.getIncheonTownByResname(resname);
+
+        incheonTown = incheontown;
+        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
+        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
     }
 
     private void showUlsan() {
+        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
+        System.out.printf("메뉴를 선택해 주세요\n");
+        String food = sc.nextLine();
+
+        Incheon incheon = incheonService.getIncheonByFood(food);
+        if ( food == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFood = incheon;
+
+        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheonFood.foodtype);
+        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        String foodtype = sc.nextLine();
+
+        IncheonFood incheonFood = incheonFoodService.getIncheonFoodByFoodType(foodtype);
+        if ( foodtype == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFoodType = incheonFood;
+        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFoodType.town);
+        String resname = sc.nextLine();
+
+        IncheonTown incheontown = incheonTownService.getIncheonTownByResname(resname);
+
+        incheonTown = incheontown;
+        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
+        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
     }
 
     private void showBusan() {
+        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
+        System.out.printf("메뉴를 선택해 주세요\n");
+        String food = sc.nextLine();
+
+        Incheon incheon = incheonService.getIncheonByFood(food);
+        if ( food == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFood = incheon;
+
+        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheonFood.foodtype);
+        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        String foodtype = sc.nextLine();
+
+        IncheonFood incheonFood = incheonFoodService.getIncheonFoodByFoodType(foodtype);
+        if ( foodtype == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFoodType = incheonFood;
+        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFoodType.town);
+        String resname = sc.nextLine();
+
+        IncheonTown incheontown = incheonTownService.getIncheonTownByResname(resname);
+
+        incheonTown = incheontown;
+        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
+        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
     }
 
     private void showJeju() {
+        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
+        System.out.printf("메뉴를 선택해 주세요\n");
+        String food = sc.nextLine();
+
+        Incheon incheon = incheonService.getIncheonByFood(food);
+        if ( food == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFood = incheon;
+
+        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheonFood.foodtype);
+        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        String foodtype = sc.nextLine();
+
+        IncheonFood incheonFood = incheonFoodService.getIncheonFoodByFoodType(foodtype);
+        if ( foodtype == null ) {
+            System.out.println("해당메뉴는 존재하지 않습니다.");
+            return ;
+        }
+
+        incheonFoodType = incheonFood;
+        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFoodType.town);
+        String resname = sc.nextLine();
+
+        IncheonTown incheontown = incheonTownService.getIncheonTownByResname(resname);
+
+        incheonTown = incheontown;
+        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
+        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
     }
 
-
-//    private boolean isJoinabledfood(String food) {
-//        String food = seoulService.getSeoulByFood(food);
-//
-//        if ( food == null ) {
-//            return true;
-//        }
-//
-//        return false;
-//    }
 }
