@@ -6,6 +6,9 @@ import org.example.dto.Daegu.DaeguTown;
 import org.example.dto.Daejeon.Daejeon;
 import org.example.dto.Daejeon.DaejeonFood;
 import org.example.dto.Daejeon.DaejeonTown;
+import org.example.dto.Gwangju.Gwangju;
+import org.example.dto.Gwangju.GwangjuFood;
+import org.example.dto.Gwangju.GwangjuTown;
 import org.example.dto.Gyeonggi.Gyeonggi;
 import org.example.dto.Gyeonggi.GyeonggiFood;
 import org.example.dto.Gyeonggi.GyeonggiTown;
@@ -45,6 +48,11 @@ public abstract class Controller {
     public static DaeguFood daeguFoodType;
 
     public  static DaeguTown daeguTown;
+    public static Gwangju gwangjuFood;
+
+    public static GwangjuFood gwangjuFoodType;
+
+    public  static GwangjuTown gwangjuTown;
 
     public static boolean isLogined() {
         return loginedMember != null;

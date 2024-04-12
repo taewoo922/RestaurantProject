@@ -8,6 +8,9 @@ import org.example.dao.Daegu.DaeguTownDao;
 import org.example.dao.Daejeon.DaejeonDao;
 import org.example.dao.Daejeon.DaejeonFoodDao;
 import org.example.dao.Daejeon.DaejeonTownDao;
+import org.example.dao.Gwangju.GwangjuDao;
+import org.example.dao.Gwangju.GwangjuFoodDao;
+import org.example.dao.Gwangju.GwangjuTownDao;
 import org.example.dao.Gyeonggi.GyeonggiDao;
 import org.example.dao.Gyeonggi.GyeonggiFoodDao;
 import org.example.dao.Gyeonggi.GyeonggiTownDao;
@@ -26,6 +29,9 @@ import org.example.service.Daegu.DaeguTownService;
 import org.example.service.Daejeon.DaejeonFoodService;
 import org.example.service.Daejeon.DaejeonService;
 import org.example.service.Daejeon.DaejeonTownService;
+import org.example.service.Gwangju.GwangjuFoodService;
+import org.example.service.Gwangju.GwangjuService;
+import org.example.service.Gwangju.GwangjuTownService;
 import org.example.service.Gyeonggi.GyeonggiFoodService;
 import org.example.service.Gyeonggi.GyeonggiService;
 import org.example.service.Gyeonggi.GyeonggiTownService;
@@ -55,6 +61,9 @@ public class Container {
     public static DaeguDao daeguDao;
     public static DaeguFoodDao daeguFoodDao;
     public static DaeguTownDao daeguTownDao;
+    public static GwangjuDao gwangjuDao;
+    public static GwangjuFoodDao gwangjuFoodDao;
+    public static GwangjuTownDao gwangjuTownDao;
 
 
     public static ArticleService articleService;
@@ -75,45 +84,67 @@ public class Container {
     public static DaeguService daeguService;
     public static DaeguFoodService daeguFoodService;
     public static DaeguTownService daeguTownService;
+    public static GwangjuService gwangjuService;
+    public static GwangjuFoodService gwangjuFoodService;
+    public static GwangjuTownService gwangjuTownService;
 
 
     static {
         districtDao = new DistrictDao();
         articleDao = new ArticleDao();
         memberDao = new MemberDao();
+        //서울
         seoulDao = new SeoulDao();
         seoulFoodDao = new SeoulFoodDao();
         seoulTownDao = new SeoulTownDao();
+        //경기
         gyeonggiDao = new GyeonggiDao();
         gyeonggiFoodDao = new GyeonggiFoodDao();
         gyeonggiTownDao = new GyeonggiTownDao();
+        //인천
         incheonDao = new IncheonDao();
         incheonFoodDao = new IncheonFoodDao();
         incheonTownDao = new IncheonTownDao();
+        //대전
         daejeonDao = new DaejeonDao();
         daejeonFoodDao = new DaejeonFoodDao();
         daejeonTownDao = new DaejeonTownDao();
+        //대구
         daeguDao = new DaeguDao();
         daeguFoodDao = new DaeguFoodDao();
         daeguTownDao = new DaeguTownDao();
+        //광주
+        gwangjuDao = new GwangjuDao();
+        gwangjuFoodDao = new GwangjuFoodDao();
+        gwangjuTownDao = new GwangjuTownDao();
 
         articleService = new ArticleService();
         memberService = new MemberService();
         districtService = new DistrictService();
+        //서울
         seoulService = new SeoulService();
         seoulFoodService = new SeoulFoodService();
         seoulTownService = new SeoulTownService();
+        //경기
         gyeonggiService = new GyeonggiService();
         gyeonggiFoodService = new GyeonggiFoodService();
         gyeonggiTwonService = new GyeonggiTownService();
+        //인천
         incheonService = new IncheonService();
         incheonFoodService = new IncheonFoodService();
         incheonTownService = new IncheonTownService();
+        //대전
         daejeonService = new DaejeonService();
         daejeonFoodService = new DaejeonFoodService();
         daejeonTownService = new DaejeonTownService();
+        //대구
         daeguService = new DaeguService();
         daeguFoodService = new DaeguFoodService();
         daeguTownService = new DaeguTownService();
+        //광주
+        gwangjuService = new GwangjuService();
+        gwangjuFoodService = new GwangjuFoodService();
+        gwangjuTownService = new GwangjuTownService();
+
     }
 }
