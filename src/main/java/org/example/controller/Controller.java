@@ -1,5 +1,8 @@
 package org.example.controller;
 
+import org.example.dto.Busan.Busan;
+import org.example.dto.Busan.BusanFood;
+import org.example.dto.Busan.BusanTown;
 import org.example.dto.Daegu.Daegu;
 import org.example.dto.Daegu.DaeguFood;
 import org.example.dto.Daegu.DaeguTown;
@@ -59,6 +62,9 @@ public abstract class Controller {
     public static Ulsan ulsanFood;
     public static UlsanFood ulsanFoodType;
     public static UlsanTown ulsanTown;
+    public static Busan busanFood;
+    public static BusanFood busanFoodType;
+    public static BusanTown busanTown;
 
     public static boolean isLogined() {
         return loginedMember != null;

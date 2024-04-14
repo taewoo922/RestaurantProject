@@ -1,7 +1,9 @@
 package org.example.controller;
 
 import org.example.Container;
-
+import org.example.dto.Busan.Busan;
+import org.example.dto.Busan.BusanFood;
+import org.example.dto.Busan.BusanTown;
 import org.example.dto.Daegu.Daegu;
 import org.example.dto.Daegu.DaeguFood;
 import org.example.dto.Daegu.DaeguTown;
@@ -23,13 +25,16 @@ import org.example.dto.Seoul.SeoulTown;
 import org.example.dto.Ulsan.Ulsan;
 import org.example.dto.Ulsan.UlsanFood;
 import org.example.dto.Ulsan.UlsanTown;
-import org.example.service.*;
+import org.example.service.Busan.BusanFoodService;
+import org.example.service.Busan.BusanService;
+import org.example.service.Busan.BusanTownService;
 import org.example.service.Daegu.DaeguFoodService;
 import org.example.service.Daegu.DaeguService;
 import org.example.service.Daegu.DaeguTownService;
 import org.example.service.Daejeon.DaejeonFoodService;
 import org.example.service.Daejeon.DaejeonService;
 import org.example.service.Daejeon.DaejeonTownService;
+import org.example.service.DistrictService;
 import org.example.service.Gwangju.GwangjuFoodService;
 import org.example.service.Gwangju.GwangjuService;
 import org.example.service.Gwangju.GwangjuTownService;
@@ -39,6 +44,7 @@ import org.example.service.Gyeonggi.GyeonggiTownService;
 import org.example.service.Incheon.IncheonFoodService;
 import org.example.service.Incheon.IncheonService;
 import org.example.service.Incheon.IncheonTownService;
+import org.example.service.MemberService;
 import org.example.service.Seoul.SeoulFoodService;
 import org.example.service.Seoul.SeoulService;
 import org.example.service.Seoul.SeoulTownService;
@@ -47,7 +53,6 @@ import org.example.service.Ulsan.UlsanService;
 import org.example.service.Ulsan.UlsanTownService;
 import org.example.util.Util;
 
-import java.net.ConnectException;
 import java.util.Scanner;
 
 public class DistrictController extends Controller{
@@ -78,6 +83,9 @@ public class DistrictController extends Controller{
     public UlsanService ulsanService;
     public UlsanFoodService ulsanFoodService;
     public UlsanTownService ulsanTownService;
+    public BusanService busanService;
+    public BusanFoodService busanFoodService;
+    public BusanTownService busanTownService;
 
     public DistrictController (Scanner sc) {
         this.sc = sc;
@@ -105,6 +113,9 @@ public class DistrictController extends Controller{
         ulsanService = Container.ulsanService;
         ulsanFoodService = Container.ulsanFoodService;
         ulsanTownService = Container.ulsanTownService;
+        busanService = Container.busanService;
+        busanFoodService = Container.busanFoodService;
+        busanTownService = Container.busanTownService;
 
     }
     public void doAction(String cmd, String actionMethodName) {
@@ -189,6 +200,10 @@ public class DistrictController extends Controller{
         Container.ulsanDao.add(new Ulsan(Container.ulsanDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
         Container.ulsanFoodDao.add(new UlsanFood(Container.ulsanFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "동구,중구,남구,북구,울주군"));
         Container.ulsanTownDao.add(new UlsanTown(Container.ulsanTownDao.getNewId(), "국물요리" , "동구","속초순대국","울산 동구 명덕4길 10 2층","0507-1435-2361"));
+
+        Container.busanDao.add(new Busan(Container.busanDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+        Container.busanFoodDao.add(new BusanFood(Container.busanFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "남구,동구,서구,중구,해운대구,기장군,북구,사상구,강서구,영도구,진구,수영구,동래구"));
+        Container.busanTownDao.add(new BusanTown(Container.busanTownDao.getNewId(), "국물요리" , "동구","속초순대국","울산 동구 명덕4길 10 2층","0507-1435-2361"));
 
     }
 
@@ -437,33 +452,33 @@ public class DistrictController extends Controller{
         System.out.printf("메뉴를 선택해 주세요\n");
         String food = sc.nextLine();
 
-        Incheon incheon = incheonService.getIncheonByFood(food);
+        Busan busan = busanService.getBusanByFood(food);
         if ( food == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        incheonFood = incheon;
+        busanFood = busan;
 
-        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheonFood.foodtype);
+        System.out.printf("부산지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, busanFood.foodtype);
         System.out.printf("원하시는 종류를 입력해주세요.\n");
         String foodtype = sc.nextLine();
 
-        IncheonFood incheonFood = incheonFoodService.getIncheonFoodByFoodType(foodtype);
+        BusanFood busanFood = busanFoodService.getBusanFoodByFoodType(foodtype);
         if ( foodtype == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        incheonFoodType = incheonFood;
-        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFoodType.town);
+        busanFoodType = busanFood;
+        System.out.printf("부산지역에 %s 중 원하시는 위치를 입력해주세요.\n", busanFoodType.town);
         String resname = sc.nextLine();
 
-        IncheonTown incheontown = incheonTownService.getIncheonTownByResname(resname);
+        BusanTown busantown = busanTownService.getBusanTownByResname(resname);
 
-        incheonTown = incheontown;
+        busanTown = busantown;
         System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
-        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
+        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", busantown.id, busantown.regDate, busantown.food, busantown.town, busantown.resname, busantown.address, busantown.num);
     }
 
     private void showJeju() {
