@@ -20,6 +20,9 @@ import org.example.dao.Gyeonggi.GyeonggiTownDao;
 import org.example.dao.Incheon.IncheonDao;
 import org.example.dao.Incheon.IncheonFoodDao;
 import org.example.dao.Incheon.IncheonTownDao;
+import org.example.dao.Jeju.JejuDao;
+import org.example.dao.Jeju.JejuFoodDao;
+import org.example.dao.Jeju.JejuTownDao;
 import org.example.dao.MemberDao;
 import org.example.dao.Seoul.SeoulDao;
 import org.example.dao.Seoul.SeoulFoodDao;
@@ -47,6 +50,9 @@ import org.example.service.Gyeonggi.GyeonggiTownService;
 import org.example.service.Incheon.IncheonFoodService;
 import org.example.service.Incheon.IncheonService;
 import org.example.service.Incheon.IncheonTownService;
+import org.example.service.Jeju.JejuFoodService;
+import org.example.service.Jeju.JejuService;
+import org.example.service.Jeju.JejuTownService;
 import org.example.service.MemberService;
 import org.example.service.Seoul.SeoulFoodService;
 import org.example.service.Seoul.SeoulService;
@@ -83,6 +89,9 @@ public class Container {
     public static BusanDao busanDao;
     public static BusanFoodDao busanFoodDao;
     public static BusanTownDao busanTownDao;
+    public static JejuDao jejuDao;
+    public static JejuFoodDao jejuFoodDao;
+    public static JejuTownDao jejuTownDao;
 
 
     public static ArticleService articleService;
@@ -112,6 +121,9 @@ public class Container {
     public static BusanService busanService;
     public static BusanFoodService busanFoodService;
     public static BusanTownService busanTownService;
+    public static JejuService jejuService;
+    public static JejuFoodService jejuFoodService;
+    public static JejuTownService jejuTownService;
 
 
     static {
@@ -150,6 +162,10 @@ public class Container {
         busanDao = new BusanDao();
         busanFoodDao = new BusanFoodDao();
         busanTownDao = new BusanTownDao();
+        //제주
+        jejuDao = new JejuDao();
+        jejuFoodDao = new JejuFoodDao();
+        jejuTownDao = new JejuTownDao();
 
 
         articleService = new ArticleService();
@@ -187,6 +203,10 @@ public class Container {
         busanService = new BusanService();
         busanFoodService = new BusanFoodService();
         busanTownService = new BusanTownService();
+        //제주
+        jejuService = new JejuService();
+        jejuFoodService = new JejuFoodService();
+        jejuTownService = new JejuTownService();
 
     }
 }

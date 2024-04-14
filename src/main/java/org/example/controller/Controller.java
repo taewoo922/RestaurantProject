@@ -18,6 +18,9 @@ import org.example.dto.Gyeonggi.GyeonggiTown;
 import org.example.dto.Incheon.Incheon;
 import org.example.dto.Incheon.IncheonFood;
 import org.example.dto.Incheon.IncheonTown;
+import org.example.dto.Jeju.Jeju;
+import org.example.dto.Jeju.JejuFood;
+import org.example.dto.Jeju.JejuTown;
 import org.example.dto.Member;
 import org.example.dto.Seoul.Seoul;
 import org.example.dto.Seoul.SeoulFood;
@@ -65,6 +68,9 @@ public abstract class Controller {
     public static Busan busanFood;
     public static BusanFood busanFoodType;
     public static BusanTown busanTown;
+    public static Jeju jejuFood;
+    public static JejuFood jejuFoodType;
+    public static JejuTown jejuTown;
 
     public static boolean isLogined() {
         return loginedMember != null;

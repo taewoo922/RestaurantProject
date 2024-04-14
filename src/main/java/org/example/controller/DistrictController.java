@@ -19,6 +19,9 @@ import org.example.dto.Gyeonggi.GyeonggiTown;
 import org.example.dto.Incheon.Incheon;
 import org.example.dto.Incheon.IncheonFood;
 import org.example.dto.Incheon.IncheonTown;
+import org.example.dto.Jeju.Jeju;
+import org.example.dto.Jeju.JejuFood;
+import org.example.dto.Jeju.JejuTown;
 import org.example.dto.Seoul.Seoul;
 import org.example.dto.Seoul.SeoulFood;
 import org.example.dto.Seoul.SeoulTown;
@@ -44,6 +47,9 @@ import org.example.service.Gyeonggi.GyeonggiTownService;
 import org.example.service.Incheon.IncheonFoodService;
 import org.example.service.Incheon.IncheonService;
 import org.example.service.Incheon.IncheonTownService;
+import org.example.service.Jeju.JejuFoodService;
+import org.example.service.Jeju.JejuService;
+import org.example.service.Jeju.JejuTownService;
 import org.example.service.MemberService;
 import org.example.service.Seoul.SeoulFoodService;
 import org.example.service.Seoul.SeoulService;
@@ -86,6 +92,9 @@ public class DistrictController extends Controller{
     public BusanService busanService;
     public BusanFoodService busanFoodService;
     public BusanTownService busanTownService;
+    public JejuService jejuService;
+    public JejuFoodService jejuFoodService;
+    public JejuTownService jejuTownService;
 
     public DistrictController (Scanner sc) {
         this.sc = sc;
@@ -116,6 +125,9 @@ public class DistrictController extends Controller{
         busanService = Container.busanService;
         busanFoodService = Container.busanFoodService;
         busanTownService = Container.busanTownService;
+        jejuService = Container.jejuService;
+        jejuFoodService = Container.jejuFoodService;
+        jejuTownService = Container.jejuTownService;
 
     }
     public void doAction(String cmd, String actionMethodName) {
@@ -204,6 +216,10 @@ public class DistrictController extends Controller{
         Container.busanDao.add(new Busan(Container.busanDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
         Container.busanFoodDao.add(new BusanFood(Container.busanFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "남구,동구,서구,중구,해운대구,기장군,북구,사상구,강서구,영도구,진구,수영구,동래구"));
         Container.busanTownDao.add(new BusanTown(Container.busanTownDao.getNewId(), "국물요리" , "동구","속초순대국","울산 동구 명덕4길 10 2층","0507-1435-2361"));
+
+        Container.jejuDao.add(new Jeju(Container.jejuDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+        Container.jejuFoodDao.add(new JejuFood(Container.jejuFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "제주시,서귀포시"));
+        Container.jejuTownDao.add(new JejuTown(Container.jejuTownDao.getNewId(), "국물요리" , "제주시","김재훈고사리육개장","제주 제주시 구남로2길 19 김재훈고사리육개장","0507-1301-2601"));
 
     }
 
@@ -486,33 +502,33 @@ public class DistrictController extends Controller{
         System.out.printf("메뉴를 선택해 주세요\n");
         String food = sc.nextLine();
 
-        Incheon incheon = incheonService.getIncheonByFood(food);
+        Jeju jeju = jejuService.getJejuByFood(food);
         if ( food == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        incheonFood = incheon;
+        jejuFood = jeju;
 
-        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheonFood.foodtype);
+        System.out.printf("제주지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, jejuFood.foodtype);
         System.out.printf("원하시는 종류를 입력해주세요.\n");
         String foodtype = sc.nextLine();
 
-        IncheonFood incheonFood = incheonFoodService.getIncheonFoodByFoodType(foodtype);
+        JejuFood jejuFood = jejuFoodService.getJejuFoodByFoodType(foodtype);
         if ( foodtype == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        incheonFoodType = incheonFood;
-        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFoodType.town);
+        jejuFoodType = jejuFood;
+        System.out.printf("제주지역에 %s 중 원하시는 위치를 입력해주세요.\n", jejuFoodType.town);
         String resname = sc.nextLine();
 
-        IncheonTown incheontown = incheonTownService.getIncheonTownByResname(resname);
+        JejuTown jejutown = jejuTownService.getJejuTownByResname(resname);
 
-        incheonTown = incheontown;
+        jejuTown = jejutown;
         System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
-        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
+        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", jejutown.id, jejutown.regDate, jejutown.food, jejutown.town, jejutown.resname, jejutown.address, jejutown.num);
     }
 
 }
