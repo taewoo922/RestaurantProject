@@ -20,6 +20,9 @@ import org.example.dao.Incheon.IncheonTownDao;
 import org.example.dao.Seoul.SeoulDao;
 import org.example.dao.Seoul.SeoulFoodDao;
 import org.example.dao.Seoul.SeoulTownDao;
+import org.example.dao.Ulsan.UlsanDao;
+import org.example.dao.Ulsan.UlsanFoodDao;
+import org.example.dao.Ulsan.UlsanTownDao;
 import org.example.dto.Daejeon.DaejeonTown;
 import org.example.dto.Gyeonggi.Gyeonggi;
 import org.example.service.*;
@@ -41,6 +44,9 @@ import org.example.service.Incheon.IncheonTownService;
 import org.example.service.Seoul.SeoulFoodService;
 import org.example.service.Seoul.SeoulService;
 import org.example.service.Seoul.SeoulTownService;
+import org.example.service.Ulsan.UlsanFoodService;
+import org.example.service.Ulsan.UlsanService;
+import org.example.service.Ulsan.UlsanTownService;
 
 public class Container {
     public static ArticleDao articleDao;
@@ -64,6 +70,9 @@ public class Container {
     public static GwangjuDao gwangjuDao;
     public static GwangjuFoodDao gwangjuFoodDao;
     public static GwangjuTownDao gwangjuTownDao;
+    public static UlsanDao ulsanDao;
+    public static UlsanFoodDao ulsanFoodDao;
+    public static UlsanTownDao ulsanTownDao;
 
 
     public static ArticleService articleService;
@@ -87,6 +96,9 @@ public class Container {
     public static GwangjuService gwangjuService;
     public static GwangjuFoodService gwangjuFoodService;
     public static GwangjuTownService gwangjuTownService;
+    public static UlsanService ulsanService;
+    public static UlsanFoodService ulsanFoodService;
+    public static UlsanTownService ulsanTownService;
 
 
     static {
@@ -117,6 +129,11 @@ public class Container {
         gwangjuDao = new GwangjuDao();
         gwangjuFoodDao = new GwangjuFoodDao();
         gwangjuTownDao = new GwangjuTownDao();
+        //울산
+        ulsanDao = new UlsanDao();
+        ulsanFoodDao = new UlsanFoodDao();
+        ulsanTownDao = new UlsanTownDao();
+
 
         articleService = new ArticleService();
         memberService = new MemberService();
@@ -145,6 +162,10 @@ public class Container {
         gwangjuService = new GwangjuService();
         gwangjuFoodService = new GwangjuFoodService();
         gwangjuTownService = new GwangjuTownService();
+        //울산
+        ulsanService = new UlsanService();
+        ulsanFoodService = new UlsanFoodService();
+        ulsanTownService = new UlsanTownService();
 
     }
 }

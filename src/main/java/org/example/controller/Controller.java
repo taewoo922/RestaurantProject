@@ -19,6 +19,9 @@ import org.example.dto.Member;
 import org.example.dto.Seoul.Seoul;
 import org.example.dto.Seoul.SeoulFood;
 import org.example.dto.Seoul.SeoulTown;
+import org.example.dto.Ulsan.Ulsan;
+import org.example.dto.Ulsan.UlsanFood;
+import org.example.dto.Ulsan.UlsanTown;
 
 public abstract class Controller {
     public static Member loginedMember;
@@ -53,6 +56,9 @@ public abstract class Controller {
     public static GwangjuFood gwangjuFoodType;
 
     public  static GwangjuTown gwangjuTown;
+    public static Ulsan ulsanFood;
+    public static UlsanFood ulsanFoodType;
+    public static UlsanTown ulsanTown;
 
     public static boolean isLogined() {
         return loginedMember != null;

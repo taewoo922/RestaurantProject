@@ -20,6 +20,9 @@ import org.example.dto.Incheon.IncheonTown;
 import org.example.dto.Seoul.Seoul;
 import org.example.dto.Seoul.SeoulFood;
 import org.example.dto.Seoul.SeoulTown;
+import org.example.dto.Ulsan.Ulsan;
+import org.example.dto.Ulsan.UlsanFood;
+import org.example.dto.Ulsan.UlsanTown;
 import org.example.service.*;
 import org.example.service.Daegu.DaeguFoodService;
 import org.example.service.Daegu.DaeguService;
@@ -39,6 +42,9 @@ import org.example.service.Incheon.IncheonTownService;
 import org.example.service.Seoul.SeoulFoodService;
 import org.example.service.Seoul.SeoulService;
 import org.example.service.Seoul.SeoulTownService;
+import org.example.service.Ulsan.UlsanFoodService;
+import org.example.service.Ulsan.UlsanService;
+import org.example.service.Ulsan.UlsanTownService;
 import org.example.util.Util;
 
 import java.net.ConnectException;
@@ -69,6 +75,9 @@ public class DistrictController extends Controller{
     public GwangjuService gwangjuService;
     public GwangjuFoodService gwangjuFoodService;
     public GwangjuTownService gwangjuTownService;
+    public UlsanService ulsanService;
+    public UlsanFoodService ulsanFoodService;
+    public UlsanTownService ulsanTownService;
 
     public DistrictController (Scanner sc) {
         this.sc = sc;
@@ -93,6 +102,9 @@ public class DistrictController extends Controller{
         gwangjuService = Container.gwangjuService;
         gwangjuFoodService = Container.gwangjuFoodService;
         gwangjuTownService = Container.gwangjuTownService;
+        ulsanService = Container.ulsanService;
+        ulsanFoodService = Container.ulsanFoodService;
+        ulsanTownService = Container.ulsanTownService;
 
     }
     public void doAction(String cmd, String actionMethodName) {
@@ -171,8 +183,12 @@ public class DistrictController extends Controller{
         Container.daeguTownDao.add(new DaeguTown(Container.daeguTownDao.getNewId(), "국물요리" , "중구","마산식당","대구 중구 경상감영길 101 중앙상가","053-253-6304"));
 
         Container.gwangjuDao.add(new Gwangju(Container.gwangjuDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-        Container.gwangjuFoodDao.add(new GwangjuFood(Container.gwangjuFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "중구,동구,서구,강화군,미추홀구,연수구,남동구,부평구,계양구"));
-        Container.incheonTownDao.add(new IncheonTown(Container.incheonTownDao.getNewId(), "국물요리" , "중구","기와집 굴 대구","인천 중구 운중로21번길 21 1층","032-752-7076"));
+        Container.gwangjuFoodDao.add(new GwangjuFood(Container.gwangjuFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "동구,서구,남구,북구,광산구"));
+        Container.gwangjuTownDao.add(new GwangjuTown(Container.gwangjuTownDao.getNewId(), "국물요리" , "동구","나주식당","광주 동구 동계천로53번길 2","062-224-6943"));
+
+        Container.ulsanDao.add(new Ulsan(Container.ulsanDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+        Container.ulsanFoodDao.add(new UlsanFood(Container.ulsanFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "동구,중구,남구,북구,울주군"));
+        Container.ulsanTownDao.add(new UlsanTown(Container.ulsanTownDao.getNewId(), "국물요리" , "동구","속초순대국","울산 동구 명덕4길 10 2층","0507-1435-2361"));
 
     }
 
@@ -361,7 +377,7 @@ public class DistrictController extends Controller{
 
         gwangjuFood = gwangju;
 
-        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, gwangjuFood.foodtype);
+        System.out.printf("광주지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, gwangjuFood.foodtype);
         System.out.printf("원하시는 종류를 입력해주세요.\n");
         String foodtype = sc.nextLine();
 
@@ -372,7 +388,7 @@ public class DistrictController extends Controller{
         }
 
         gwangjuFoodType = gwangjuFood;
-        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", gwangjuFoodType.town);
+        System.out.printf("광주지역에 %s 중 원하시는 위치를 입력해주세요.\n", gwangjuFoodType.town);
         String resname = sc.nextLine();
 
         GwangjuTown gwangjutown = gwangjuTownService.getGwangjuTownByResname(resname);
@@ -387,33 +403,33 @@ public class DistrictController extends Controller{
         System.out.printf("메뉴를 선택해 주세요\n");
         String food = sc.nextLine();
 
-        Incheon incheon = incheonService.getIncheonByFood(food);
+        Ulsan ulsan = ulsanService.getUlsanByFood(food);
         if ( food == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        incheonFood = incheon;
+        ulsanFood = ulsan;
 
-        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheonFood.foodtype);
+        System.out.printf("울산지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, ulsanFood.foodtype);
         System.out.printf("원하시는 종류를 입력해주세요.\n");
         String foodtype = sc.nextLine();
 
-        IncheonFood incheonFood = incheonFoodService.getIncheonFoodByFoodType(foodtype);
+        UlsanFood ulsanFood = ulsanFoodService.getUlsanFoodByFoodType(foodtype);
         if ( foodtype == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        incheonFoodType = incheonFood;
-        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFoodType.town);
+        ulsanFoodType = ulsanFood;
+        System.out.printf("울산지역에 %s 중 원하시는 위치를 입력해주세요.\n", ulsanFoodType.town);
         String resname = sc.nextLine();
 
-        IncheonTown incheontown = incheonTownService.getIncheonTownByResname(resname);
+        UlsanTown ulsantown = ulsanTownService.getUlsanTownByResname(resname);
 
-        incheonTown = incheontown;
+        ulsanTown = ulsantown;
         System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
-        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
+        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", ulsantown.id, ulsantown.regDate, ulsantown.food, ulsantown.town, ulsantown.resname, ulsantown.address, ulsantown.num);
     }
 
     private void showBusan() {
