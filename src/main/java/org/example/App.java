@@ -32,8 +32,8 @@ public class App {
         DistrictController districtController = new DistrictController(sc);
         ExportController exportController = new ExportController(sc);
 
-        articleController.makeTestData();
-        memberController.makeTestData();
+//        articleController.makeTestData();
+//        memberController.makeTestData();
         districtController.makeTestData();
 
         while ( true ) {
