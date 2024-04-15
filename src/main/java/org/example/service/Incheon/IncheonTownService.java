@@ -1,9 +1,7 @@
 package org.example.service.Incheon;
 
-import org.example.Container;
-import org.example.dao.Gyeonggi.GyeonggiTownDao;
+import org.example.container.Container;
 import org.example.dao.Incheon.IncheonTownDao;
-import org.example.dto.Gyeonggi.GyeonggiTown;
 import org.example.dto.Incheon.IncheonTown;
 
 

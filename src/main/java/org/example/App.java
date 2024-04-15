@@ -1,14 +1,21 @@
 package org.example;
 
-import org.example.controller.ArticleController;
-import org.example.controller.Controller;
-import org.example.controller.MemberController;
-import org.example.controller.DistrictController;
+import org.example.container.Container;
+import org.example.controller.*;
+import org.example.db.DBConnection;
 
 
 import java.util.Scanner;
 
 public class App {
+    public App (){
+        DBConnection.DB_NAME = "sbs_proj";
+        DBConnection.DB_USER = "sbsst";
+        DBConnection.DB_PASSWORD = "sbs123414";
+        DBConnection.DB_PORT = 3306;
+
+        Container.getDBConnection().connect();
+    }
     public void start() {
         System.out.println("== 프로그램 시작 ==");
 
@@ -23,6 +30,7 @@ public class App {
         MemberController memberController = new MemberController(sc);
         ArticleController articleController = new ArticleController(sc);
         DistrictController districtController = new DistrictController(sc);
+        ExportController exportController = new ExportController(sc);
 
         articleController.makeTestData();
         memberController.makeTestData();
@@ -42,6 +50,12 @@ public class App {
             }
 
             String[] cmdBits = cmd.split(" "); // article write / member join
+
+            if ( cmdBits.length == 1 ) {
+                System.out.println("존재하지 않는 명령어 입니다.");
+                continue;
+            }
+
             String controllerName = cmdBits[0]; // article / member
             String actionMethodName = cmdBits[1]; // write / join
 
@@ -56,6 +70,9 @@ public class App {
             else if ( controllerName.equals("지역") ) {
                 controller = districtController;
             }
+            else if ( controllerName.equals("export") ) {
+                controller = exportController;
+            }
             else {
                 System.out.println("존재하지 않는 명령어입니다.");
                 continue;
@@ -68,7 +85,7 @@ public class App {
                 case "article/delete":
                 case "article/modify":
                 case "memeber/logout":
-                    if ( Controller.isLogined() == false ) {
+                    if ( Container.getSession().isLogined() == false ) {
                         System.out.println("로그인 후 이용해주세요.");
                         continue;
                     }
@@ -78,7 +95,7 @@ public class App {
             switch ( actionName ) {
                 case "member/login":
                 case "memeber/join":
-                    if ( Controller.isLogined() ) {
+                    if (Container.getSession().isLogined() ) {
                         System.out.println("로그아웃 후 이용해주세요.");
                         continue;
                     }

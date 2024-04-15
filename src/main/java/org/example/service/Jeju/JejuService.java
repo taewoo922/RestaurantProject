@@ -1,6 +1,6 @@
 package org.example.service.Jeju;
 
-import org.example.Container;
+import org.example.container.Container;
 import org.example.dao.Jeju.JejuDao;
 import org.example.dto.Jeju.Jeju;
 

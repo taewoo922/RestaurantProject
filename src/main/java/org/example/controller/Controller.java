@@ -30,7 +30,6 @@ import org.example.dto.Ulsan.UlsanFood;
 import org.example.dto.Ulsan.UlsanTown;
 
 public abstract class Controller {
-    public static Member loginedMember;
     public static Seoul seoulFood;
 
     public static SeoulFood seoulFoodType;
@@ -72,9 +71,6 @@ public abstract class Controller {
     public static JejuFood jejuFoodType;
     public static JejuTown jejuTown;
 
-    public static boolean isLogined() {
-        return loginedMember != null;
-    }
 
     public abstract void doAction(String cmd, String actionMethodName);
     public abstract void makeTestData();

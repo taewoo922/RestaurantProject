@@ -1,13 +1,11 @@
 package org.example.controller;
 
-import org.example.Container;
+import org.example.container.Container;
 import org.example.dto.Member;
 
-import org.example.service.DistrictService;
 import org.example.service.MemberService;
 import org.example.util.Util;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class MemberController extends Controller {
@@ -15,11 +13,13 @@ public class MemberController extends Controller {
     private String cmd;
     private String actionMethodName;
     private MemberService memberService;
+    private Session session;
 
     public MemberController(Scanner sc) {
         this.sc = sc;
 
         memberService = Container.memberService;
+        session = Container.getSession();
     }
 
     public void doAction(String cmd, String actionMethodName) {
@@ -46,9 +46,9 @@ public class MemberController extends Controller {
     public void makeTestData() {
         System.out.println("테스트를 위한 회원 데이터를 생성합니다.");
 
-        Container.memberDao.join(new Member(Container.memberDao.getNewId(), Util.getNowDateStr(), "admin", "admin", "관리자"));
-        Container.memberDao.join(new Member(Container.memberDao.getNewId(), Util.getNowDateStr(), "user1", "user1", "홍길동"));
-        Container.memberDao.join(new Member(Container.memberDao.getNewId(), Util.getNowDateStr(), "user2", "user2", "홍길순"));
+        memberService.join(new Member(Container.memberDao.getNewId(), Util.getNowDateStr(), "admin", "admin", "관리자"));
+        memberService.join(new Member(Container.memberDao.getNewId(), Util.getNowDateStr(), "user1", "user1", "홍길동"));
+        memberService.join(new Member(Container.memberDao.getNewId(), Util.getNowDateStr(), "user2", "user2", "홍길순"));
     }
 
     public void doJoin() {
@@ -113,13 +113,15 @@ public class MemberController extends Controller {
             return;
         }
 
-        loginedMember = member;
+        session.setLoginedMember(member);
+        Member loginedMember = session.getLoginedMember();
+
         System.out.printf("로그인 성공! %s님 환영합니다!\n", loginedMember.name);
 
     }
 
     private void doLogout() {
-        loginedMember = null;
+        session.setLoginedMember(null);
         System.out.println("로그아웃 되었습니다.");
     }
 

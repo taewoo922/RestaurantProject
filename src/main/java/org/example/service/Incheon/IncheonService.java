@@ -1,9 +1,7 @@
 package org.example.service.Incheon;
 
-import org.example.Container;
-import org.example.dao.Gyeonggi.GyeonggiDao;
+import org.example.container.Container;
 import org.example.dao.Incheon.IncheonDao;
-import org.example.dto.Gyeonggi.Gyeonggi;
 import org.example.dto.Incheon.Incheon;
 
 public class IncheonService {

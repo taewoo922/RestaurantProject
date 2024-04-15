@@ -14,7 +14,7 @@ public class MemberDao extends Dao {
 
     public void join(Member member) {
         members.add(member);
-        lastId++;
+        lastId = member.id;
     }
 
     public int getMemberIndexByLoginId(String loginId) {
@@ -38,5 +38,14 @@ public class MemberDao extends Dao {
         }
 
         return members.get(index);
+    }
+    public String getMemberNameById(int id) {
+        for ( Member member : members ) {
+            if ( member.id == id ) {
+                return member.name;
+            }
+        }
+
+        return "";
     }
 }

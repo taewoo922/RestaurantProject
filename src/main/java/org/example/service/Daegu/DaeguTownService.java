@@ -1,10 +1,8 @@
 package org.example.service.Daegu;
 
-import org.example.Container;
+import org.example.container.Container;
 import org.example.dao.Daegu.DaeguTownDao;
-import org.example.dao.Daejeon.DaejeonTownDao;
 import org.example.dto.Daegu.DaeguTown;
-import org.example.dto.Daejeon.DaejeonTown;
 
 
 public class DaeguTownService {

@@ -1,5 +1,6 @@
-package org.example;
+package org.example.container;
 
+import org.example.controller.Session;
 import org.example.dao.ArticleDao;
 import org.example.dao.Busan.BusanDao;
 import org.example.dao.Busan.BusanFoodDao;
@@ -30,6 +31,7 @@ import org.example.dao.Seoul.SeoulTownDao;
 import org.example.dao.Ulsan.UlsanDao;
 import org.example.dao.Ulsan.UlsanFoodDao;
 import org.example.dao.Ulsan.UlsanTownDao;
+import org.example.db.DBConnection;
 import org.example.service.ArticleService;
 import org.example.service.Busan.BusanFoodService;
 import org.example.service.Busan.BusanService;
@@ -60,8 +62,11 @@ import org.example.service.Seoul.SeoulTownService;
 import org.example.service.Ulsan.UlsanFoodService;
 import org.example.service.Ulsan.UlsanService;
 import org.example.service.Ulsan.UlsanTownService;
+import org.example.service.ExportService;
 
 public class Container {
+    public static DBConnection dbConnection;
+    public static Session session;
     public static ArticleDao articleDao;
     public static MemberDao memberDao;
     public static DistrictDao districtDao;
@@ -124,6 +129,7 @@ public class Container {
     public static JejuService jejuService;
     public static JejuFoodService jejuFoodService;
     public static JejuTownService jejuTownService;
+    public static ExportService exportService;
 
 
     static {
@@ -208,5 +214,21 @@ public class Container {
         jejuFoodService = new JejuFoodService();
         jejuTownService = new JejuTownService();
 
+        exportService = new ExportService();
+
+    }
+    public static Session getSession() {
+        if ( session == null ) {
+            session = new Session();
+        }
+
+        return session;
+    }
+    public static DBConnection getDBConnection() {
+        if ( dbConnection == null ) {
+            dbConnection = new DBConnection();
+        }
+
+        return dbConnection;
     }
 }

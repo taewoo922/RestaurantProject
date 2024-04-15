@@ -1,10 +1,8 @@
 package org.example.service.Gyeonggi;
 
-import org.example.Container;
+import org.example.container.Container;
 import org.example.dao.Gyeonggi.GyeonggiDao;
-import org.example.dao.Seoul.SeoulDao;
 import org.example.dto.Gyeonggi.Gyeonggi;
-import org.example.dto.Seoul.Seoul;
 
 public class GyeonggiService {
     private GyeonggiDao gyeonggiDao;

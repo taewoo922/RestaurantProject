@@ -1,9 +1,7 @@
 package org.example.service.Ulsan;
 
-import org.example.Container;
-import org.example.dao.Seoul.SeoulFoodDao;
+import org.example.container.Container;
 import org.example.dao.Ulsan.UlsanFoodDao;
-import org.example.dto.Seoul.SeoulFood;
 import org.example.dto.Ulsan.UlsanFood;
 
 public class UlsanFoodService {

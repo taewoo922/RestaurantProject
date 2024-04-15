@@ -1,12 +1,12 @@
 package org.example.controller;
 
-import org.example.Container;
+import org.example.container.Container;
 import org.example.dto.Article;
 import org.example.dto.Member;
 import org.example.service.ArticleService;
+import org.example.service.MemberService;
 import org.example.util.Util;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,10 +15,14 @@ public class ArticleController extends Controller{
     private String cmd;
     private String actionMethodName;
     private ArticleService articleService;
+    private MemberService memberService;
+    private Session session;
 
     public ArticleController(Scanner sc) {
         this.sc = sc;
         articleService = Container.articleService;
+        memberService = Container.memberService;
+        session = Container.getSession();
     }
 
     public void doAction(String cmd, String actionMethodName) {
@@ -50,9 +54,9 @@ public class ArticleController extends Controller{
     public void makeTestData() {
         System.out.println("테스트를 위한 게시물 데이터를 생성합니다.");
 
-        Container.articleDao.add(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 1, "제목 1", "내용 1", 12));
-        Container.articleDao.add(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 2, "제목 2", "내용 2", 103));
-        Container.articleDao.add(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 2, "제목 3", "내용 3", 3));
+        articleService.write(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 1, "제목 1", "내용 1", 12));
+        articleService.write(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 2, "제목 2", "내용 2", 103));
+        articleService.write(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 2, "제목 3", "내용 3", 3));
     }
 
     public void doWrite() {
@@ -63,8 +67,10 @@ public class ArticleController extends Controller{
         System.out.printf("내용 : ");
         String body = sc.nextLine();
 
+        Member loginedMember = session.getLoginedMember();
+
         Article article = new Article(id, regDate, loginedMember.id, title, body);
-        Container.articleDao.add(article);
+        articleService.write(article);
 
         System.out.printf("%d번 게시물이 생성되었습니다.\n", id);
     }
@@ -82,16 +88,7 @@ public class ArticleController extends Controller{
         System.out.println("번호 |   작성자 | 조회 | 제목 ");
         for ( int i = forPrintArticles.size() - 1; i >= 0 ; i-- ) {
             Article article = forPrintArticles.get(i);
-            String writerName = null;
-
-            List<Member> members = Container.memberDao.members;
-
-            for ( Member member : members ) {
-                if ( article.memberId == member.id ) {
-                    writerName = member.name;
-                    break;
-                }
-            }
+            String writerName = memberService.getMemberNameById(article.memberId);
 
             System.out.printf("%4d | %5s | %4d | %s\n", article.id, writerName, article.hit, article.title);
         }
@@ -129,6 +126,8 @@ public class ArticleController extends Controller{
             return;
         }
 
+        Member loginedMember = session.getLoginedMember();
+
         if ( foundArticle.memberId != loginedMember.id ) {
             System.out.printf("권한이 없습니다.\n");
             return;
@@ -155,6 +154,8 @@ public class ArticleController extends Controller{
             System.out.printf("%d번 게시물은 존재하지 않습니다.\n", id);
             return;
         }
+
+        Member loginedMember = session.getLoginedMember();
 
         if ( foundArticle.memberId != loginedMember.id ) {
             System.out.printf("권한이 없습니다.\n");
