@@ -1,7 +1,11 @@
 package org.example.dto.Incheon;
 
 import org.example.dto.Dto;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Incheon extends Dto {
     public String food;
     public String foodtype;
