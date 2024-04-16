@@ -3,14 +3,10 @@ package org.example.controller;
 import org.example.container.Container;
 import org.example.service.ExportService;
 
-import java.util.Scanner;
-
 public class ExportController extends Controller {
-    private Scanner sc;
     private ExportService exportService;
 
-    public ExportController(Scanner sc) {
-        this.sc = sc;
+    public ExportController() {
         exportService = Container.exportService;
     }
 
@@ -28,9 +24,5 @@ public class ExportController extends Controller {
     private void doHtml() {
         System.out.println("html을 생성합니다.");
         exportService.makeHtml();
-    }
-
-    public void makeTestData() {
-
     }
 }

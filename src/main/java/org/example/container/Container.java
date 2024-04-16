@@ -64,7 +64,10 @@ import org.example.service.Ulsan.UlsanService;
 import org.example.service.Ulsan.UlsanTownService;
 import org.example.service.ExportService;
 
+import java.util.Scanner;
+
 public class Container {
+    public static Scanner sc;
     public static DBConnection dbConnection;
     public static Session session;
     public static ArticleDao articleDao;
@@ -217,6 +220,15 @@ public class Container {
         exportService = new ExportService();
 
     }
+
+    public static Scanner getScanner() {
+        if ( sc == null ) {
+            sc = new Scanner(System.in);
+        }
+
+        return sc;
+    }
+
     public static Session getSession() {
         if ( session == null ) {
             session = new Session();

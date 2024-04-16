@@ -27,8 +27,7 @@ public class MemberService {
 //    public int getMemberIndexByLoginId(String loginId) {
 //        return memberDao.getMemberIndexByLoginId(loginId);
 //    }
-    public String getMemberNameById(int memberId) {
-//        return memberDao.getMemberNameById(memberId);
-        return null;
+    public Member getMember(int memberId) {
+        return memberDao.getMember(memberId);
     }
 }

@@ -21,7 +21,7 @@ public class App {
     public void start() {
         System.out.println("== 프로그램 시작 ==");
 
-        Scanner sc = new Scanner(System.in);
+//        Scanner sc = new Scanner(System.in);
 
         System.out.println("== 접속 페이지==");
         System.out.println("접속 방식을 입력해 주세요");
@@ -29,18 +29,17 @@ public class App {
         System.out.println("2. 비회원 로그인: 비회원 로그인");
         System.out.println("3. 회원가입 : 회원 가입");
 
-        MemberController memberController = new MemberController(sc);
-        ArticleController articleController = new ArticleController(sc);
-        DistrictController districtController = new DistrictController(sc);
-        ExportController exportController = new ExportController(sc);
 
-//        articleController.makeTestData();
-//        memberController.makeTestData();
-//        districtController.makeTestData();
+//        DistrictController districtController = new DistrictController(sc);
+
+
+        MemberController memberController = new MemberController();
+        ArticleController articleController = new ArticleController();
+        ExportController exportController = new ExportController();
 
         while ( true ) {
             System.out.printf("명령어) ");
-            String cmd = sc.nextLine();
+            String cmd = Container.getScanner().nextLine();
             cmd = cmd.trim();
 
             if ( cmd.length() == 0 ) {
@@ -69,9 +68,9 @@ public class App {
             else if ( controllerName.equals("회원") ) {
                 controller = memberController;
             }
-            else if ( controllerName.equals("지역") ) {
-                controller = districtController;
-            }
+//            else if ( controllerName.equals("지역") ) {
+//                controller = districtController;
+//            }
             else if ( controllerName.equals("export") ) {
                 controller = exportController;
             }
@@ -86,7 +85,7 @@ public class App {
                 case "article/write":
                 case "article/delete":
                 case "article/modify":
-                case "memeber/logout":
+                case "member/logout":
                     if ( Container.getSession().isLogined() == false ) {
                         System.out.println("로그인 후 이용해주세요.");
                         continue;
@@ -109,7 +108,9 @@ public class App {
         }
 
 
-        sc.close();
+        Container.getDBConnection().close();
+        Container.getScanner().close();
+
         System.out.println("== 프로그램 끝 ==");
     }
 }

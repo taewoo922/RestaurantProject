@@ -9,11 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 public class MemberDao extends Dao {
-    public List<Member> members;
-    private DBConnection dbConnection;
 
+    private DBConnection dbConnection;
     public MemberDao() {
-        members = new ArrayList<>();
         dbConnection = Container.getDBConnection();
     }
 
@@ -46,7 +44,6 @@ public class MemberDao extends Dao {
 //        return -1;
 //    }
 
-
     public Member getMemberByLoginId(String loginId) {
         StringBuilder sb = new StringBuilder();
 
@@ -54,22 +51,28 @@ public class MemberDao extends Dao {
         sb.append(String.format("FROM `member` "));
         sb.append(String.format("WHERE loginId = '%s'", loginId));
 
-        Map<String, Object> memberRow = dbConnection.selectRow((sb.toString()));
+        Map<String, Object> row = dbConnection.selectRow((sb.toString()));
 
-        if ( memberRow.isEmpty() ) {
+        if ( row.isEmpty() ) {
             return null;
         }
 
 
-        return new Member(memberRow);
+        return new Member(row);
     }
-    public String getMemberNameById(int id) {
-        for ( Member member : members ) {
-            if ( member.id == id ) {
-                return member.name;
-            }
+    public Member getMember(int id) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM `member` "));
+        sb.append(String.format("WHERE id = %d ", id));
+
+        Map<String, Object> row = dbConnection.selectRow((sb.toString()));
+
+        if ( row.isEmpty() ) {
+            return null;
         }
 
-        return "";
+        return new Member(row);
     }
 }
