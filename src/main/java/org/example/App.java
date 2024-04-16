@@ -15,6 +15,8 @@ public class App {
         DBConnection.DB_PORT = 3306;
 
         Container.getDBConnection().connect();
+
+        Container.getSession().setCurrentBoard(Container.articleService.getBoard(1));
     }
     public void start() {
         System.out.println("== 프로그램 시작 ==");
@@ -34,7 +36,7 @@ public class App {
 
 //        articleController.makeTestData();
 //        memberController.makeTestData();
-        districtController.makeTestData();
+//        districtController.makeTestData();
 
         while ( true ) {
             System.out.printf("명령어) ");
@@ -61,10 +63,10 @@ public class App {
 
             Controller controller = null;
 
-            if ( controllerName.equals("article") ) {
+            if ( controllerName.equals("게시물") ) {
                 controller = articleController;
             }
-            else if ( controllerName.equals("member") ) {
+            else if ( controllerName.equals("회원") ) {
                 controller = memberController;
             }
             else if ( controllerName.equals("지역") ) {
@@ -94,7 +96,7 @@ public class App {
 
             switch ( actionName ) {
                 case "member/login":
-                case "memeber/join":
+                case "member/join":
                     if (Container.getSession().isLogined() ) {
                         System.out.println("로그아웃 후 이용해주세요.");
                         continue;

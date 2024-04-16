@@ -27,13 +27,13 @@ public class MemberController extends Controller {
         this.actionMethodName = actionMethodName;
 
         switch ( actionMethodName ) {
-            case "join":
+            case "가입":
                 doJoin();
                 break;
-            case "login":
+            case "로그인":
                 doLogin();
                 break;
-            case "logout":
+            case "로그아웃":
                 doLogout();
                 break;
             default:
@@ -43,12 +43,12 @@ public class MemberController extends Controller {
 
     }
 
-    public void makeTestData() {
-        System.out.println("테스트를 위한 회원 데이터를 생성합니다.");
-//        memberService.join(new Member(Container.memberDao.getNewId(), Util.getNowDateStr(), "admin", "admin", "관리자"));
-//        memberService.join(new Member(Container.memberDao.getNewId(), Util.getNowDateStr(), "user1", "user1", "홍길동"));
-//        memberService.join(new Member(Container.memberDao.getNewId(), Util.getNowDateStr(), "user2", "user2", "홍길순"));
-    }
+//    public void makeTestData() {
+//        System.out.println("테스트를 위한 회원 데이터를 생성합니다.");
+////        memberService.join(new Member(Container.memberDao.getNewId(), Util.getNowDateStr(), "admin", "admin", "관리자"));
+////        memberService.join(new Member(Container.memberDao.getNewId(), Util.getNowDateStr(), "user1", "user1", "홍길동"));
+////        memberService.join(new Member(Container.memberDao.getNewId(), Util.getNowDateStr(), "user2", "user2", "홍길순"));
+//    }
 
     public void doJoin() {
 //        int id = Container.memberDao.getNewId();
@@ -68,16 +68,16 @@ public class MemberController extends Controller {
             break;
         }
 
-        String loginPw = null;
-        String loginPwConfirm = null;
+        String loginPassword = null;
+        String loginPasswordConfirm = null;
 
         while ( true ) {
             System.out.printf("로그인 비번 : ");
-            loginPw = sc.nextLine();
+            loginPassword = sc.nextLine();
             System.out.printf("로그인 비번확인 : ");
-            loginPwConfirm = sc.nextLine();
+            loginPasswordConfirm = sc.nextLine();
 
-            if ( loginPw.equals(loginPwConfirm) == false ) {
+            if ( loginPassword.equals(loginPasswordConfirm) == false ) {
                 System.out.println("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
                 continue;
             }
@@ -90,16 +90,16 @@ public class MemberController extends Controller {
 
 //        Member member = new Member(id, regDate, loginId, loginPw, name);
 //        memberService.join(member);
-        memberService.join(loginId, loginPw, name);
+        memberService.join(loginId, loginPassword, name);
 
-        System.out.printf("%d번 회원이 생성되었습니다. 환영합니다!\n", name);
+        System.out.printf("%s 회원이 생성되었습니다. 환영합니다!\n", name);
     }
 
     public void doLogin() {
         System.out.printf("로그인 아이디 : ");
         String loginId = sc.nextLine();
         System.out.printf("로그인 비번 : ");
-        String loginPw = sc.nextLine();
+        String loginPassword = sc.nextLine();
 
         Member member = memberService.getMemberByLoginId(loginId);
 
@@ -108,7 +108,7 @@ public class MemberController extends Controller {
             return;
         }
 
-        if ( member.loginPw.equals(loginPw) == false ) {
+        if ( member.loginPassword.equals(loginPassword) == false ) {
             System.out.println("비밀번호가 일치하지 않습니다.");
             return;
         }

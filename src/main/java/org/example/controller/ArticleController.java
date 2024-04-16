@@ -2,6 +2,7 @@ package org.example.controller;
 
 import org.example.container.Container;
 import org.example.dto.Article;
+import org.example.dto.Board;
 import org.example.dto.Member;
 import org.example.service.ArticleService;
 import org.example.service.MemberService;
@@ -30,20 +31,26 @@ public class ArticleController extends Controller{
         this.actionMethodName = actionMethodName;
 
         switch ( actionMethodName ) {
-            case "write":
+            case "작성":
                 doWrite();
                 break;
-            case "list":
+            case "목록":
                 showList();
                 break;
-            case "detail":
+            case "상세":
                 showDetail();
                 break;
-            case "modify":
+            case "수정":
                 doModify();
                 break;
-            case "delete":
+            case "삭제":
                 doDelete();
+                break;
+            case "currentBoard":
+                doCurrentBoard();
+                break;
+            case "changeBoard":
+                doChangeBoard();
                 break;
             default:
                 System.out.println("존재하지 않는 명령어 입니다.");
@@ -51,29 +58,43 @@ public class ArticleController extends Controller{
         }
     }
 
-    public void makeTestData() {
-        System.out.println("테스트를 위한 게시물 데이터를 생성합니다.");
+//    public void makeTestData() {
+//        System.out.println("테스트를 위한 게시물 데이터를 생성합니다.");
+//
+//        articleService.write(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 1, 1, "제목 1", "내용 1", 12));
+//        articleService.write(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 2, 1, "제목 2", "내용 2", 103));
+//        articleService.write(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 2, 1, "제목 3", "내용 3", 3));
+//    }
+    private void doChangeBoard() {
+        String[] cmdBits = cmd.split(" ");
+        int boardId = Integer.parseInt(cmdBits[2]);
 
-        articleService.write(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 1, 1, "제목 1", "내용 1", 12));
-        articleService.write(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 2, 1, "제목 2", "내용 2", 103));
-        articleService.write(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 2, 1, "제목 3", "내용 3", 3));
+        Board board = articleService.getBoard(boardId);
+
+        if ( board == null ) {
+            System.out.println("해당 게시판은 존재하지 않습니다.");
+        } else {
+            System.out.printf("[%s] 게시판으로 변경되었습니다.\n", board.getName());
+            session.setCurrentBoard(board);
+        }
     }
 
+    private void doCurrentBoard() {
+        Board board = session.getCurrentBoard();
+        System.out.printf("현재 게시판 : %s 게시판\n", board.getName());
+    }
     public void doWrite() {
-        int id = Container.articleDao.getNewId();
-        String regDate = Util.getNowDateStr();
         System.out.printf("제목 : ");
         String title = sc.nextLine();
         System.out.printf("내용 : ");
         String body = sc.nextLine();
 
-        Member loginedMember = session.getLoginedMember();
-        int boardId = 1;
+        int memberId = session.getLoginedMember().getId();
+        int boardId = session.getCurrentBoard().getId();
 
-        Article article = new Article(id, regDate, loginedMember.id, boardId, title, body);
-        articleService.write(article);
+        int newId = articleService.write(memberId, boardId, title, body);
 
-        System.out.printf("%d번 게시물이 생성되었습니다.\n", id);
+        System.out.printf("%d번 게시물이 생성되었습니다.\n", newId);
     }
 
     public void showList() {
@@ -100,7 +121,7 @@ public class ArticleController extends Controller{
         String[] cmdBits = cmd.split(" ");
         int id = Integer.parseInt(cmdBits[2]);
 
-        Article foundArticle = articleService.getArticleById(id);
+        Article foundArticle = articleService.getForPrintArticle(id);
 
         if ( foundArticle == null ) {
             System.out.printf("%d번 게시물은 존재하지 않습니다.\n", id);
@@ -121,7 +142,7 @@ public class ArticleController extends Controller{
         String[] cmdBits = cmd.split(" ");
         int id = Integer.parseInt(cmdBits[2]);
 
-        Article foundArticle = articleService.getArticleById(id);
+        Article foundArticle = articleService.getArticle(id);
 
         if ( foundArticle == null ) {
             System.out.printf("%d번 게시물은 존재하지 않습니다.\n", id);
@@ -140,17 +161,16 @@ public class ArticleController extends Controller{
         System.out.printf("내용 : ");
         String body = sc.nextLine();
 
-        foundArticle.title = title;
-        foundArticle.body = body;
+        articleService.modify(foundArticle.id, title, body);
 
-        System.out.printf("%d번 게시물이 수정되었습니다.\n", id);
+        System.out.printf("%d번 게시물이 수정되었습니다.\n", foundArticle.id);
     }
 
     public void doDelete() {
         String[] cmdBits = cmd.split(" ");
         int id = Integer.parseInt(cmdBits[2]);
 
-        Article foundArticle = articleService.getArticleById(id);
+        Article foundArticle = articleService.getArticle(id);
 
         if ( foundArticle == null ) {
             System.out.printf("%d번 게시물은 존재하지 않습니다.\n", id);
@@ -164,8 +184,8 @@ public class ArticleController extends Controller{
             return;
         }
 
-        articleService.remove(foundArticle);
+        articleService.delete(foundArticle.id);
 
-        System.out.printf("%d번 게시물이 삭제되었습니다.\n", id);
+        System.out.printf("%d번 게시물이 삭제되었습니다.\n", foundArticle.id);
     }
 }

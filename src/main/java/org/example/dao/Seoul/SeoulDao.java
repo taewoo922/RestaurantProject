@@ -1,6 +1,8 @@
 package org.example.dao.Seoul;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
 import org.example.dto.Seoul.Seoul;
 
 import java.util.ArrayList;
@@ -8,9 +10,10 @@ import java.util.List;
 
 public class SeoulDao extends Dao {
     public List<Seoul> seouls;
-
+    private DBConnection dbConnection;
     public SeoulDao() {
         seouls = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
     public void add(Seoul seoul) {

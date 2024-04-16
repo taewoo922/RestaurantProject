@@ -66,6 +66,7 @@ public class DistrictController extends Controller{
     private String cmd;
     private String actionMethodName;
     private MemberService memberService;
+    private Session session;
     public DistrictService districtService;
     public SeoulService seoulService;
     public SeoulFoodService seoulFoodService;
@@ -98,7 +99,7 @@ public class DistrictController extends Controller{
 
     public DistrictController (Scanner sc) {
         this.sc = sc;
-
+        session = Container.getSession();
         memberService = Container.memberService;
         districtService = Container.districtService;
         seoulService = Container.seoulService;
@@ -161,67 +162,72 @@ public class DistrictController extends Controller{
             case "제주":
                 showJeju();
                 break;
+            case "맛집추가":
+                addseoultown();
+                break;
             default:
                 System.out.println("존재하지 않는 명령어 입니다.");
                 break;
         }
     }
 
-    public void makeTestData() {
-        System.out.println("테스트를 위한 회원 데이터를 생성합니다.");
 
-        Container.seoulDao.add(new Seoul(Container.seoulDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-        Container.seoulDao.add(new Seoul(Container.seoulDao.getNewId(), Util.getNowDateStr(), "일식", "밥류(초밥,돈부리,장어덮밥,오므라이스,카레라이스,텐동),면류(우동,라멘,소바)"));
-        Container.seoulDao.add(new Seoul(Container.seoulDao.getNewId(), Util.getNowDateStr(), "중식", "면류(짜장면,짬뽕,도삭면,기스면,우육면)\n"+ "탕류(마라탕,누룽지탕,불도장,훠궈),\n" +
-                "만두류(딤섬,소롱포,춘권,만터우)\n" +"요리류(탕수육,깐풍기,고추잡채,양장피,유산슬 등)"));
-        Container.seoulDao.add(new Seoul(Container.seoulDao.getNewId(), Util.getNowDateStr(), "양식", "파스타, 리조또, 스테이크, 수제버거, 스튜, 라자냐, 케밥"));
-        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"국물요리" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"구이류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"볶음류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"분식" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"건강식" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"죽&비빔밥" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"찜" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"탕" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"면류", "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"탕류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"만두" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"요리류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-        Container.seoulTownDao.add(new SeoulTown(Container.seoulTownDao.getNewId(), "국물요리" , "종로","합천돼지국밥","서울특별시 종로구 낙원동 290-1","02-742-4142"));
 
-        Container.gyeonggiDao.add(new Gyeonggi(Container.gyeonggiDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-        Container.gyeonggiFoodDao.add(new GyeonggiFood(Container.gyeonggiFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "고양,부천,성남,의정부,하남,수원,용인,화성,남양주,이천"));
-        Container.gyeonggiTownDao.add(new GyeonggiTown(Container.gyeonggiTownDao.getNewId(), "국물요리" , "고양","정돈 도마수육 순대국","경기 고양시 일산서구 호수로856번길 73-14 1층","031-925-7772"));
-
-        Container.incheonDao.add(new Incheon(Container.incheonDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-        Container.incheonFoodDao.add(new IncheonFood(Container.incheonFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "중구,동구,서구,강화군,미추홀구,연수구,남동구,부평구,계양구"));
-        Container.incheonTownDao.add(new IncheonTown(Container.incheonTownDao.getNewId(), "국물요리" , "중구","기와집 굴 대구","인천 중구 운중로21번길 21 1층","032-752-7076"));
-
-        Container.daejeonDao.add(new Daejeon(Container.daejeonDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-        Container.daejeonFoodDao.add(new DaejeonFood(Container.daejeonFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "중구,동구,서구,대덕구,유성구"));
-        Container.daejeonTownDao.add(new DaejeonTown(Container.daejeonTownDao.getNewId(), "국물요리" , "중구","태평소국밥","대전 중구 태평로 116","042-522-5757"));
-
-        Container.daeguDao.add(new Daegu(Container.daeguDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-        Container.daeguFoodDao.add(new DaeguFood(Container.daeguFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "중구,동구,서구,남구,북구,달서구,달성군,수성구"));
-        Container.daeguTownDao.add(new DaeguTown(Container.daeguTownDao.getNewId(), "국물요리" , "중구","마산식당","대구 중구 경상감영길 101 중앙상가","053-253-6304"));
-
-        Container.gwangjuDao.add(new Gwangju(Container.gwangjuDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-        Container.gwangjuFoodDao.add(new GwangjuFood(Container.gwangjuFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "동구,서구,남구,북구,광산구"));
-        Container.gwangjuTownDao.add(new GwangjuTown(Container.gwangjuTownDao.getNewId(), "국물요리" , "동구","나주식당","광주 동구 동계천로53번길 2","062-224-6943"));
-
-        Container.ulsanDao.add(new Ulsan(Container.ulsanDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-        Container.ulsanFoodDao.add(new UlsanFood(Container.ulsanFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "동구,중구,남구,북구,울주군"));
-        Container.ulsanTownDao.add(new UlsanTown(Container.ulsanTownDao.getNewId(), "국물요리" , "동구","속초순대국","울산 동구 명덕4길 10 2층","0507-1435-2361"));
-
-        Container.busanDao.add(new Busan(Container.busanDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-        Container.busanFoodDao.add(new BusanFood(Container.busanFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "남구,동구,서구,중구,해운대구,기장군,북구,사상구,강서구,영도구,진구,수영구,동래구"));
-        Container.busanTownDao.add(new BusanTown(Container.busanTownDao.getNewId(), "국물요리" , "동구","속초순대국","울산 동구 명덕4길 10 2층","0507-1435-2361"));
-
-        Container.jejuDao.add(new Jeju(Container.jejuDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-        Container.jejuFoodDao.add(new JejuFood(Container.jejuFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "제주시,서귀포시"));
-        Container.jejuTownDao.add(new JejuTown(Container.jejuTownDao.getNewId(), "국물요리" , "제주시","김재훈고사리육개장","제주 제주시 구남로2길 19 김재훈고사리육개장","0507-1301-2601"));
-
-    }
+//    public void makeTestData() {
+//        System.out.println("테스트를 위한 회원 데이터를 생성합니다.");
+//
+//        Container.seoulDao.add(new Seoul(Container.seoulDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+//        Container.seoulDao.add(new Seoul(Container.seoulDao.getNewId(), Util.getNowDateStr(), "일식", "밥류(초밥,돈부리,장어덮밥,오므라이스,카레라이스,텐동),면류(우동,라멘,소바)"));
+//        Container.seoulDao.add(new Seoul(Container.seoulDao.getNewId(), Util.getNowDateStr(), "중식", "면류(짜장면,짬뽕,도삭면,기스면,우육면)\n"+ "탕류(마라탕,누룽지탕,불도장,훠궈),\n" +
+//                "만두류(딤섬,소롱포,춘권,만터우)\n" +"요리류(탕수육,깐풍기,고추잡채,양장피,유산슬 등)"));
+//        Container.seoulDao.add(new Seoul(Container.seoulDao.getNewId(), Util.getNowDateStr(), "양식", "파스타, 리조또, 스테이크, 수제버거, 스튜, 라자냐, 케밥"));
+//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"국물요리" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
+////        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"구이류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
+////        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"볶음류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
+////        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"분식" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
+////        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"건강식" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
+////        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"죽&비빔밥" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
+////        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"찜" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
+////        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"탕" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
+////        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"면류", "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
+////        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"탕류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
+////        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"만두" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
+////        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"요리류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
+//        Container.seoulTownDao.add(new SeoulTown(Container.seoulTownDao.getNewId(), "국물요리", "종로","합천돼지국밥","서울특별시 종로구 낙원동 290-1","02-742-4142",5));
+//
+//        Container.gyeonggiDao.add(new Gyeonggi(Container.gyeonggiDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+//        Container.gyeonggiFoodDao.add(new GyeonggiFood(Container.gyeonggiFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "고양,부천,성남,의정부,하남,수원,용인,화성,남양주,이천"));
+//        Container.gyeonggiTownDao.add(new GyeonggiTown(Container.gyeonggiTownDao.getNewId(), "국물요리" , "고양","정돈 도마수육 순대국","경기 고양시 일산서구 호수로856번길 73-14 1층","031-925-7772"));
+//
+//        Container.incheonDao.add(new Incheon(Container.incheonDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+//        Container.incheonFoodDao.add(new IncheonFood(Container.incheonFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "중구,동구,서구,강화군,미추홀구,연수구,남동구,부평구,계양구"));
+//        Container.incheonTownDao.add(new IncheonTown(Container.incheonTownDao.getNewId(), "국물요리" , "중구","기와집 굴 대구","인천 중구 운중로21번길 21 1층","032-752-7076"));
+//
+//        Container.daejeonDao.add(new Daejeon(Container.daejeonDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+//        Container.daejeonFoodDao.add(new DaejeonFood(Container.daejeonFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "중구,동구,서구,대덕구,유성구"));
+//        Container.daejeonTownDao.add(new DaejeonTown(Container.daejeonTownDao.getNewId(), "국물요리" , "중구","태평소국밥","대전 중구 태평로 116","042-522-5757"));
+//
+//        Container.daeguDao.add(new Daegu(Container.daeguDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+//        Container.daeguFoodDao.add(new DaeguFood(Container.daeguFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "중구,동구,서구,남구,북구,달서구,달성군,수성구"));
+//        Container.daeguTownDao.add(new DaeguTown(Container.daeguTownDao.getNewId(), "국물요리" , "중구","마산식당","대구 중구 경상감영길 101 중앙상가","053-253-6304"));
+//
+//        Container.gwangjuDao.add(new Gwangju(Container.gwangjuDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+//        Container.gwangjuFoodDao.add(new GwangjuFood(Container.gwangjuFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "동구,서구,남구,북구,광산구"));
+//        Container.gwangjuTownDao.add(new GwangjuTown(Container.gwangjuTownDao.getNewId(), "국물요리" , "동구","나주식당","광주 동구 동계천로53번길 2","062-224-6943"));
+//
+//        Container.ulsanDao.add(new Ulsan(Container.ulsanDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+//        Container.ulsanFoodDao.add(new UlsanFood(Container.ulsanFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "동구,중구,남구,북구,울주군"));
+//        Container.ulsanTownDao.add(new UlsanTown(Container.ulsanTownDao.getNewId(), "국물요리" , "동구","속초순대국","울산 동구 명덕4길 10 2층","0507-1435-2361"));
+//
+//        Container.busanDao.add(new Busan(Container.busanDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+//        Container.busanFoodDao.add(new BusanFood(Container.busanFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "남구,동구,서구,중구,해운대구,기장군,북구,사상구,강서구,영도구,진구,수영구,동래구"));
+//        Container.busanTownDao.add(new BusanTown(Container.busanTownDao.getNewId(), "국물요리" , "동구","속초순대국","울산 동구 명덕4길 10 2층","0507-1435-2361"));
+//
+//        Container.jejuDao.add(new Jeju(Container.jejuDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
+//        Container.jejuFoodDao.add(new JejuFood(Container.jejuFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "제주시,서귀포시"));
+//        Container.jejuTownDao.add(new JejuTown(Container.jejuTownDao.getNewId(), "국물요리" , "제주시","김재훈고사리육개장","제주 제주시 구남로2길 19 김재훈고사리육개장","0507-1301-2601"));
+//
+//    }
 
     public void showSeoul() {
         System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
@@ -254,7 +260,7 @@ public class DistrictController extends Controller{
 
         seoulTown = seoultown;
         System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
-        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", seoultown.id, seoultown.regDate, seoultown.food, seoultown.town, seoultown.resname, seoultown.address, seoultown.num);
+        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", seoultown.id, seoultown.regDate, seoultown.foodtype, seoultown.town, seoultown.resname, seoultown.address, seoultown.num);
 
     }
 
@@ -530,5 +536,26 @@ public class DistrictController extends Controller{
         System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
         System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", jejutown.id, jejutown.regDate, jejutown.food, jejutown.town, jejutown.resname, jejutown.address, jejutown.num);
     }
+
+    private void addseoultown() {
+        System.out.printf("음식종류 : ");
+        String foodtype = sc.nextLine();
+        System.out.printf("지역 : ");
+        String town = sc.nextLine();
+        System.out.printf("식당이름 : ");
+        String resname = sc.nextLine();
+        System.out.printf("주소 : ");
+        String address = sc.nextLine();
+        System.out.printf("전화번호 : ");
+        String num = sc.nextLine();
+        int id = Container.seoulTownDao.getNewId();
+//        int memberId = session.getLoginedMember().getId();
+        int boardId = session.getCurrentBoard().getId();
+
+        int newId = seoulTownService.add( id, foodtype, town, resname, address, num, boardId);
+
+        System.out.printf("%d번 게시물이 생성되었습니다.\n", newId);
+    }
+
 
 }
