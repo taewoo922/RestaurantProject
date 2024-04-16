@@ -88,6 +88,81 @@ insert  into `board`(`id`,`regDate`,`updateDate`,`code`,`name`) values
 (4,'2024-04-15 18:08:40','2024-04-15 18:08:40','foodtype','메뉴종류'),
 (5,'2024-04-15 18:09:03','2024-04-15 18:09:03','town','지역맛집');
 
+/*Table structure for table `busanFood` */
+
+DROP TABLE IF EXISTS `busanFood`;
+
+CREATE TABLE `busanFood` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `regDate` datetime NOT NULL,
+  `foodtype` char(100) NOT NULL,
+  `town` text NOT NULL,
+  `boardId` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `boardId` (`boardId`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `busanFood` */
+
+insert  into `busanFood`(`id`,`regDate`,`foodtype`,`town`,`boardId`) values 
+(1,'2024-04-16 15:35:16','국물요리','남구,동구,서구,중구,해운대구,기장군,북구,사상구,강서구,영도구,진구,수영구,동래구',4),
+(2,'2024-04-16 15:35:16','구이류','남구,동구,서구,중구,해운대구,기장군,북구,사상구,강서구,영도구,진구,수영구,동래구',4),
+(3,'2024-04-16 15:35:16','볶음류','남구,동구,서구,중구,해운대구,기장군,북구,사상구,강서구,영도구,진구,수영구,동래구',4),
+(4,'2024-04-16 15:35:16','분식','남구,동구,서구,중구,해운대구,기장군,북구,사상구,강서구,영도구,진구,수영구,동래구',4),
+(5,'2024-04-16 15:35:16','건강식(쌈밥,가정식,나물)','남구,동구,서구,중구,해운대구,기장군,북구,사상구,강서구,영도구,진구,수영구,동래구',4),
+(6,'2024-04-16 15:35:16','죽&비빔밥','남구,동구,서구,중구,해운대구,기장군,북구,사상구,강서구,영도구,진구,수영구,동래구',4),
+(7,'2024-04-16 15:35:16','찜,탕','남구,동구,서구,중구,해운대구,기장군,북구,사상구,강서구,영도구,진구,수영구,동래구',4);
+
+/*Table structure for table `daeguFood` */
+
+DROP TABLE IF EXISTS `daeguFood`;
+
+CREATE TABLE `daeguFood` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `regDate` datetime NOT NULL,
+  `foodtype` char(100) NOT NULL,
+  `town` text NOT NULL,
+  `boardId` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `boardId` (`boardId`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `daeguFood` */
+
+insert  into `daeguFood`(`id`,`regDate`,`foodtype`,`town`,`boardId`) values 
+(1,'2024-04-16 15:07:57','국물요리','중구,동구,서구,남구,북구,달서구,달성군,수성구',4),
+(2,'2024-04-16 15:07:57','구이류','중구,동구,서구,남구,북구,달서구,달성군,수성구',4),
+(3,'2024-04-16 15:07:57','볶음류','중구,동구,서구,남구,북구,달서구,달성군,수성구',4),
+(4,'2024-04-16 15:07:57','분식','중구,동구,서구,남구,북구,달서구,달성군,수성구',4),
+(5,'2024-04-16 15:07:57','건강식(쌈밥,가정식,나물)','중구,동구,서구,남구,북구,달서구,달성군,수성구',4),
+(6,'2024-04-16 15:07:57','죽&비빔밥','중구,동구,서구,남구,북구,달서구,달성군,수성구',4),
+(7,'2024-04-16 15:07:57','찜,탕','중구,동구,서구,남구,북구,달서구,달성군,수성구',4);
+
+/*Table structure for table `daejeonFood` */
+
+DROP TABLE IF EXISTS `daejeonFood`;
+
+CREATE TABLE `daejeonFood` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `regDate` datetime NOT NULL,
+  `foodtype` char(100) NOT NULL,
+  `town` text NOT NULL,
+  `boardId` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `boardId` (`boardId`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `daejeonFood` */
+
+insert  into `daejeonFood`(`id`,`regDate`,`foodtype`,`town`,`boardId`) values 
+(1,'2024-04-16 15:04:52','국물요리','중구,동구,서구,대덕구,유성구',4),
+(2,'2024-04-16 15:04:52','구이류','중구,동구,서구,대덕구,유성구',4),
+(3,'2024-04-16 15:04:52','볶음류','중구,동구,서구,대덕구,유성구',4),
+(4,'2024-04-16 15:04:52','분식','중구,동구,서구,대덕구,유성구',4),
+(5,'2024-04-16 15:04:52','건강식(쌈밥,가정식,나물)','중구,동구,서구,대덕구,유성구',4),
+(6,'2024-04-16 15:04:52','죽&비빔밥','중구,동구,서구,대덕구,유성구',4),
+(7,'2024-04-16 15:06:04','찜,탕','중구,동구,서구,대덕구,유성구',4);
+
 /*Table structure for table `district` */
 
 DROP TABLE IF EXISTS `district`;
@@ -100,7 +175,7 @@ CREATE TABLE `district` (
   `boardId` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `boardId` (`boardId`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `district` */
 
@@ -109,6 +184,31 @@ insert  into `district`(`id`,`regDate`,`food`,`foodtype`,`boardId`) values
 (2,'2024-04-15 18:09:32','일식','밥류(초밥,돈부리,장어덮밥,오므라이스,카레라이스,텐동),면류(우동,라멘,소바)',3),
 (3,'2024-04-15 18:09:32','중식','면류(짜장면,짬뽕,도삭면,기스면,우육면),탕류(마라탕,누룽지탕,불도장,훠궈),만두류(딤섬,소롱포,춘권,만터우),요리류(탕수육,깐풍기,고추잡채,양장피,유산슬 등)',3),
 (4,'2024-04-15 18:09:32','양식','파스타, 리조또, 스테이크, 수제버거, 스튜, 라자냐, 케밥',3);
+
+/*Table structure for table `gwangjuFood` */
+
+DROP TABLE IF EXISTS `gwangjuFood`;
+
+CREATE TABLE `gwangjuFood` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `regDate` datetime NOT NULL,
+  `foodtype` char(100) NOT NULL,
+  `town` text NOT NULL,
+  `boardId` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `boardId` (`boardId`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `gwangjuFood` */
+
+insert  into `gwangjuFood`(`id`,`regDate`,`foodtype`,`town`,`boardId`) values 
+(1,'2024-04-16 15:12:08','국물요리','동구,서구,남구,북구,광산구',4),
+(2,'2024-04-16 15:12:08','구이류','동구,서구,남구,북구,광산구',4),
+(3,'2024-04-16 15:12:08','볶음류','동구,서구,남구,북구,광산구',4),
+(4,'2024-04-16 15:12:08','분식','동구,서구,남구,북구,광산구',4),
+(5,'2024-04-16 15:12:08','건강식(쌈밥,가정식,나물)','동구,서구,남구,북구,광산구',4),
+(6,'2024-04-16 15:12:08','죽&비빔밥','동구,서구,남구,북구,광산구',4),
+(7,'2024-04-16 15:12:08','찜,탕','동구,서구,남구,북구,광산구',4);
 
 /*Table structure for table `gyeonggiFood` */
 
@@ -160,6 +260,31 @@ insert  into `incheonFood`(`id`,`regDate`,`foodtype`,`town`,`boardId`) values
 (6,'2024-04-15 18:39:05','죽&비빔밥','중구,동구,서구,강화군,미추홀구,연수구,남동구,부평구,계양구',4),
 (7,'2024-04-15 18:39:05','찜,탕','중구,동구,서구,강화군,미추홀구,연수구,남동구,부평구,계양구',4);
 
+/*Table structure for table `jejuFood` */
+
+DROP TABLE IF EXISTS `jejuFood`;
+
+CREATE TABLE `jejuFood` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `regDate` datetime NOT NULL,
+  `foodtype` char(100) NOT NULL,
+  `town` text NOT NULL,
+  `boardId` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `boardId` (`boardId`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `jejuFood` */
+
+insert  into `jejuFood`(`id`,`regDate`,`foodtype`,`town`,`boardId`) values 
+(1,'2024-04-16 15:36:42','국물요리','제주시,서귀포시',4),
+(2,'2024-04-16 15:36:42','구이류','제주시,서귀포시',4),
+(3,'2024-04-16 15:36:42','볶음류','제주시,서귀포시',4),
+(4,'2024-04-16 15:36:42','분식','제주시,서귀포시',4),
+(5,'2024-04-16 15:36:42','건강식(쌈밥,가정식,나물)','제주시,서귀포시',4),
+(6,'2024-04-16 15:36:42','죽&비빔밥','제주시,서귀포시',4),
+(7,'2024-04-16 15:36:42','찜,탕','제주시,서귀포시',4);
+
 /*Table structure for table `member` */
 
 DROP TABLE IF EXISTS `member`;
@@ -173,7 +298,7 @@ CREATE TABLE `member` (
   `name` char(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `loginId` (`loginId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `member` */
 
@@ -181,7 +306,9 @@ insert  into `member`(`id`,`regDate`,`updateDate`,`loginId`,`loginPassword`,`nam
 (1,'2024-04-01 17:19:48','2024-04-01 17:19:48','admin','admin','관리자'),
 (2,'2024-04-01 17:19:48','2024-04-01 17:19:48','user1','user1','홍길동'),
 (3,'2024-04-01 17:19:48','2024-04-01 17:19:48','user2','user2','홍길순'),
-(4,'2024-04-02 18:06:38','2024-04-02 18:06:38','user7','user7','kkk');
+(4,'2024-04-02 18:06:38','2024-04-02 18:06:38','user7','user7','kkk'),
+(5,'2024-04-16 17:45:05','2024-04-16 17:45:05','1234','1234','aaa'),
+(6,'2024-04-16 17:46:16','2024-04-16 17:46:16','11111','11111','ㅁㄴㅇㅁㄹ');
 
 /*Table structure for table `seoulFood` */
 
@@ -207,6 +334,53 @@ insert  into `seoulFood`(`id`,`regDate`,`foodtype`,`town`,`boardId`) values
 (5,'2024-04-15 18:17:14','건강식(쌈밥,가정식,나물)','종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서',4),
 (6,'2024-04-15 18:17:14','죽&비빔밥','종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서',4),
 (7,'2024-04-15 18:17:14','찜,탕','종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서',4);
+
+/*Table structure for table `seoulTown` */
+
+DROP TABLE IF EXISTS `seoulTown`;
+
+CREATE TABLE `seoulTown` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `regDate` datetime NOT NULL,
+  `foodtype` char(100) NOT NULL,
+  `town` text NOT NULL,
+  `resname` text NOT NULL,
+  `address` text NOT NULL,
+  `num` text NOT NULL,
+  `boardId` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `boardId` (`boardId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `seoulTown` */
+
+insert  into `seoulTown`(`id`,`regDate`,`foodtype`,`town`,`resname`,`address`,`num`,`boardId`) values 
+(1,'2024-04-16 15:42:38','국물요리','종로','은설설렁탕','서울 종로구 북촌로5가길 44-6 은설설렁탕','0507-1391-2997',5);
+
+/*Table structure for table `ulsanFood` */
+
+DROP TABLE IF EXISTS `ulsanFood`;
+
+CREATE TABLE `ulsanFood` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `regDate` datetime NOT NULL,
+  `foodtype` char(100) NOT NULL,
+  `town` text NOT NULL,
+  `boardId` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `boardId` (`boardId`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `ulsanFood` */
+
+insert  into `ulsanFood`(`id`,`regDate`,`foodtype`,`town`,`boardId`) values 
+(1,'2024-04-16 15:33:42','국물요리','동구,중구,남구,북구,울주군',4),
+(2,'2024-04-16 15:33:42','구이류','동구,중구,남구,북구,울주군',4),
+(3,'2024-04-16 15:33:42','볶음류','동구,중구,남구,북구,울주군',4),
+(4,'2024-04-16 15:33:42','분식','동구,중구,남구,북구,울주군',4),
+(5,'2024-04-16 15:33:42','건강식(쌈밥,가정식,나물)','동구,중구,남구,북구,울주군',4),
+(6,'2024-04-16 15:33:42','죽&비빔밥','동구,중구,남구,북구,울주군',4),
+(7,'2024-04-16 15:33:42','찜,탕','동구,중구,남구,북구,울주군',4);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
