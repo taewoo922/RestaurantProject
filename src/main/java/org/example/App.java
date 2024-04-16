@@ -30,12 +30,13 @@ public class App {
         System.out.println("3. 회원가입 : 회원 가입");
 
 
-//        DistrictController districtController = new DistrictController(sc);
+
 
 
         MemberController memberController = new MemberController();
         ArticleController articleController = new ArticleController();
         ExportController exportController = new ExportController();
+        DistrictController districtController = new DistrictController();
 
         while ( true ) {
             System.out.printf("명령어) ");
@@ -68,9 +69,9 @@ public class App {
             else if ( controllerName.equals("회원") ) {
                 controller = memberController;
             }
-//            else if ( controllerName.equals("지역") ) {
-//                controller = districtController;
-//            }
+            else if ( controllerName.equals("지역") ) {
+                controller = districtController;
+            }
             else if ( controllerName.equals("export") ) {
                 controller = exportController;
             }

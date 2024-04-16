@@ -25,7 +25,7 @@ public class ArticleService {
 
     public int write(int memberId, int boardId, String title, String body) {
         Article article = new Article(memberId, boardId, title, body);
-        return articleDao.write(article)
+        return articleDao.write(article);
     }
 
     public List<Article> getArticles() {
