@@ -1,45 +1,37 @@
 package org.example.dao.Gyeonggi;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
 import org.example.dto.Gyeonggi.GyeonggiFood;
 import org.example.dto.Seoul.SeoulFood;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class GyeonggiFoodDao extends Dao {
-    public List<GyeonggiFood> gyeonggiFoods;
 
+    private DBConnection dbConnection;
     public GyeonggiFoodDao() {
-        gyeonggiFoods = new ArrayList<>();
+
+        dbConnection = Container.getDBConnection();
     }
+    public GyeonggiFood getGyeonggiFoodByFoodType(String town) {
 
-    public void add(GyeonggiFood gyeonggiFood) {
-        gyeonggiFoods.add(gyeonggiFood);
-        lastId++;
-    }
+        StringBuilder sb = new StringBuilder();
 
-    public int getGyeonggiIndexByFood(String foodtype) {
-        int i = 0;
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM gyeonggiFood "));
+        sb.append(String.format("WHERE foodtype = '%s'", town));
 
-        for ( GyeonggiFood gyeonggiFood : gyeonggiFoods ) {
-            if ( gyeonggiFood.foodtype.equals(foodtype) ) {
-                return i;
-            }
-            i++;
-        }
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-        return -1;
-    }
-    public GyeonggiFood getGyeonggiFoodByFoodType(String foodtype) {
-
-
-        int index = getGyeonggiIndexByFood(foodtype);
-
-        if ( index == -1 ) {
+        if (row.isEmpty()) {
             return null;
         }
 
-        return gyeonggiFoods.get(index);
+        return new GyeonggiFood(row);
     }
+
 }

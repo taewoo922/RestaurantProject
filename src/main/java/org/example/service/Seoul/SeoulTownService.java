@@ -5,6 +5,8 @@ import org.example.dao.Seoul.SeoulTownDao;
 import org.example.dto.Article;
 import org.example.dto.Seoul.SeoulTown;
 
+import java.util.List;
+
 
 public class SeoulTownService {
     private SeoulTownDao seoulTownDao;
@@ -17,8 +19,12 @@ public class SeoulTownService {
         return seoulTownDao.add(seoulTown);
     }
 
-    public SeoulTown getSeoulTownByResname (String foodtype, String town) {
+//    public SeoulTown getSeoulTownByResname (String foodtype, String town) {
+//
+//        return seoulTownDao.getSeoulTownByResname(foodtype,town);
+//    }
 
-        return seoulTownDao.getSeoulTownByResname(foodtype,town);
+    public List<SeoulTown> getSeoulTownByResname(String foodtype, String town) {
+        return seoulTownDao.getSeoulTownByResname(foodtype, town);
     }
 }

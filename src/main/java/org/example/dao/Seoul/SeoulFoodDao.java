@@ -11,31 +11,13 @@ import java.util.List;
 import java.util.Map;
 
 public class SeoulFoodDao extends Dao {
-//    public List<SeoulFood> seoulFoods;
+
     private DBConnection dbConnection;
 
     public SeoulFoodDao() {
-//        seoulFoods = new ArrayList<>();
         dbConnection = Container.getDBConnection();
     }
 
-//    public void add(SeoulFood seoulFood) {
-//        seoulFoods.add(seoulFood);
-//        lastId++;
-//    }
-
-//    public int getSeoulIndexByFood(String foodtype) {
-//        int i = 0;
-//
-//        for ( SeoulFood seoulFood : seoulFoods ) {
-//            if ( seoulFood.foodtype.equals(foodtype) ) {
-//                return i;
-//            }
-//            i++;
-//        }
-//
-//        return -1;
-//    }
     public SeoulFood getSeoulFoodByFoodType(String town) {
 
         StringBuilder sb = new StringBuilder();

@@ -1,45 +1,34 @@
 package org.example.dao.Gyeonggi;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
 import org.example.dto.Gyeonggi.Gyeonggi;
 import org.example.dto.Seoul.Seoul;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class GyeonggiDao extends Dao {
-    public List<Gyeonggi> gyeonggis;
+    private DBConnection dbConnection;
 
     public GyeonggiDao() {
-        gyeonggis = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
+    public Gyeonggi getGyeonggiByFood(String food) {
+        StringBuilder sb = new StringBuilder();
 
-    public void add(Gyeonggi gyeonggi) {
-        gyeonggis.add(gyeonggi);
-        lastId++;
-    }
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM district "));
+        sb.append(String.format("WHERE food = '%s'", food));
 
-    public int getGyeonggiIndexByFood(String food) {
-        int i = 0;
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-        for ( Gyeonggi gyeonggi : gyeonggis ) {
-            if ( gyeonggi.food.equals(food) ) {
-                return i;
-            }
-            i++;
-        }
-
-        return -1;
-    }
-    public Gyeonggi getGyeonggiByFood(String menu) {
-
-
-        int index = getGyeonggiIndexByFood(menu);
-
-        if ( index == -1 ) {
+        if ( row.isEmpty() ) {
             return null;
         }
 
-        return gyeonggis.get(index);
+        return new Gyeonggi(row);
     }
 }

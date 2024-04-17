@@ -11,18 +11,11 @@ import java.util.List;
 import java.util.Map;
 
 public class SeoulDao extends Dao {
-//    public List<Seoul> seouls;
     private DBConnection dbConnection;
     public SeoulDao() {
-//        seouls = new ArrayList<>();
         dbConnection = Container.getDBConnection();
     }
 
-//    public void add(Seoul seoul) {
-//        seouls.add(seoul);
-//        lastId++;
-//
-//    }
     public Seoul getForSeoulFood(int id) {
     StringBuilder sb = new StringBuilder();
 
@@ -56,28 +49,4 @@ public class SeoulDao extends Dao {
 
         return new Seoul(row);
     }
-
-//    public int getSeoulIndexByFood(String food) {
-//        int i = 0;
-//
-//        for ( Seoul seoul : seouls ) {
-//            if ( seoul.food.equals(food) ) {
-//                return i;
-//            }
-//            i++;
-//        }
-//
-//        return -1;
-//    }
-//    public Seoul getSeoulByFood(String menu) {
-//
-//
-//        int index = getSeoulIndexByFood(menu);
-//
-//        if ( index == -1 ) {
-//            return null;
-//        }
-//
-//        return seouls.get(index);
-//    }
 }

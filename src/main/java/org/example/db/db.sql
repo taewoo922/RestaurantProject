@@ -135,8 +135,6 @@ updateDate = NOW(),
 `code` = 'town',
 `name` = '지역맛집';
 
-SELECT * FROM board;
-
 SELECT *
 FROM `member`
 WHERE loginId = '1234';
@@ -156,7 +154,6 @@ CREATE TABLE district (
 	INDEX boardId(`boardId`)
 	);
 
-SELECT * FROM `member`;
 
 INSERT INTO district
 SET regDate = NOW(),
@@ -181,6 +178,14 @@ SET regDate = NOW(),
 food = '양식',
 foodtype = '파스타, 리조또, 스테이크, 수제버거, 스튜, 라자냐, 케밥',
 boardId = 3;
+
+
+SELECT * FROM gyeonggiTown;
+
+SELECT *
+FROM seoulTown
+WHERE foodtype = '분식'
+AND town = '성동';
 
 CREATE TABLE seoulFood (
 	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -233,6 +238,7 @@ foodtype = '찜,탕',
 town = '종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서',
 boardId = 4;
 
+
 CREATE TABLE seoulTown (
 	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	regDate DATETIME NOT NULL,
@@ -262,7 +268,27 @@ CREATE TABLE gyeonggiFood (
 	boardId INT(10) UNSIGNED NOT NULL,
 	INDEX boardId(`boardId`)
 	);
+CREATE TABLE gyeonggiTown (
+	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	regDate DATETIME NOT NULL,
+	foodtype CHAR(100) NOT NULL,
+	town TEXT NOT NULL,
+	resname TEXT NOT NULL,
+	address TEXT NOT NULL,
+	num TEXT NOT NULL,
+	boardId INT(10) UNSIGNED NOT NULL,
+	INDEX boardId(`boardId`)
+	);
 
+
+INSERT INTO gyeonggiTown
+SET regDate = NOW(),
+foodtype = '국물요리',
+town = '고양',
+resname = '정돈 도마수육 순대국',
+address = '경기 고양시 일산서구 호수로856번길 73-14 1층',
+num = '031-925-7772',
+boardId = 5;
 
 INSERT INTO gyeonggiFood
 SET regDate = NOW(),
@@ -311,6 +337,18 @@ CREATE TABLE incheonFood (
 	regDate DATETIME NOT NULL,
 	foodtype CHAR(100) NOT NULL,
 	town TEXT NOT NULL,
+	boardId INT(10) UNSIGNED NOT NULL,
+	INDEX boardId(`boardId`)
+	);
+
+CREATE TABLE incheonTown (
+	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	regDate DATETIME NOT NULL,
+	foodtype CHAR(100) NOT NULL,
+	town TEXT NOT NULL,
+	resname TEXT NOT NULL,
+	address TEXT NOT NULL,
+	num TEXT NOT NULL,
 	boardId INT(10) UNSIGNED NOT NULL,
 	INDEX boardId(`boardId`)
 	);
@@ -366,6 +404,18 @@ CREATE TABLE daejeonFood (
 	INDEX boardId(`boardId`)
 	);
 
+CREATE TABLE daejeonTown (
+	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	regDate DATETIME NOT NULL,
+	foodtype CHAR(100) NOT NULL,
+	town TEXT NOT NULL,
+	resname TEXT NOT NULL,
+	address TEXT NOT NULL,
+	num TEXT NOT NULL,
+	boardId INT(10) UNSIGNED NOT NULL,
+	INDEX boardId(`boardId`)
+	);
+
 INSERT INTO daejeonFood
 SET regDate = NOW(),
 foodtype = '국물요리',
@@ -413,6 +463,17 @@ CREATE TABLE daeguFood (
 	regDate DATETIME NOT NULL,
 	foodtype CHAR(100) NOT NULL,
 	town TEXT NOT NULL,
+	boardId INT(10) UNSIGNED NOT NULL,
+	INDEX boardId(`boardId`)
+	);
+CREATE TABLE daeguTown (
+	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	regDate DATETIME NOT NULL,
+	foodtype CHAR(100) NOT NULL,
+	town TEXT NOT NULL,
+	resname TEXT NOT NULL,
+	address TEXT NOT NULL,
+	num TEXT NOT NULL,
 	boardId INT(10) UNSIGNED NOT NULL,
 	INDEX boardId(`boardId`)
 	);
@@ -464,6 +525,18 @@ CREATE TABLE gwangjuFood (
 	regDate DATETIME NOT NULL,
 	foodtype CHAR(100) NOT NULL,
 	town TEXT NOT NULL,
+	boardId INT(10) UNSIGNED NOT NULL,
+	INDEX boardId(`boardId`)
+	);
+
+CREATE TABLE gwangjuTown (
+	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	regDate DATETIME NOT NULL,
+	foodtype CHAR(100) NOT NULL,
+	town TEXT NOT NULL,
+	resname TEXT NOT NULL,
+	address TEXT NOT NULL,
+	num TEXT NOT NULL,
 	boardId INT(10) UNSIGNED NOT NULL,
 	INDEX boardId(`boardId`)
 	);
@@ -522,6 +595,18 @@ CREATE TABLE ulsanFood (
 	INDEX boardId(`boardId`)
 	);
 
+CREATE TABLE ulsanTown (
+	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	regDate DATETIME NOT NULL,
+	foodtype CHAR(100) NOT NULL,
+	town TEXT NOT NULL,
+	resname TEXT NOT NULL,
+	address TEXT NOT NULL,
+	num TEXT NOT NULL,
+	boardId INT(10) UNSIGNED NOT NULL,
+	INDEX boardId(`boardId`)
+	);
+
 INSERT INTO ulsanFood
 SET regDate = NOW(),
 foodtype = '국물요리',
@@ -573,6 +658,18 @@ CREATE TABLE busanFood (
 	INDEX boardId(`boardId`)
 	);
 
+CREATE TABLE busanTown (
+	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	regDate DATETIME NOT NULL,
+	foodtype CHAR(100) NOT NULL,
+	town TEXT NOT NULL,
+	resname TEXT NOT NULL,
+	address TEXT NOT NULL,
+	num TEXT NOT NULL,
+	boardId INT(10) UNSIGNED NOT NULL,
+	INDEX boardId(`boardId`)
+	);
+
 INSERT INTO busanFood
 SET regDate = NOW(),
 foodtype = '국물요리',
@@ -620,6 +717,18 @@ CREATE TABLE jejuFood (
 	regDate DATETIME NOT NULL,
 	foodtype CHAR(100) NOT NULL,
 	town TEXT NOT NULL,
+	boardId INT(10) UNSIGNED NOT NULL,
+	INDEX boardId(`boardId`)
+	);
+
+CREATE TABLE jejuTown (
+	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	regDate DATETIME NOT NULL,
+	foodtype CHAR(100) NOT NULL,
+	town TEXT NOT NULL,
+	resname TEXT NOT NULL,
+	address TEXT NOT NULL,
+	num TEXT NOT NULL,
 	boardId INT(10) UNSIGNED NOT NULL,
 	INDEX boardId(`boardId`)
 	);

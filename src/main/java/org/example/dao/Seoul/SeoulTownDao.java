@@ -3,6 +3,7 @@ package org.example.dao.Seoul;
 import org.example.container.Container;
 import org.example.dao.Dao;
 import org.example.db.DBConnection;
+import org.example.dto.Article;
 import org.example.dto.Seoul.SeoulTown;
 
 import java.util.ArrayList;
@@ -31,8 +32,24 @@ public class SeoulTownDao extends Dao {
         return dbConnection.insert(sb.toString());
     }
 
-    public SeoulTown getSeoulTownByResname(String foodtype, String town) {
-
+//    public SeoulTown getSeoulTownByResname(String foodtype, String town) {
+//
+//        StringBuilder sb = new StringBuilder();
+//
+//        sb.append(String.format("SELECT * "));
+//        sb.append(String.format("FROM seoulTown "));
+//        sb.append(String.format("WHERE foodtype = '%s' ", foodtype));
+//        sb.append(String.format("AND town = '%s'", town));
+//
+//        Map<String, Object> row = dbConnection.selectRow(sb.toString());
+//
+//        if (row.isEmpty()) {
+//            return null;
+//        }
+//        return new SeoulTown(row);
+//
+//    }
+    public List<SeoulTown> getSeoulTownByResname(String foodtype, String town) {
         StringBuilder sb = new StringBuilder();
 
         sb.append(String.format("SELECT * "));
@@ -40,12 +57,14 @@ public class SeoulTownDao extends Dao {
         sb.append(String.format("WHERE foodtype = '%s' ", foodtype));
         sb.append(String.format("AND town = '%s'", town));
 
-        Map<String, Object> row = dbConnection.selectRow(sb.toString());
+        List<SeoulTown> seoulTowns = new ArrayList<>();
+        List<Map<String, Object>> rows = dbConnection.selectRows(sb.toString());
 
-        if (row.isEmpty()) {
-            return null;
-        }
-        return new SeoulTown(row);
+        for ( Map<String, Object> row : rows ) {
+            seoulTowns.add(new SeoulTown((row)));
+    }
 
+
+        return seoulTowns;
     }
 }

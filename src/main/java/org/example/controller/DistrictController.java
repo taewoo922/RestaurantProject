@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.container.Container;
+import org.example.dto.Article;
 import org.example.dto.Busan.Busan;
 import org.example.dto.Busan.BusanFood;
 import org.example.dto.Busan.BusanTown;
@@ -61,6 +62,7 @@ import org.example.service.Ulsan.UlsanTownService;
 import org.example.util.Util;
 
 
+import java.util.List;
 import java.util.Scanner;
 
 public class DistrictController extends Controller{
@@ -178,25 +180,6 @@ public class DistrictController extends Controller{
     public void makeTestData() {
         System.out.println("테스트를 위한 회원 데이터를 생성합니다.");
 
-//        Container.seoulDao.add(new Seoul(Container.seoulDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-//        Container.seoulDao.add(new Seoul(Container.seoulDao.getNewId(), Util.getNowDateStr(), "일식", "밥류(초밥,돈부리,장어덮밥,오므라이스,카레라이스,텐동),면류(우동,라멘,소바)"));
-//        Container.seoulDao.add(new Seoul(Container.seoulDao.getNewId(), Util.getNowDateStr(), "중식", "면류(짜장면,짬뽕,도삭면,기스면,우육면)\n"+ "탕류(마라탕,누룽지탕,불도장,훠궈),\n" +
-//                "만두류(딤섬,소롱포,춘권,만터우)\n" +"요리류(탕수육,깐풍기,고추잡채,양장피,유산슬 등)"));
-//        Container.seoulDao.add(new Seoul(Container.seoulDao.getNewId(), Util.getNowDateStr(), "양식", "파스타, 리조또, 스테이크, 수제버거, 스튜, 라자냐, 케밥"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"국물요리" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"구이류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"볶음류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"분식" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"건강식" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"죽&비빔밥" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"찜" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"탕" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"면류", "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"탕류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"만두" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"요리류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-//        Container.seoulTownDao.add(new SeoulTown(Container.seoulTownDao.getNewId(),"국물요리","종로","합천돼지국밥","서울특별시 종로구 낙원동 290-1","02-742-4142",5));
-//
 //        Container.gyeonggiDao.add(new Gyeonggi(Container.gyeonggiDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
 //        Container.gyeonggiFoodDao.add(new GyeonggiFood(Container.gyeonggiFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "고양,부천,성남,의정부,하남,수원,용인,화성,남양주,이천"));
 //        Container.gyeonggiTownDao.add(new GyeonggiTown(Container.gyeonggiTownDao.getNewId(), "국물요리" , "고양","정돈 도마수육 순대국","경기 고양시 일산서구 호수로856번길 73-14 1층","031-925-7772"));
@@ -254,7 +237,7 @@ public class DistrictController extends Controller{
         String foodtype = sc.nextLine();
 
         SeoulFood seoulfood = seoulFoodService.getSeoulFoodByFoodType(foodtype);
-        if ( foodtype == null ) {
+        if ( seoulfood == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
@@ -263,51 +246,56 @@ public class DistrictController extends Controller{
         System.out.printf("서울지역에 %s 중 원하시는 위치를 입력해주세요.\n", seoulfood.town);
         String town = sc.nextLine();
 
-        SeoulTown seoultown = seoulTownService.getSeoulTownByResname(foodtype, town);
-
+        List<SeoulTown> printseoultown = seoulTownService.getSeoulTownByResname(foodtype, town);
 
         System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    |   현재게시판  ");
-        System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n",  seoultown.id, seoultown.foodtype, seoultown.town, seoultown.resname, seoultown.address, seoultown.num, seoultown.boardId);
+        for ( int i = printseoultown.size() - 1; i >= 0 ; i-- ) {
+            SeoulTown seoultown = printseoultown.get(i);
 
-//        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
-//        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", seoultown.id, seoultown.regDate, seoultown.foodtype, seoultown.town, seoultown.resname, seoultown.address, seoultown.num);
-
+            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", seoultown.id, seoultown.foodtype, seoultown.town, seoultown.resname, seoultown.address, seoultown.num, seoultown.boardId);
+        }
     }
 
     private void showGyeonggi() {
-        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
+        System.out.println("== 메뉴목록 ==\n" + "==   한식   ==\n" + "==   양식   ==\n" + "==   중식   ==\n" + "==   일식   ==\n" + "==  동남아  ==\n");
         System.out.printf("메뉴를 선택해 주세요\n");
         String food = sc.nextLine();
 
         Gyeonggi gyeonggi = gyeonggiService.getGyeonggiByFood(food);
-        if ( food == null ) {
+        if (food == null) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
-            return ;
+            return;
         }
 
-        gyeonggiFood = gyeonggi;
-
-        System.out.printf("경기지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, gyeonggiFood.foodtype);
+        System.out.printf("경기지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, gyeonggi.foodtype);
         System.out.printf("원하시는 종류를 입력해주세요.\n");
         String foodtype = sc.nextLine();
 
         GyeonggiFood gyeonggifood = gyeonggiFoodService.getGyeonggiFoodByFoodType(foodtype);
-        if ( foodtype == null ) {
+        if (gyeonggifood == null) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
-            return ;
+            return;
         }
 
-        gyeonggiFoodType = gyeonggifood;
-        System.out.printf("경기지역에 %s 중 원하시는 위치를 입력해주세요.\n", gyeonggiFoodType.town);
-        String resname = sc.nextLine();
+        System.out.printf("경기지역에 %s 중 원하시는 위치를 입력해주세요.\n", gyeonggifood.town);
+        String town = sc.nextLine();
 
-        GyeonggiTown gyeonggitown = gyeonggiTownService.getGyeonggiTownByResname(resname);
+        List<GyeonggiTown> printgyeonggitown = gyeonggiTownService.getGyeonggiTownByResname(foodtype, town);
+        if (printgyeonggitown == null) {
+            System.out.println("해당지역은 지원하지 않습니다.");
+            return;
+        }
 
-        gyeonggiTown = gyeonggitown;
+
         System.out.println("번호 |  날짜  |  메뉴  |  지역  |   식당이름   |          주소          |    전화번호   |");
-        System.out.printf("%4d | %6s | %6s | %4s | %6s | %10s | %6s\n", gyeonggitown.id, gyeonggitown.regDate, gyeonggitown.food, gyeonggitown.town, gyeonggitown.resname, gyeonggitown.address, gyeonggitown.num);
-    }
 
+        for (int i = printgyeonggitown.size() - 1; i >= 0; i--) {
+            GyeonggiTown gyeonggitown = printgyeonggitown.get(i);
+
+            System.out.printf("%4d | %6s | %6s | %4s | %6s | %10s | %6s\n", gyeonggitown.id, gyeonggitown.regDate, gyeonggitown.food, gyeonggitown.town, gyeonggitown.resname, gyeonggitown.address, gyeonggitown.num);
+
+        }
+    }
     private void showIncheon() {
         System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
         System.out.printf("메뉴를 선택해 주세요\n");
