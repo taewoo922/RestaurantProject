@@ -2,6 +2,8 @@ package org.example.dto.Seoul;
 
 import org.example.dto.Dto;
 
+import java.util.Map;
+
 public class SeoulTown extends Dto {
     public int id;
     public String town;
@@ -19,5 +21,17 @@ public class SeoulTown extends Dto {
         this.address = address;
         this.num = num;
         this.boardId = boardId;
+    }
+
+    public SeoulTown (Map<String, Object> row) {
+        super(row);
+        this.id = (int) row.get("id");
+        this.town = (String) row.get("town");
+        this.foodtype = (String) row.get("foodtype");
+        this.resname = (String) row.get("resname");
+        this.address = (String) row.get("address");
+        this.num = (String) row.get("num");
+        this.boardId= (int) row.get("boardId");
+//        this.memberId = (int) row.get("memberId");
     }
 }

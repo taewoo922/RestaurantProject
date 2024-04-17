@@ -17,8 +17,8 @@ public class SeoulTownService {
         return seoulTownDao.add(seoulTown);
     }
 
-    public SeoulTown getSeoulTownByResname (String resname) {
+    public SeoulTown getSeoulTownByResname (String foodtype, String town) {
 
-        return seoulTownDao.getSeoulTownByResname(resname);
+        return seoulTownDao.getSeoulTownByResname(foodtype,town);
     }
 }

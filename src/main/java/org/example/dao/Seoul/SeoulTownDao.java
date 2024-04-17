@@ -7,55 +7,45 @@ import org.example.dto.Seoul.SeoulTown;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class SeoulTownDao extends Dao {
-    public List<SeoulTown> seoulTowns;
-//    private DBConnection dbConnection;
+    private DBConnection dbConnection;
 
     public SeoulTownDao() {
-        seoulTowns = new ArrayList<>();
-//        dbConnection = Container.getDBConnection();
+        dbConnection = Container.getDBConnection();
     }
 
     public int add(SeoulTown seoulTown) {
-//        StringBuilder sb = new StringBuilder();
-//
-//        sb.append(String.format("INSERT INTO seoulTown "));
-//        sb.append(String.format("SET regDate = NOW(), "));
-//        sb.append(String.format("foodtype = '%s', ", seoulTown.foodtype));
-//        sb.append(String.format("town = '%s', ", seoulTown.town));
-//        sb.append(String.format("resname = '%s', ", seoulTown.resname));
-//        sb.append(String.format("address = '%s', ", seoulTown.address));
-//        sb.append(String.format("num = '%s', ", seoulTown.num));
-//        sb.append(String.format("boardId = %d", seoulTown.boardId));
-//
-//        return dbConnection.insert(sb.toString());
-        seoulTowns.add(seoulTown);
-        lastId++;
-        return 0;
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(String.format("INSERT INTO seoulTown "));
+        sb.append(String.format("SET regDate = NOW(), "));
+        sb.append(String.format("foodtype = '%s', ", seoulTown.foodtype));
+        sb.append(String.format("town = '%s', ", seoulTown.town));
+        sb.append(String.format("resname = '%s', ", seoulTown.resname));
+        sb.append(String.format("address = '%s', ", seoulTown.address));
+        sb.append(String.format("num = '%s', ", seoulTown.num));
+        sb.append(String.format("boardId = %d", seoulTown.boardId));
+
+        return dbConnection.insert(sb.toString());
     }
 
-    public int getSeoulTownIndexByResname(String resname) {
-        int i = 0;
+    public SeoulTown getSeoulTownByResname(String foodtype, String town) {
 
-        for ( SeoulTown seoulTown : seoulTowns ) {
-            if ( seoulTown.town.equals(resname) ) {
-                return i;
-            }
-            i++;
-        }
+        StringBuilder sb = new StringBuilder();
 
-        return -1;
-    }
-    public SeoulTown getSeoulTownByResname(String resname) {
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM seoulTown "));
+        sb.append(String.format("WHERE foodtype = '%s' ", foodtype));
+        sb.append(String.format("AND town = '%s'", town));
 
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-        int index = getSeoulTownIndexByResname(resname);
-
-        if ( index == -1 ) {
+        if (row.isEmpty()) {
             return null;
         }
+        return new SeoulTown(row);
 
-        return seoulTowns.get(index);
     }
 }

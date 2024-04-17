@@ -102,7 +102,6 @@ public class DistrictController extends Controller{
     public DistrictController () {
         sc = Container.getScanner();
         session = Container.getSession();
-        makeTestData();
 
         memberService = Container.memberService;
         districtService = Container.districtService;
@@ -196,7 +195,7 @@ public class DistrictController extends Controller{
 //        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"탕류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
 //        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"만두" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
 //        Container.seoulFoodDao.add(new SeoulFood(Container.seoulFoodDao.getNewId(), Util.getNowDateStr(),"요리류" , "종로,용산,마포,서대문,성동,영등포,관악,서초,강남,동작,송파,강동,강서"));
-        Container.seoulTownDao.add(new SeoulTown(Container.seoulTownDao.getNewId(),"국물요리","종로","합천돼지국밥","서울특별시 종로구 낙원동 290-1","02-742-4142",5));
+//        Container.seoulTownDao.add(new SeoulTown(Container.seoulTownDao.getNewId(),"국물요리","종로","합천돼지국밥","서울특별시 종로구 낙원동 290-1","02-742-4142",5));
 //
 //        Container.gyeonggiDao.add(new Gyeonggi(Container.gyeonggiDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
 //        Container.gyeonggiFoodDao.add(new GyeonggiFood(Container.gyeonggiFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "고양,부천,성남,의정부,하남,수원,용인,화성,남양주,이천"));
@@ -260,15 +259,15 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        seoulFoodType = seoulfood;
-        System.out.printf("서울지역에 %s 중 원하시는 위치를 입력해주세요.\n", seoulFoodType.town);
-        String resname = sc.nextLine();
 
-        SeoulTown seoultown = seoulTownService.getSeoulTownByResname(resname);
+        System.out.printf("서울지역에 %s 중 원하시는 위치를 입력해주세요.\n", seoulfood.town);
+        String town = sc.nextLine();
 
-        seoulTown = seoultown;
-        System.out.println("번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    |   현재게시판  ");
-        System.out.printf(" %4d | %3s  | %6s | %10s | %6s | %4s\n",  seoultown.id, seoultown.foodtype, seoultown.town, seoultown.resname, seoultown.address, seoultown.num, seoultown.boardId);
+        SeoulTown seoultown = seoulTownService.getSeoulTownByResname(foodtype, town);
+
+
+        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    |   현재게시판  ");
+        System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n",  seoultown.id, seoultown.foodtype, seoultown.town, seoultown.resname, seoultown.address, seoultown.num, seoultown.boardId);
 
 //        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
 //        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", seoultown.id, seoultown.regDate, seoultown.foodtype, seoultown.town, seoultown.resname, seoultown.address, seoultown.num);
