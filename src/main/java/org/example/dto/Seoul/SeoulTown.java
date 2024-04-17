@@ -3,6 +3,7 @@ package org.example.dto.Seoul;
 import org.example.dto.Dto;
 
 public class SeoulTown extends Dto {
+    public int id;
     public String town;
     public String foodtype;
     public String resname;
@@ -10,8 +11,8 @@ public class SeoulTown extends Dto {
     public String address;
     public int boardId;
 
-    public SeoulTown( String foodtype, String town, String resname, String address, String num, int boardId) {
-//        this.id = id;
+    public SeoulTown( int id, String foodtype, String town, String resname, String address, String num, int boardId) {
+        this.id = id;
         this.foodtype = foodtype;
         this.town = town;
         this.resname = resname;

@@ -12,8 +12,8 @@ public class SeoulTownService {
         seoulTownDao = Container.seoulTownDao;
     }
 
-    public int add(  String foodtype, String town, String resname, String address, String num, int boardId) {
-        SeoulTown seoulTown = new SeoulTown(foodtype,town, resname, address, num ,boardId);
+    public int add(int id, String foodtype, String town, String resname, String address, String num, int boardId) {
+        SeoulTown seoulTown = new SeoulTown(id,foodtype, town, resname, address, num ,boardId);
         return seoulTownDao.add(seoulTown);
     }
 

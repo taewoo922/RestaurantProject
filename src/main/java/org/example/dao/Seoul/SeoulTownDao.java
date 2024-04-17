@@ -10,28 +10,29 @@ import java.util.List;
 
 public class SeoulTownDao extends Dao {
     public List<SeoulTown> seoulTowns;
-    private DBConnection dbConnection;
+//    private DBConnection dbConnection;
 
     public SeoulTownDao() {
         seoulTowns = new ArrayList<>();
-        dbConnection = Container.getDBConnection();
+//        dbConnection = Container.getDBConnection();
     }
 
     public int add(SeoulTown seoulTown) {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(String.format("INSERT INTO seoulTown"));
-        sb.append(String.format("SET regDate = NOW(), "));
-        sb.append(String.format("foodtype = '%s', ", seoulTown.foodtype));
-        sb.append(String.format("town = '%s', ", seoulTown.town));
-        sb.append(String.format("resname = '%s', ", seoulTown.resname));
-        sb.append(String.format("address = '%s', ", seoulTown.address));
-        sb.append(String.format("num = '%s', ", seoulTown.num));
-        sb.append(String.format("boardId = %d ", seoulTown.boardId));
-
-        return dbConnection.insert(sb.toString());
-//        seoulTowns.add(seoulTown);
-//        lastId++;
+//        StringBuilder sb = new StringBuilder();
+//
+//        sb.append(String.format("INSERT INTO seoulTown "));
+//        sb.append(String.format("SET regDate = NOW(), "));
+//        sb.append(String.format("foodtype = '%s', ", seoulTown.foodtype));
+//        sb.append(String.format("town = '%s', ", seoulTown.town));
+//        sb.append(String.format("resname = '%s', ", seoulTown.resname));
+//        sb.append(String.format("address = '%s', ", seoulTown.address));
+//        sb.append(String.format("num = '%s', ", seoulTown.num));
+//        sb.append(String.format("boardId = %d", seoulTown.boardId));
+//
+//        return dbConnection.insert(sb.toString());
+        seoulTowns.add(seoulTown);
+        lastId++;
+        return 0;
     }
 
     public int getSeoulTownIndexByResname(String resname) {

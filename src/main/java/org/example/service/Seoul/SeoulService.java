@@ -12,6 +12,11 @@ public class SeoulService {
 
     public Seoul getSeoulByFood (String food) {
 
-        return seoulDao.getSeoulByFood(food);
+        return seoulDao.getSeouls(food);
     }
+
+//    public Seoul getSeoulByFood (String food) {
+//
+//        return seoulDao.getSeoulByFood(food);
+//    }
 }
