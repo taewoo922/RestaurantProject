@@ -1,45 +1,38 @@
 package org.example.dao.Gwangju;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
+import org.example.dto.Daegu.DaeguFood;
 import org.example.dto.Gwangju.GwangjuFood;
 import org.example.dto.Seoul.SeoulFood;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class GwangjuFoodDao extends Dao {
-    public List<GwangjuFood> gwangjuFoods;
+    private DBConnection dbConnection;
 
     public GwangjuFoodDao() {
-        gwangjuFoods = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
-    public void add(GwangjuFood gwangjuFood) {
-        gwangjuFoods.add(gwangjuFood);
-        lastId++;
-    }
+    public GwangjuFood getGwangjuFoodByFoodType(String town) {
 
-    public int getGwangjuIndexByFood(String foodtype) {
-        int i = 0;
+        StringBuilder sb = new StringBuilder();
 
-        for ( GwangjuFood gwangjuFood : gwangjuFoods ) {
-            if ( gwangjuFood.foodtype.equals(foodtype) ) {
-                return i;
-            }
-            i++;
-        }
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM gwangjuFood "));
+        sb.append(String.format("WHERE foodtype = '%s'", town));
 
-        return -1;
-    }
-    public GwangjuFood getGwangjuFoodByFoodType(String foodtype) {
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-
-        int index = getGwangjuIndexByFood(foodtype);
-
-        if ( index == -1 ) {
+        if (row.isEmpty()) {
             return null;
         }
 
-        return gwangjuFoods.get(index);
+        return new GwangjuFood(row);
     }
+
 }

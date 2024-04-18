@@ -1,45 +1,39 @@
 package org.example.dao.Gwangju;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
+import org.example.dto.Daejeon.DaejeonTown;
 import org.example.dto.Gwangju.GwangjuTown;
 import org.example.dto.Seoul.SeoulTown;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class GwangjuTownDao extends Dao {
-    public List<GwangjuTown> gwangjuTowns;
+    private DBConnection dbConnection;
 
     public GwangjuTownDao() {
-        gwangjuTowns = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
-    public void add(GwangjuTown gwangjuTown) {
-        gwangjuTowns.add(gwangjuTown);
-        lastId++;
-    }
+    public List<GwangjuTown> getGwangjuTownByResname(String foodtype, String town) {
+        StringBuilder sb = new StringBuilder();
 
-    public int getGwangTownIndexByResname(String resname) {
-        int i = 0;
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM gwangjuTown "));
+        sb.append(String.format("WHERE foodtype = '%s' ", foodtype));
+        sb.append(String.format("AND town = '%s'", town));
 
-        for ( GwangjuTown gwangjuTown : gwangjuTowns ) {
-            if ( gwangjuTown.town.equals(resname) ) {
-                return i;
-            }
-            i++;
+        List<GwangjuTown> gwangjuTowns = new ArrayList<>();
+        List<Map<String, Object>> rows = dbConnection.selectRows(sb.toString());
+
+        for ( Map<String, Object> row : rows ) {
+            gwangjuTowns.add(new GwangjuTown((row)));
         }
 
-        return -1;
+        return gwangjuTowns;
     }
-    public GwangjuTown getGwangjuTownByResname(String resname) {
 
-
-        int index = getGwangTownIndexByResname(resname);
-
-        if ( index == -1 ) {
-            return null;
-        }
-
-        return gwangjuTowns.get(index);
-    }
 }

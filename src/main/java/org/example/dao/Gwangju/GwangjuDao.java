@@ -1,45 +1,37 @@
 package org.example.dao.Gwangju;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
+import org.example.dto.Daegu.Daegu;
 import org.example.dto.Gwangju.Gwangju;
 import org.example.dto.Seoul.Seoul;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class GwangjuDao extends Dao {
-    public List<Gwangju> gwangjus;
+    private DBConnection dbConnection;
 
     public GwangjuDao() {
-        gwangjus = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
-    public void add(Gwangju gwangju) {
-        gwangjus.add(gwangju);
-        lastId++;
-    }
+    public Gwangju getGwangjuByFood(String food) {
+        StringBuilder sb = new StringBuilder();
 
-    public int getGwangjuIndexByFood(String food) {
-        int i = 0;
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM district "));
+        sb.append(String.format("WHERE food = '%s'", food));
 
-        for ( Gwangju gwangju : gwangjus ) {
-            if ( gwangju.food.equals(food) ) {
-                return i;
-            }
-            i++;
-        }
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-        return -1;
-    }
-    public Gwangju getGwangjuByFood(String menu) {
-
-
-        int index = getGwangjuIndexByFood(menu);
-
-        if ( index == -1 ) {
+        if ( row.isEmpty() ) {
             return null;
         }
 
-        return gwangjus.get(index);
+        return new Gwangju(row);
     }
+
 }

@@ -393,9 +393,7 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        gwangjuFood = gwangju;
-
-        System.out.printf("광주지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, gwangjuFood.foodtype);
+        System.out.printf("광주지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, gwangju.foodtype);
         System.out.printf("원하시는 종류를 입력해주세요.\n");
         String foodtype = sc.nextLine();
 
@@ -405,15 +403,24 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        gwangjuFoodType = gwangjuFood;
-        System.out.printf("광주지역에 %s 중 원하시는 위치를 입력해주세요.\n", gwangjuFoodType.town);
-        String resname = sc.nextLine();
+        System.out.printf("광주지역에 %s 중 원하시는 위치를 입력해주세요.\n", gwangjuFood.town);
+        String town = sc.nextLine();
 
-        GwangjuTown gwangjutown = gwangjuTownService.getGwangjuTownByResname(resname);
+        List<GwangjuTown> printgwangjutown = gwangjuTownService.getGwangjuTownByResname(foodtype, town);
+        if (printgwangjutown == null) {
+            System.out.println("해당지역은 지원하지 않습니다.");
+            return;
+        }
 
-        gwangjuTown = gwangjutown;
-        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
-        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", gwangjutown.id, gwangjutown.regDate, gwangjutown.food, gwangjutown.town, gwangjutown.resname, gwangjutown.address, gwangjutown.num);
+        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
+
+
+        for (int i = printgwangjutown.size() - 1; i >= 0; i--) {
+            GwangjuTown gwangjutown = printgwangjutown.get(i);
+
+            System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", gwangjutown.id, gwangjutown.regDate, gwangjutown.food, gwangjutown.town, gwangjutown.resname, gwangjutown.address, gwangjutown.num);
+
+        }
     }
 
     private void showUlsan() {

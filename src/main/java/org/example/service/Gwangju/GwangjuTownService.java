@@ -2,7 +2,10 @@ package org.example.service.Gwangju;
 
 import org.example.container.Container;
 import org.example.dao.Gwangju.GwangjuTownDao;
+import org.example.dto.Daejeon.DaejeonTown;
 import org.example.dto.Gwangju.GwangjuTown;
+
+import java.util.List;
 
 
 public class GwangjuTownService {
@@ -11,8 +14,8 @@ public class GwangjuTownService {
         gwangjuTownDao = Container.gwangjuTownDao;
     }
 
-    public GwangjuTown getGwangjuTownByResname (String resname) {
+    public List<GwangjuTown> getGwangjuTownByResname(String foodtype, String town) {
 
-        return gwangjuTownDao.getGwangjuTownByResname(resname);
+        return gwangjuTownDao.getGwangjuTownByResname(foodtype, town);
     }
 }
