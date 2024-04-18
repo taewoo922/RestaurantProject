@@ -1,44 +1,35 @@
 package org.example.dao.Busan;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
 import org.example.dto.Busan.Busan;
+import org.example.dto.Daegu.Daegu;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class BusanDao extends Dao {
-    public List<Busan> busans;
+    private DBConnection dbConnection;
 
     public BusanDao() {
-        busans = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
-    public void add(Busan busan) {
-        busans.add(busan);
-        lastId++;
-    }
+    public Busan getBusanByFood(String food) {
+        StringBuilder sb = new StringBuilder();
 
-    public int getBusanIndexByFood(String food) {
-        int i = 0;
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM district "));
+        sb.append(String.format("WHERE food = '%s'", food));
 
-        for ( Busan busan : busans ) {
-            if ( busan.food.equals(food) ) {
-                return i;
-            }
-            i++;
-        }
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-        return -1;
-    }
-    public Busan getBusanByFood(String menu) {
-
-
-        int index = getBusanIndexByFood(menu);
-
-        if ( index == -1 ) {
+        if ( row.isEmpty() ) {
             return null;
         }
 
-        return busans.get(index);
+        return new Busan(row);
     }
 }

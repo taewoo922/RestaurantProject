@@ -1,44 +1,35 @@
 package org.example.dao.Busan;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
 import org.example.dto.Busan.BusanFood;
+import org.example.dto.Daegu.DaeguFood;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class BusanFoodDao extends Dao {
-    public List<BusanFood> busanFoods;
+    private DBConnection dbConnection;
 
     public BusanFoodDao() {
-        busanFoods = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
+    public BusanFood getBusanFoodByFoodType(String town) {
 
-    public void add(BusanFood busanFood) {
-        busanFoods.add(busanFood);
-        lastId++;
-    }
+        StringBuilder sb = new StringBuilder();
 
-    public int getBusanIndexByFood(String foodtype) {
-        int i = 0;
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM busanFood "));
+        sb.append(String.format("WHERE foodtype = '%s'", town));
 
-        for ( BusanFood busanFood : busanFoods ) {
-            if ( busanFood.foodtype.equals(foodtype) ) {
-                return i;
-            }
-            i++;
-        }
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-        return -1;
-    }
-    public BusanFood getBusanFoodByFoodType(String foodtype) {
-
-
-        int index = getBusanIndexByFood(foodtype);
-
-        if ( index == -1 ) {
+        if (row.isEmpty()) {
             return null;
         }
 
-        return busanFoods.get(index);
+        return new BusanFood(row);
     }
 }

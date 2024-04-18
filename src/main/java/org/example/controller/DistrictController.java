@@ -475,9 +475,7 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        busanFood = busan;
-
-        System.out.printf("부산지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, busanFood.foodtype);
+        System.out.printf("부산지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, busan.foodtype);
         System.out.printf("원하시는 종류를 입력해주세요.\n");
         String foodtype = sc.nextLine();
 
@@ -487,15 +485,25 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        busanFoodType = busanFood;
-        System.out.printf("부산지역에 %s 중 원하시는 위치를 입력해주세요.\n", busanFoodType.town);
-        String resname = sc.nextLine();
 
-        BusanTown busantown = busanTownService.getBusanTownByResname(resname);
+        System.out.printf("부산지역에 %s 중 원하시는 위치를 입력해주세요.\n", busanFood.town);
+        String town = sc.nextLine();
 
-        busanTown = busantown;
-        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
-        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", busantown.id, busantown.regDate, busantown.food, busantown.town, busantown.resname, busantown.address, busantown.num);
+        List<BusanTown> printbusantown = busanTownService.getBusanTownByResname(foodtype, town);
+        if (printbusantown == null) {
+            System.out.println("해당지역은 지원하지 않습니다.");
+            return;
+        }
+
+        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
+
+
+        for (int i = printbusantown.size() - 1; i >= 0; i--) {
+            BusanTown busantown = printbusantown.get(i);
+
+            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", busantown.id, busantown.regDate, busantown.food, busantown.town, busantown.resname, busantown.address, busantown.num);
+
+        }
     }
 
     private void showJeju() {
