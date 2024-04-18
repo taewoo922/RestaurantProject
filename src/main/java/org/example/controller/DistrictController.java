@@ -210,11 +210,11 @@ public class DistrictController extends Controller{
 
         List<SeoulTown> printseoultown = seoulTownService.getSeoulTownByResname(foodtype, town);
 
-        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    |   현재게시판  ");
+        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
         for ( int i = printseoultown.size() - 1; i >= 0 ; i-- ) {
             SeoulTown seoultown = printseoultown.get(i);
 
-            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", seoultown.id, seoultown.foodtype, seoultown.town, seoultown.resname, seoultown.address, seoultown.num, seoultown.boardId);
+            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", seoultown.id, seoultown.foodtype, seoultown.town, seoultown.resname, seoultown.address, seoultown.num);
         }
     }
 
@@ -249,12 +249,12 @@ public class DistrictController extends Controller{
         }
 
 
-        System.out.println("번호 |  날짜  |  메뉴  |  지역  |   식당이름   |          주소          |    전화번호   |");
+        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
 
         for (int i = printgyeonggitown.size() - 1; i >= 0; i--) {
             GyeonggiTown gyeonggitown = printgyeonggitown.get(i);
 
-            System.out.printf("%4d | %6s | %6s | %4s | %6s | %10s | %6s\n", gyeonggitown.id, gyeonggitown.regDate, gyeonggitown.food, gyeonggitown.town, gyeonggitown.resname, gyeonggitown.address, gyeonggitown.num);
+            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", gyeonggitown.id, gyeonggitown.regDate, gyeonggitown.food, gyeonggitown.town, gyeonggitown.resname, gyeonggitown.address, gyeonggitown.num);
 
         }
     }
@@ -289,13 +289,13 @@ public class DistrictController extends Controller{
             return;
         }
 
-        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
+        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
 
 
         for (int i = printincheontown.size() - 1; i >= 0; i--) {
             IncheonTown incheontown = printincheontown.get(i);
 
-            System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
+            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
 
         }
     }
@@ -311,9 +311,7 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        daejeonFood = daejeon;
-
-        System.out.printf("대전지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, daejeonFood.foodtype);
+        System.out.printf("대전지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, daejeon.foodtype);
         System.out.printf("원하시는 종류를 입력해주세요.\n");
         String foodtype = sc.nextLine();
 
@@ -323,8 +321,7 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        daejeonFoodType = daejeonFood;
-        System.out.printf("대전지역에 %s 중 원하시는 위치를 입력해주세요.\n", daejeonFoodType.town);
+        System.out.printf("대전지역에 %s 중 원하시는 위치를 입력해주세요.\n", daejeonFood.town);
         String town = sc.nextLine();
 
         List<DaejeonTown> printdaejeontown = daejeonTownService.getDaejeonTownByResname(foodtype, town);
@@ -333,13 +330,13 @@ public class DistrictController extends Controller{
             return;
         }
 
-        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
+        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
 
 
         for (int i = printdaejeontown.size() - 1; i >= 0; i--) {
             DaejeonTown daejeontown = printdaejeontown.get(i);
 
-            System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", daejeontown.id, daejeontown.regDate, daejeontown.food, daejeontown.town, daejeontown.resname, daejeontown.address, daejeontown.num);
+            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", daejeontown.id, daejeontown.regDate, daejeontown.food, daejeontown.town, daejeontown.resname, daejeontown.address, daejeontown.num);
 
         }
     }
@@ -355,9 +352,7 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        daeguFood = daegu;
-
-        System.out.printf("대구지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, daeguFood.foodtype);
+        System.out.printf("대구지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, daegu.foodtype);
         System.out.printf("원하시는 종류를 입력해주세요.\n");
         String foodtype = sc.nextLine();
 
@@ -367,15 +362,24 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        daeguFoodType = daeguFood;
-        System.out.printf("대구지역에 %s 중 원하시는 위치를 입력해주세요.\n", daeguFoodType.town);
-        String resname = sc.nextLine();
+        System.out.printf("대구지역에 %s 중 원하시는 위치를 입력해주세요.\n", daeguFood.town);
+        String town = sc.nextLine();
 
-        DaeguTown daegutown = daeguTownService.getDaeguTownByResname(resname);
+        List<DaeguTown> printdaegutown = daeguTownService.getDaeguTownByResname(foodtype, town);
+        if (printdaegutown == null) {
+            System.out.println("해당지역은 지원하지 않습니다.");
+            return;
+        }
 
-        daeguTown = daegutown;
-        System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
-        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", daegutown.id, daegutown.regDate, daegutown.food, daegutown.town, daegutown.resname, daegutown.address, daegutown.num);
+        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
+
+
+        for (int i = printdaegutown.size() - 1; i >= 0; i--) {
+            DaeguTown daegutown = printdaegutown.get(i);
+
+            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", daegutown.id, daegutown.regDate, daegutown.food, daegutown.town, daegutown.resname, daegutown.address, daegutown.num);
+
+        }
     }
 
     private void showGwangju() {

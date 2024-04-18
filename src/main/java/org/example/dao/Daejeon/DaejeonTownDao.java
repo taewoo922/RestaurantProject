@@ -18,7 +18,6 @@ public class DaejeonTownDao extends Dao {
         dbConnection = Container.getDBConnection();
     }
 
-
     public List<DaejeonTown> getDaejeonTownByResname(String foodtype, String town) {
         StringBuilder sb = new StringBuilder();
 

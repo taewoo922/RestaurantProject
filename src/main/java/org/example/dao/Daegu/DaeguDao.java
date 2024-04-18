@@ -1,45 +1,36 @@
 package org.example.dao.Daegu;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
 import org.example.dto.Daegu.Daegu;
 import org.example.dto.Daejeon.Daejeon;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DaeguDao extends Dao {
-    public List<Daegu> daegus;
+    private DBConnection dbConnection;
 
     public DaeguDao() {
-        daegus = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
-    public void add(Daegu daegu) {
-        daegus.add(daegu);
-        lastId++;
-    }
 
-    public int getDaeguIndexByFood(String food) {
-        int i = 0;
+    public Daegu getDaeguByFood(String food) {
+        StringBuilder sb = new StringBuilder();
 
-        for ( Daegu daegu : daegus ) {
-            if ( daegu.food.equals(food) ) {
-                return i;
-            }
-            i++;
-        }
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM district "));
+        sb.append(String.format("WHERE food = '%s'", food));
 
-        return -1;
-    }
-    public Daegu getDaeguByFood(String menu) {
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-
-        int index = getDaeguIndexByFood(menu);
-
-        if ( index == -1 ) {
+        if ( row.isEmpty() ) {
             return null;
         }
 
-        return daegus.get(index);
+        return new Daegu(row);
     }
 }
