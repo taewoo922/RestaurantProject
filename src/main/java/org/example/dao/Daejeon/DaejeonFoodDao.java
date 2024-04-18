@@ -1,45 +1,37 @@
 package org.example.dao.Daejeon;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
 import org.example.dto.Daejeon.DaejeonFood;
 import org.example.dto.Gyeonggi.GyeonggiFood;
+import org.example.dto.Seoul.SeoulFood;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DaejeonFoodDao extends Dao {
-    public List<DaejeonFood> daejeonFoods;
+    private DBConnection dbConnection;
 
     public DaejeonFoodDao() {
-        daejeonFoods = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
-    public void add(DaejeonFood daejeonFood) {
-        daejeonFoods.add(daejeonFood);
-        lastId++;
-    }
+    public DaejeonFood getDaejeonFoodByFoodType(String town) {
 
-    public int getDaejeonIndexByFood(String foodtype) {
-        int i = 0;
+        StringBuilder sb = new StringBuilder();
 
-        for ( DaejeonFood daejeonFood : daejeonFoods ) {
-            if ( daejeonFood.foodtype.equals(foodtype) ) {
-                return i;
-            }
-            i++;
-        }
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM daejeonFood "));
+        sb.append(String.format("WHERE foodtype = '%s'", town));
 
-        return -1;
-    }
-    public DaejeonFood getDaejeonFoodByFoodType(String foodtype) {
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-
-        int index = getDaejeonIndexByFood(foodtype);
-
-        if ( index == -1 ) {
+        if (row.isEmpty()) {
             return null;
         }
 
-        return daejeonFoods.get(index);
+        return new DaejeonFood(row);
     }
 }

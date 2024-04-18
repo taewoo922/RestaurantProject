@@ -176,44 +176,6 @@ public class DistrictController extends Controller{
         }
     }
 
-
-    public void makeTestData() {
-        System.out.println("테스트를 위한 회원 데이터를 생성합니다.");
-
-//        Container.gyeonggiDao.add(new Gyeonggi(Container.gyeonggiDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-//        Container.gyeonggiFoodDao.add(new GyeonggiFood(Container.gyeonggiFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "고양,부천,성남,의정부,하남,수원,용인,화성,남양주,이천"));
-//        Container.gyeonggiTownDao.add(new GyeonggiTown(Container.gyeonggiTownDao.getNewId(), "국물요리" , "고양","정돈 도마수육 순대국","경기 고양시 일산서구 호수로856번길 73-14 1층","031-925-7772"));
-//
-//        Container.incheonDao.add(new Incheon(Container.incheonDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-//        Container.incheonFoodDao.add(new IncheonFood(Container.incheonFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "중구,동구,서구,강화군,미추홀구,연수구,남동구,부평구,계양구"));
-//        Container.incheonTownDao.add(new IncheonTown(Container.incheonTownDao.getNewId(), "국물요리" , "중구","기와집 굴 대구","인천 중구 운중로21번길 21 1층","032-752-7076"));
-//
-//        Container.daejeonDao.add(new Daejeon(Container.daejeonDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-//        Container.daejeonFoodDao.add(new DaejeonFood(Container.daejeonFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "중구,동구,서구,대덕구,유성구"));
-//        Container.daejeonTownDao.add(new DaejeonTown(Container.daejeonTownDao.getNewId(), "국물요리" , "중구","태평소국밥","대전 중구 태평로 116","042-522-5757"));
-//
-//        Container.daeguDao.add(new Daegu(Container.daeguDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-//        Container.daeguFoodDao.add(new DaeguFood(Container.daeguFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "중구,동구,서구,남구,북구,달서구,달성군,수성구"));
-//        Container.daeguTownDao.add(new DaeguTown(Container.daeguTownDao.getNewId(), "국물요리" , "중구","마산식당","대구 중구 경상감영길 101 중앙상가","053-253-6304"));
-//
-//        Container.gwangjuDao.add(new Gwangju(Container.gwangjuDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-//        Container.gwangjuFoodDao.add(new GwangjuFood(Container.gwangjuFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "동구,서구,남구,북구,광산구"));
-//        Container.gwangjuTownDao.add(new GwangjuTown(Container.gwangjuTownDao.getNewId(), "국물요리" , "동구","나주식당","광주 동구 동계천로53번길 2","062-224-6943"));
-//
-//        Container.ulsanDao.add(new Ulsan(Container.ulsanDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-//        Container.ulsanFoodDao.add(new UlsanFood(Container.ulsanFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "동구,중구,남구,북구,울주군"));
-//        Container.ulsanTownDao.add(new UlsanTown(Container.ulsanTownDao.getNewId(), "국물요리" , "동구","속초순대국","울산 동구 명덕4길 10 2층","0507-1435-2361"));
-//
-//        Container.busanDao.add(new Busan(Container.busanDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-//        Container.busanFoodDao.add(new BusanFood(Container.busanFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "남구,동구,서구,중구,해운대구,기장군,북구,사상구,강서구,영도구,진구,수영구,동래구"));
-//        Container.busanTownDao.add(new BusanTown(Container.busanTownDao.getNewId(), "국물요리" , "동구","속초순대국","울산 동구 명덕4길 10 2층","0507-1435-2361"));
-//
-//        Container.jejuDao.add(new Jeju(Container.jejuDao.getNewId(), Util.getNowDateStr(), "한식", "국물요리,구이류,볶음류,분식,건강식(쌈밥,가정식,나물류위주의식당),죽&비빔밥,찜,탕"));
-//        Container.jejuFoodDao.add(new JejuFood(Container.jejuFoodDao.getNewId(), Util.getNowDateStr(), "국물요리", "제주시,서귀포시"));
-//        Container.jejuTownDao.add(new JejuTown(Container.jejuTownDao.getNewId(), "국물요리" , "제주시","김재훈고사리육개장","제주 제주시 구남로2길 19 김재훈고사리육개장","0507-1301-2601"));
-//
-    }
-
     private void showSeoul() {
         System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
         System.out.printf("메뉴를 선택해 주세요\n");
@@ -307,9 +269,8 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        incheonFood = incheon;
 
-        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheonFood.foodtype);
+        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheon.foodtype);
         System.out.printf("원하시는 종류를 입력해주세요.\n");
         String foodtype = sc.nextLine();
 
@@ -319,16 +280,24 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        incheonFoodType = incheonFood;
-        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFoodType.town);
-        String resname = sc.nextLine();
+        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFood.town);
+        String town = sc.nextLine();
 
-        IncheonTown incheontown = incheonTownService.getIncheonTownByResname(resname);
+        List<IncheonTown> printincheontown = incheonTownService.getIncheonTownByResname(foodtype, town);
+        if (printincheontown == null) {
+            System.out.println("해당지역은 지원하지 않습니다.");
+            return;
+        }
 
-        incheonTown = incheontown;
         System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
-        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
 
+
+        for (int i = printincheontown.size() - 1; i >= 0; i--) {
+            IncheonTown incheontown = printincheontown.get(i);
+
+            System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
+
+        }
     }
 
     private void showDaejeon() {
@@ -356,13 +325,23 @@ public class DistrictController extends Controller{
 
         daejeonFoodType = daejeonFood;
         System.out.printf("대전지역에 %s 중 원하시는 위치를 입력해주세요.\n", daejeonFoodType.town);
-        String resname = sc.nextLine();
+        String town = sc.nextLine();
 
-        DaejeonTown daejeontown = daejeonTownService.getDaejeonTownByResname(resname);
+        List<DaejeonTown> printdaejeontown = daejeonTownService.getDaejeonTownByResname(foodtype, town);
+        if (printdaejeontown == null) {
+            System.out.println("해당지역은 지원하지 않습니다.");
+            return;
+        }
 
-        daejeonTown = daejeontown;
         System.out.println("번호 |  날짜  |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호   ");
-        System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", daejeontown.id, daejeontown.regDate, daejeontown.food, daejeontown.town, daejeontown.resname, daejeontown.address, daejeontown.num);
+
+
+        for (int i = printdaejeontown.size() - 1; i >= 0; i--) {
+            DaejeonTown daejeontown = printdaejeontown.get(i);
+
+            System.out.printf("%4d | %6s | %4s | %3s  | %6s | %10s | %6s \n", daejeontown.id, daejeontown.regDate, daejeontown.food, daejeontown.town, daejeontown.resname, daejeontown.address, daejeontown.num);
+
+        }
     }
 
     private void showDaegu() {

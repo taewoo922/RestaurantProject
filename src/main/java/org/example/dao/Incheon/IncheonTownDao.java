@@ -1,45 +1,40 @@
 package org.example.dao.Incheon;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
 import org.example.dto.Gyeonggi.GyeonggiTown;
 import org.example.dto.Incheon.IncheonTown;
+import org.example.dto.Seoul.SeoulTown;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class IncheonTownDao extends Dao {
-    public List<IncheonTown> incheonTowns;
+    private DBConnection dbConnection;
 
     public IncheonTownDao() {
-        incheonTowns = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
-    public void add(IncheonTown incheonTown) {
-        incheonTowns.add(incheonTown);
-        lastId++;
-    }
+    public List<IncheonTown> getIncheonTownByResname(String foodtype, String town) {
+        StringBuilder sb = new StringBuilder();
 
-    public int getIncheonTownIndexByResname(String resname) {
-        int i = 0;
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM seoulTown "));
+        sb.append(String.format("WHERE foodtype = '%s' ", foodtype));
+        sb.append(String.format("AND town = '%s'", town));
 
-        for ( IncheonTown incheonTown : incheonTowns ) {
-            if ( incheonTown.town.equals(resname) ) {
-                return i;
-            }
-            i++;
+        List<IncheonTown> incheonTowns = new ArrayList<>();
+        List<Map<String, Object>> rows = dbConnection.selectRows(sb.toString());
+
+        for ( Map<String, Object> row : rows ) {
+            incheonTowns.add(new IncheonTown((row)));
         }
 
-        return -1;
+
+        return incheonTowns;
     }
-    public IncheonTown getIncheonTownByResname(String resname) {
 
-
-        int index = getIncheonTownIndexByResname(resname);
-
-        if ( index == -1 ) {
-            return null;
-        }
-
-        return incheonTowns.get(index);
-    }
 }

@@ -1,45 +1,38 @@
 package org.example.dao.Incheon;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
 import org.example.dto.Gyeonggi.Gyeonggi;
 import org.example.dto.Incheon.Incheon;
+import org.example.dto.Seoul.Seoul;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class IncheonDao extends Dao {
-    public List<Incheon> incheons;
+    private DBConnection dbConnection;
 
     public IncheonDao() {
-        incheons = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
-    public void add(Incheon incheon) {
-        incheons.add(incheon);
-        lastId++;
-    }
+    public Incheon getIncheonByFood(String food) {
+        StringBuilder sb = new StringBuilder();
 
-    public int getIncheonIndexByFood(String food) {
-        int i = 0;
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM district "));
+        sb.append(String.format("WHERE food = '%s'", food));
 
-        for ( Incheon incheon : incheons ) {
-            if ( incheon.food.equals(food) ) {
-                return i;
-            }
-            i++;
-        }
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-        return -1;
-    }
-    public Incheon getIncheonByFood(String menu) {
-
-
-        int index = getIncheonIndexByFood(menu);
-
-        if ( index == -1 ) {
+        if ( row.isEmpty() ) {
             return null;
         }
 
-        return incheons.get(index);
+        return new Incheon(row);
     }
+
+
 }

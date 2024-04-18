@@ -1,45 +1,41 @@
 package org.example.dao.Incheon;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
 import org.example.dto.Gyeonggi.GyeonggiFood;
 import org.example.dto.Incheon.IncheonFood;
+import org.example.dto.Seoul.SeoulFood;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class IncheonFoodDao extends Dao {
-    public List<IncheonFood> incheonFoods;
+    private DBConnection dbConnection;
 
     public IncheonFoodDao() {
-        incheonFoods = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
-    public void add(IncheonFood incheonFood) {
-        incheonFoods.add(incheonFood);
-        lastId++;
-    }
-
-    public int getIncheonIndexByFood(String foodtype) {
-        int i = 0;
-
-        for ( IncheonFood incheonFood : incheonFoods ) {
-            if ( incheonFood.foodtype.equals(foodtype) ) {
-                return i;
-            }
-            i++;
-        }
-
-        return -1;
-    }
-    public IncheonFood getIncheonFoodByFoodType(String foodtype) {
 
 
-        int index = getIncheonIndexByFood(foodtype);
+    public IncheonFood getIncheonFoodByFoodType(String town) {
 
-        if ( index == -1 ) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM incheonFood "));
+        sb.append(String.format("WHERE foodtype = '%s'", town));
+
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
+
+        if (row.isEmpty()) {
             return null;
         }
 
-        return incheonFoods.get(index);
+        return new IncheonFood(row);
     }
+
+
 }
