@@ -1,45 +1,36 @@
 package org.example.dao.Ulsan;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
+import org.example.dto.Incheon.Incheon;
 import org.example.dto.Seoul.Seoul;
 import org.example.dto.Ulsan.Ulsan;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class UlsanDao extends Dao {
-    public List<Ulsan> ulsans;
+    private DBConnection dbConnection;
 
     public UlsanDao() {
-        ulsans = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
-    public void add(Ulsan ulsan) {
-        ulsans.add(ulsan);
-        lastId++;
-    }
+    public Ulsan getUlsanByFood(String food) {
+        StringBuilder sb = new StringBuilder();
 
-    public int getUlsanIndexByFood(String food) {
-        int i = 0;
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM district "));
+        sb.append(String.format("WHERE food = '%s'", food));
 
-        for ( Ulsan ulsan : ulsans ) {
-            if ( ulsan.food.equals(food) ) {
-                return i;
-            }
-            i++;
-        }
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-        return -1;
-    }
-    public Ulsan getUlsanByFood(String menu) {
-
-
-        int index = getUlsanIndexByFood(menu);
-
-        if ( index == -1 ) {
+        if ( row.isEmpty() ) {
             return null;
         }
 
-        return ulsans.get(index);
+        return new Ulsan(row);
     }
 }

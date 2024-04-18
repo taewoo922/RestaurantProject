@@ -36,5 +36,4 @@ public class IncheonTownDao extends Dao {
 
         return incheonTowns;
     }
-
 }

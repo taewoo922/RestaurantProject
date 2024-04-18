@@ -33,6 +33,4 @@ public class IncheonDao extends Dao {
 
         return new Incheon(row);
     }
-
-
 }

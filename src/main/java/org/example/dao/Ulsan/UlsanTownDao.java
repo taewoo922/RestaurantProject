@@ -1,45 +1,39 @@
 package org.example.dao.Ulsan;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
+import org.example.dto.Incheon.IncheonTown;
 import org.example.dto.Seoul.SeoulTown;
 import org.example.dto.Ulsan.UlsanTown;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class UlsanTownDao extends Dao {
-    public List<UlsanTown> ulsanTowns;
+    private DBConnection dbConnection;
 
     public UlsanTownDao() {
-        ulsanTowns = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
-    public void add(UlsanTown ulsanTown) {
-        ulsanTowns.add(ulsanTown);
-        lastId++;
-    }
+    public List<UlsanTown> getUlsanTownByResname(String foodtype, String town) {
+        StringBuilder sb = new StringBuilder();
 
-    public int getUlsanTownIndexByResname(String resname) {
-        int i = 0;
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM ulsanTown "));
+        sb.append(String.format("WHERE foodtype = '%s' ", foodtype));
+        sb.append(String.format("AND town = '%s'", town));
 
-        for ( UlsanTown ulsanTown : ulsanTowns ) {
-            if ( ulsanTown.town.equals(resname) ) {
-                return i;
-            }
-            i++;
+        List<UlsanTown> ulsanTowns = new ArrayList<>();
+        List<Map<String, Object>> rows = dbConnection.selectRows(sb.toString());
+
+        for ( Map<String, Object> row : rows ) {
+            ulsanTowns.add(new UlsanTown((row)));
         }
 
-        return -1;
-    }
-    public UlsanTown getUlsanTownByResname(String resname) {
 
-
-        int index = getUlsanTownIndexByResname(resname);
-
-        if ( index == -1 ) {
-            return null;
-        }
-
-        return ulsanTowns.get(index);
+        return ulsanTowns;
     }
 }

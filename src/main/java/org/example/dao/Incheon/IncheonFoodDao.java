@@ -18,8 +18,6 @@ public class IncheonFoodDao extends Dao {
         dbConnection = Container.getDBConnection();
     }
 
-
-
     public IncheonFood getIncheonFoodByFoodType(String town) {
 
         StringBuilder sb = new StringBuilder();
@@ -36,6 +34,4 @@ public class IncheonFoodDao extends Dao {
 
         return new IncheonFood(row);
     }
-
-
 }

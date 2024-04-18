@@ -1,45 +1,38 @@
 package org.example.dao.Ulsan;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
+import org.example.dto.Incheon.IncheonFood;
 import org.example.dto.Seoul.SeoulFood;
 import org.example.dto.Ulsan.UlsanFood;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class UlsanFoodDao extends Dao {
-    public List<UlsanFood> ulsanFoods;
+    private DBConnection dbConnection;
 
     public UlsanFoodDao() {
-        ulsanFoods = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
+    public UlsanFood getUlsanFoodByFoodType(String town) {
 
-    public void add(UlsanFood ulsanFood) {
-        ulsanFoods.add(ulsanFood);
-        lastId++;
-    }
+        StringBuilder sb = new StringBuilder();
 
-    public int getUlsanIndexByFood(String foodtype) {
-        int i = 0;
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM ulsanFood "));
+        sb.append(String.format("WHERE foodtype = '%s'", town));
 
-        for ( UlsanFood ulsanFood : ulsanFoods ) {
-            if ( ulsanFood.foodtype.equals(foodtype) ) {
-                return i;
-            }
-            i++;
-        }
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-        return -1;
-    }
-    public UlsanFood getUlsanFoodByFoodType(String foodtype) {
-
-
-        int index = getUlsanIndexByFood(foodtype);
-
-        if ( index == -1 ) {
+        if (row.isEmpty()) {
             return null;
         }
 
-        return ulsanFoods.get(index);
+        return new UlsanFood(row);
     }
+
+
 }
