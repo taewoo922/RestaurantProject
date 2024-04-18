@@ -23,7 +23,8 @@ public class GyeonggiFoodDao extends Dao {
 
         sb.append(String.format("SELECT * "));
         sb.append(String.format("FROM gyeonggiFood "));
-        sb.append(String.format("WHERE foodtype = '%s'", town));
+        sb.append(String.format("WHERE foodtype LIKE CONCAT('%%','%s','%%')", town));
+//        sb.append(String.format("WHERE foodtype = '%s'", town));
 
         Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
