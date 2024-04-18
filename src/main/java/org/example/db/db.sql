@@ -179,13 +179,14 @@ food = '양식',
 foodtype = '파스타, 리조또, 스테이크, 수제버거, 스튜, 라자냐, 케밥',
 boardId = 3;
 
-
-SELECT * FROM gyeonggiTown;
-
 SELECT *
 FROM seoulTown
 WHERE foodtype = '분식'
 AND town = '성동';
+
+SELECT *
+FROM seoulFood
+WHERE foodtype LIKE CONCAT('%','죽','%');
 
 CREATE TABLE seoulFood (
 	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -352,6 +353,8 @@ CREATE TABLE incheonTown (
 	boardId INT(10) UNSIGNED NOT NULL,
 	INDEX boardId(`boardId`)
 	);
+
+SELECT * FROM incheonTown;
 
 INSERT INTO incheonFood
 SET regDate = NOW(),

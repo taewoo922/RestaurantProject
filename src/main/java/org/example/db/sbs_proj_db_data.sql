@@ -435,7 +435,7 @@ CREATE TABLE `member` (
   `name` char(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `loginId` (`loginId`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `member` */
 
@@ -446,7 +446,8 @@ insert  into `member`(`id`,`regDate`,`updateDate`,`loginId`,`loginPassword`,`nam
 (4,'2024-04-02 18:06:38','2024-04-02 18:06:38','user7','user7','kkk'),
 (5,'2024-04-16 17:45:05','2024-04-16 17:45:05','1234','1234','aaa'),
 (6,'2024-04-16 17:46:16','2024-04-16 17:46:16','11111','11111','ㅁㄴㅇㅁㄹ'),
-(7,'2024-04-16 18:20:22','2024-04-16 18:20:22','kk','kk','kk');
+(7,'2024-04-16 18:20:22','2024-04-16 18:20:22','kk','kk','kk'),
+(8,'2024-04-18 18:12:08','2024-04-18 18:12:08','tester','tester','tester');
 
 /*Table structure for table `seoulFood` */
 
