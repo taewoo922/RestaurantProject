@@ -1,7 +1,6 @@
 package org.example.controller;
 
 import org.example.container.Container;
-import org.example.dto.Article;
 import org.example.dto.Busan.Busan;
 import org.example.dto.Busan.BusanFood;
 import org.example.dto.Busan.BusanTown;
@@ -23,7 +22,6 @@ import org.example.dto.Incheon.IncheonTown;
 import org.example.dto.Jeju.Jeju;
 import org.example.dto.Jeju.JejuFood;
 import org.example.dto.Jeju.JejuTown;
-import org.example.dto.Member;
 import org.example.dto.Seoul.Seoul;
 import org.example.dto.Seoul.SeoulFood;
 import org.example.dto.Seoul.SeoulTown;
@@ -59,8 +57,6 @@ import org.example.service.Seoul.SeoulTownService;
 import org.example.service.Ulsan.UlsanFoodService;
 import org.example.service.Ulsan.UlsanService;
 import org.example.service.Ulsan.UlsanTownService;
-import org.example.util.Util;
-
 
 import java.util.List;
 import java.util.Scanner;
@@ -74,7 +70,6 @@ public class DistrictController extends Controller{
     public DistrictService districtService;
     public SeoulService seoulService;
     public SeoulFoodService seoulFoodService;
-
     public SeoulTownService seoulTownService;
     public GyeonggiService gyeonggiService;
     public GyeonggiFoodService gyeonggiFoodService;
@@ -182,7 +177,8 @@ public class DistrictController extends Controller{
         String food = sc.nextLine();
 
         Seoul seoul = seoulService.getSeoulByFood(food);
-        if ( food == null ) {
+
+        if ( seoul == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
@@ -199,6 +195,7 @@ public class DistrictController extends Controller{
         String foodtype = sc.nextLine();
 
         SeoulFood seoulfood = seoulFoodService.getSeoulFoodByFoodType(foodtype);
+
         if ( seoulfood == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
@@ -209,6 +206,10 @@ public class DistrictController extends Controller{
         String town = sc.nextLine();
 
         List<SeoulTown> printseoultown = seoulTownService.getSeoulTownByResname(foodtype, town);
+        if (printseoultown == null) {
+            System.out.println("해당지역은 지원하지 않습니다.");
+            return;
+        }
 
         System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
         for ( int i = printseoultown.size() - 1; i >= 0 ; i-- ) {
@@ -224,7 +225,7 @@ public class DistrictController extends Controller{
         String food = sc.nextLine();
 
         Gyeonggi gyeonggi = gyeonggiService.getGyeonggiByFood(food);
-        if (food == null) {
+        if (gyeonggi == null) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return;
         }
@@ -264,7 +265,7 @@ public class DistrictController extends Controller{
         String food = sc.nextLine();
 
         Incheon incheon = incheonService.getIncheonByFood(food);
-        if ( food == null ) {
+        if ( incheon == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
@@ -306,7 +307,7 @@ public class DistrictController extends Controller{
         String food = sc.nextLine();
 
         Daejeon daejeon = daejeonService.getDaejeonByFood(food);
-        if ( food == null ) {
+        if ( daejeon == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
@@ -347,7 +348,7 @@ public class DistrictController extends Controller{
         String food = sc.nextLine();
 
         Daegu daegu = daeguService.getDaeguByFood(food);
-        if ( food == null ) {
+        if ( daegu == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
@@ -388,7 +389,7 @@ public class DistrictController extends Controller{
         String food = sc.nextLine();
 
         Gwangju gwangju = gwangjuService.getGwangjuByFood(food);
-        if ( food == null ) {
+        if ( gwangju == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
@@ -429,7 +430,7 @@ public class DistrictController extends Controller{
         String food = sc.nextLine();
 
         Ulsan ulsan = ulsanService.getUlsanByFood(food);
-        if ( food == null ) {
+        if ( ulsan == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
@@ -470,7 +471,7 @@ public class DistrictController extends Controller{
         String food = sc.nextLine();
 
         Busan busan = busanService.getBusanByFood(food);
-        if ( food == null ) {
+        if ( busan == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
@@ -512,7 +513,7 @@ public class DistrictController extends Controller{
         String food = sc.nextLine();
 
         Jeju jeju = jejuService.getJejuByFood(food);
-        if ( food == null ) {
+        if ( jeju == null ) {
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
