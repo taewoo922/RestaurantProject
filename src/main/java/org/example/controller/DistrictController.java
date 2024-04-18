@@ -22,6 +22,7 @@ import org.example.dto.Incheon.IncheonTown;
 import org.example.dto.Jeju.Jeju;
 import org.example.dto.Jeju.JejuFood;
 import org.example.dto.Jeju.JejuTown;
+import org.example.dto.Member;
 import org.example.dto.Seoul.Seoul;
 import org.example.dto.Seoul.SeoulFood;
 import org.example.dto.Seoul.SeoulTown;
@@ -182,13 +183,6 @@ public class DistrictController extends Controller{
             System.out.println("해당메뉴는 존재하지 않습니다.");
             return ;
         }
-
-//        Member loginedMember = session.getLoginedMember();
-
-//        if ( foundArticle.memberId != loginedMember.id ) {
-//            System.out.printf("권한이 없습니다.\n");
-//            return;
-//        }
 
         System.out.printf("서울지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, seoul.foodtype);
         System.out.printf("원하시는 종류를 입력해주세요.\n");

@@ -83,10 +83,20 @@ public class App {
             String actionName = controllerName + "/" + actionMethodName;
 
             switch ( actionName ) {
-                case "article/write":
-                case "article/delete":
-                case "article/modify":
-                case "member/logout":
+                case "게시물/write":
+                case "게시물/delete":
+                case "게시물/modify":
+                case "회원/로그아웃":
+                case "지역/서울":
+                case "지역/경기":
+                case "지역/인천":
+                case "지역/대전":
+                case "지역/대구":
+                case "지역/광주":
+                case "지역/부산":
+                case "지역/울산":
+                case "지역/제주":
+
                     if ( Container.getSession().isLogined() == false ) {
                         System.out.println("로그인 후 이용해주세요.");
                         continue;
@@ -95,8 +105,8 @@ public class App {
             }
 
             switch ( actionName ) {
-                case "member/login":
-                case "member/join":
+                case "회원/로그인":
+                case "회원/가입":
                     if (Container.getSession().isLogined() ) {
                         System.out.println("로그아웃 후 이용해주세요.");
                         continue;

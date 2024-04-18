@@ -25,7 +25,6 @@ public class ArticleController extends Controller{
         articleService = Container.articleService;
         memberService = Container.memberService;
     }
-
     public void doAction(String cmd, String actionMethodName) {
         this.cmd = cmd;
 
@@ -57,13 +56,6 @@ public class ArticleController extends Controller{
         }
     }
 
-//    public void makeTestData() {
-//        System.out.println("테스트를 위한 게시물 데이터를 생성합니다.");
-//
-//        articleService.write(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 1, 1, "제목 1", "내용 1", 12));
-//        articleService.write(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 2, 1, "제목 2", "내용 2", 103));
-//        articleService.write(new Article(Container.articleDao.getNewId(), Util.getNowDateStr(), 2, 1, "제목 3", "내용 3", 3));
-//    }
     private void doChangeBoard() {
         String[] cmdBits = cmd.split(" ");
         int boardId = Integer.parseInt(cmdBits[2]);
