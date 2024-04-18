@@ -1,44 +1,36 @@
 package org.example.dao.Jeju;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
 import org.example.dto.Jeju.JejuFood;
+import org.example.dto.Seoul.SeoulFood;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class JejuFoodDao extends Dao {
-    public List<JejuFood>  jejuFoods;
+    private DBConnection dbConnection;
 
     public JejuFoodDao() {
-        jejuFoods = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
-    public void add(JejuFood jejuFood) {
-        jejuFoods.add(jejuFood);
-        lastId++;
-    }
+    public JejuFood getJejuFoodByFoodType(String town) {
 
-    public int getJejuIndexByFood(String foodtype) {
-        int i = 0;
+        StringBuilder sb = new StringBuilder();
 
-        for ( JejuFood jejuFood : jejuFoods ) {
-            if ( jejuFood.foodtype.equals(foodtype) ) {
-                return i;
-            }
-            i++;
-        }
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM jejuFood "));
+        sb.append(String.format("WHERE foodtype = '%s'", town));
 
-        return -1;
-    }
-    public JejuFood getJejuFoodByFoodType(String foodtype) {
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-
-        int index = getJejuIndexByFood(foodtype);
-
-        if ( index == -1 ) {
+        if (row.isEmpty()) {
             return null;
         }
 
-        return jejuFoods.get(index);
+        return new JejuFood(row);
     }
 }

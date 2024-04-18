@@ -1,44 +1,35 @@
 package org.example.dao.Jeju;
 
+import org.example.container.Container;
 import org.example.dao.Dao;
+import org.example.db.DBConnection;
 import org.example.dto.Jeju.Jeju;
+import org.example.dto.Seoul.Seoul;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class JejuDao extends Dao {
-    public List<Jeju> jejus;
+    private DBConnection dbConnection;
 
     public JejuDao() {
-        jejus = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
-    public void add(Jeju jeju) {
-        jejus.add(jeju);
-        lastId++;
-    }
+    public Jeju getJejuByFood(String food) {
+        StringBuilder sb = new StringBuilder();
 
-    public int getJejuIndexByFood(String food) {
-        int i = 0;
+        sb.append(String.format("SELECT * "));
+        sb.append(String.format("FROM district "));
+        sb.append(String.format("WHERE food = '%s'", food));
 
-        for ( Jeju jeju : jejus ) {
-            if ( jeju.food.equals(food) ) {
-                return i;
-            }
-            i++;
-        }
+        Map<String, Object> row = dbConnection.selectRow(sb.toString());
 
-        return -1;
-    }
-    public Jeju getJejuByFood(String menu) {
-
-
-        int index = getJejuIndexByFood(menu);
-
-        if ( index == -1 ) {
+        if ( row.isEmpty() ) {
             return null;
         }
 
-        return jejus.get(index);
+        return new Jeju(row);
     }
 }
