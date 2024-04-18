@@ -19,26 +19,30 @@ public class App {
         Container.getSession().setCurrentBoard(Container.articleService.getBoard(1));
     }
     public void start() {
-        System.out.println("╔══════════════════════════════════════════╗");
-        System.out.println("║                                          ║");
-        System.out.println("║                WELCOME TO                ║");
-        System.out.println("║                  F O O D                 ║");
-        System.out.println("║                                          ║");
-        System.out.println("╠══════════════════════════════════════════╣");
-        System.out.println("║                                          ║");
-        System.out.println("║    [ 한식 ] [ 일식 ] [ 중식 ]  [ 중식 ]  ║");
-        System.out.println("║     (¯`v´¯)  (¯`v´¯)  (¯`v´¯)   (¯`v´¯)  ║");
-        System.out.println("║      `•.¸.•´ `•.¸.•´  `•.¸.•´  `•.¸.•´   ║");
-        System.out.println("║                                          ║");
-        System.out.println("║        Username: [____________]          ║");
-        System.out.println("║        Password: [____________]          ║");
-        System.out.println("║                                          ║");
-        System.out.println("║        [   Login   ] [   Join   ]        ║");
-        System.out.println("║                                          ║");
-        System.out.println("╚══════════════════════════════════════════╝");
+        System.out.println("╔════════════════════════════════════════════════════════════╗");
+        System.out.println("║                                                            ║");
+        System.out.println("║                       WELCOME TO                           ║");
+        System.out.println("║                        F O O D                             ║");
+        System.out.println("║                                                            ║");
+        System.out.println("║ ╔════════════════════════════════════════════════════╗   ║");
+        System.out.println("║ ║                                                    ║   ║");
+        System.out.println("║ ║       [   ]  [   ]  [   ]  [   ]                   ║   ║");
+        System.out.println("║ ║      (¯`v´¯) (¯`v´¯) (¯`v´¯) (¯`v´¯)                ║   ║");
+        System.out.println("║ ║      `•.¸.•´ `•.¸.•´ `•.¸.•´ `•.¸.•´                ║   ║");
+        System.out.println("║ ║                                                    ║   ║");
+        System.out.println("║ ║  [  한식  ]  [  일식  ]  [  중식  ]  [  양식  ]     ║   ║");
+        System.out.println("║ ║                                                    ║   ║");
+        System.out.println("║ ║       Username: [____________]                     ║   ║");
+        System.out.println("║ ║       Password: [____________]                     ║   ║");
+        System.out.println("║ ║                                                    ║   ║");
+        System.out.println("║ ║        [   로그인   ] [ 비회원로그인 ] [   가입   ]    ║ ║");
+        System.out.println("║ ║                                                        ║ ║");
+        System.out.println("║ ╚════════════════════════════════════════════════════════╝ ║");
+        System.out.println("║                                                            ║");
+        System.out.println("╚════════════════════════════════════════════════════════════╝
         System.out.println("== 프로그램 시작 ==");
 
-//        Scanner sc = new Scanner(System.in);
+//        Scanner sc = new Scanner(System.in);╝
 
         System.out.println("== 접속 페이지==");
         System.out.println("접속 방식을 입력해 주세요");
