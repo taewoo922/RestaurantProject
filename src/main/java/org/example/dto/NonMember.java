@@ -9,25 +9,27 @@ import java.util.Map;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Member extends Dto {
+
+public class NonMember extends Dto {
 //    public int id;
 //    public String regDate;
     public String loginId;
     public String loginPassword;
     public String name;
-    public String favoritefood;
+    public String randommenu;
 
-//    public Member(String loginId, String loginPw, String name) {
+//    public NonMember(String loginId, String loginPassword, String name, String randommenu) {
 //        this.loginId = loginId;
-//        this.loginPw = loginPw;
+//        this.loginPassword = loginPassword;
 //        this.name = name;
+//        this.randommenu= randommenu;
 //    }
 
-    public Member(Map<String, Object> row) {
+    public NonMember(Map<String, Object> row) {
         super(row);
         this.loginId = (String) row.get("loginId");
         this.loginPassword = (String) row.get("loginPassword");
         this.name = (String) row.get("name");
-        this.favoritefood = (String) row.get("favoritefood");
+        this.randommenu = (String) row.get("randommenu");
     }
 }

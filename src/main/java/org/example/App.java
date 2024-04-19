@@ -9,37 +9,28 @@ import java.util.Scanner;
 
 public class App {
     public App (){
-        DBConnection.DB_NAME = "sbs_proj";
-        DBConnection.DB_USER = "sbsst";
-        DBConnection.DB_PASSWORD = "sbs123414";
-        DBConnection.DB_PORT = 3306;
-
-        Container.getDBConnection().connect();
-
-        Container.getSession().setCurrentBoard(Container.articleService.getBoard(1));
+//        DBConnection.DB_NAME = "sbs_proj";
+//        DBConnection.DB_USER = "sbsst";
+//        DBConnection.DB_PASSWORD = "sbs123414";
+//        DBConnection.DB_PORT = 3306;
+//
+//        Container.getDBConnection().connect();
+//
+//        Container.getSession().setCurrentBoard(Container.articleService.getBoard(1));
     }
     public void start() {
-        System.out.println("╔════════════════════════════════════════════════════════════╗");
-        System.out.println("║                                                            ║");
-        System.out.println("║                       WELCOME TO                           ║");
-        System.out.println("║                        F O O D                             ║");
-        System.out.println("║                                                            ║");
-        System.out.println("║ ╔════════════════════════════════════════════════════╗   ║");
-        System.out.println("║ ║                                                    ║   ║");
-        System.out.println("║ ║       [   ]  [   ]  [   ]  [   ]                   ║   ║");
-        System.out.println("║ ║      (¯`v´¯) (¯`v´¯) (¯`v´¯) (¯`v´¯)                ║   ║");
-        System.out.println("║ ║      `•.¸.•´ `•.¸.•´ `•.¸.•´ `•.¸.•´                ║   ║");
-        System.out.println("║ ║                                                    ║   ║");
-        System.out.println("║ ║  [  한식  ]  [  일식  ]  [  중식  ]  [  양식  ]     ║   ║");
-        System.out.println("║ ║                                                    ║   ║");
-        System.out.println("║ ║       Username: [____________]                     ║   ║");
-        System.out.println("║ ║       Password: [____________]                     ║   ║");
-        System.out.println("║ ║                                                    ║   ║");
-        System.out.println("║ ║        [   로그인   ] [ 비회원로그인 ] [   가입   ]    ║ ║");
-        System.out.println("║ ║                                                        ║ ║");
-        System.out.println("║ ╚════════════════════════════════════════════════════════╝ ║");
-        System.out.println("║                                                            ║");
-        System.out.println("╚════════════════════════════════════════════════════════════╝
+        System.out.println("                  _________________________________________________________________________________");
+        System.out.println("                 /                                                                                 \\");
+        System.out.println("                |                        Welcome to Nearby Restaurant Recommender                  |");
+        System.out.println("                |                                                                                  |");
+        System.out.println("                |      ________________________________________________________________________    |");
+        System.out.println("                |     /                                                                        \\   |");
+        System.out.println("                |    |               [ 로그인 ]       [ 비회원로그인 ]         [ 가입 ]         |  |");
+        System.out.println("                |     \\________________________________________________________________________/   |");
+        System.out.println("                |                                                                                  |");
+        System.out.println("                |                      Today's Recommended Menu: 짬뽕 + 탕수육                     |");
+        System.out.println("                 \\________________________________________________________________________________/");
+
         System.out.println("== 프로그램 시작 ==");
 
 //        Scanner sc = new Scanner(System.in);╝
@@ -53,7 +44,7 @@ public class App {
 
 
 
-
+        NonmemberController nonmemberController = new NonmemberController();
         MemberController memberController = new MemberController();
         ArticleController articleController = new ArticleController();
         ExportController exportController = new ExportController();
@@ -95,6 +86,9 @@ public class App {
             }
             else if ( controllerName.equals("export") ) {
                 controller = exportController;
+            }
+            else if ( controllerName.equals("비회원") ) {
+                controller = nonmemberController;
             }
             else {
                 System.out.println("존재하지 않는 명령어입니다.");

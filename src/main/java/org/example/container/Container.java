@@ -1,5 +1,6 @@
 package org.example.container;
 
+import org.example.controller.NonmemberController;
 import org.example.controller.Session;
 import org.example.dao.ArticleDao;
 import org.example.dao.Busan.BusanDao;
@@ -25,6 +26,7 @@ import org.example.dao.Jeju.JejuDao;
 import org.example.dao.Jeju.JejuFoodDao;
 import org.example.dao.Jeju.JejuTownDao;
 import org.example.dao.MemberDao;
+import org.example.dao.NonmemberDao;
 import org.example.dao.Seoul.SeoulDao;
 import org.example.dao.Seoul.SeoulFoodDao;
 import org.example.dao.Seoul.SeoulTownDao;
@@ -32,7 +34,7 @@ import org.example.dao.Ulsan.UlsanDao;
 import org.example.dao.Ulsan.UlsanFoodDao;
 import org.example.dao.Ulsan.UlsanTownDao;
 import org.example.db.DBConnection;
-import org.example.service.ArticleService;
+import org.example.service.*;
 import org.example.service.Busan.BusanFoodService;
 import org.example.service.Busan.BusanService;
 import org.example.service.Busan.BusanTownService;
@@ -42,7 +44,6 @@ import org.example.service.Daegu.DaeguTownService;
 import org.example.service.Daejeon.DaejeonFoodService;
 import org.example.service.Daejeon.DaejeonService;
 import org.example.service.Daejeon.DaejeonTownService;
-import org.example.service.DistrictService;
 import org.example.service.Gwangju.GwangjuFoodService;
 import org.example.service.Gwangju.GwangjuService;
 import org.example.service.Gwangju.GwangjuTownService;
@@ -55,14 +56,12 @@ import org.example.service.Incheon.IncheonTownService;
 import org.example.service.Jeju.JejuFoodService;
 import org.example.service.Jeju.JejuService;
 import org.example.service.Jeju.JejuTownService;
-import org.example.service.MemberService;
 import org.example.service.Seoul.SeoulFoodService;
 import org.example.service.Seoul.SeoulService;
 import org.example.service.Seoul.SeoulTownService;
 import org.example.service.Ulsan.UlsanFoodService;
 import org.example.service.Ulsan.UlsanService;
 import org.example.service.Ulsan.UlsanTownService;
-import org.example.service.ExportService;
 
 import java.util.Scanner;
 
@@ -72,6 +71,7 @@ public class Container {
     public static Session session;
     public static ArticleDao articleDao;
     public static MemberDao memberDao;
+    public static NonmemberDao nonmemberDao;
     public static DistrictDao districtDao;
     public static SeoulDao seoulDao;
     public static SeoulFoodDao seoulFoodDao;
@@ -104,6 +104,7 @@ public class Container {
 
     public static ArticleService articleService;
     public static MemberService memberService;
+    public static NonmemberService nonmemberService;
     public static DistrictService districtService;
     public static SeoulService seoulService;
     public static SeoulFoodService seoulFoodService;
@@ -139,6 +140,7 @@ public class Container {
         districtDao = new DistrictDao();
         articleDao = new ArticleDao();
         memberDao = new MemberDao();
+        nonmemberDao = new NonmemberDao();
         //서울
         seoulDao = new SeoulDao();
         seoulFoodDao = new SeoulFoodDao();
