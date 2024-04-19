@@ -14,20 +14,6 @@ public class NonmemberDao extends Dao {
         dbConnection = Container.getDBConnection();
     }
 
-//    public int join(Member member) {
-//        StringBuilder sb = new StringBuilder();
-//
-//        sb.append(String.format("INSERT INTO `member` "));
-//        sb.append(String.format("SET regDate = NOW(), "));
-//        sb.append(String.format("updateDate = NOW(), "));
-//        sb.append(String.format("loginId = '%s', ", member.loginId));
-//        sb.append(String.format("loginPassword = '%s', ", member.loginPassword));
-//        sb.append(String.format("`name` = '%s' ", member.name));
-//
-//        return dbConnection.insert(sb.toString());
-//    }
-
-
     public NonMember getrandommenu(String food) {
         StringBuilder sb = new StringBuilder();
 
