@@ -53,7 +53,7 @@ public class MemberController extends Controller {
         String loginId = null;
 
         while (true) {
-            System.out.println("                    ****************************************************");
+            System.out.println("\u001B[34m                    ****************************************************");
             System.out.println("                    *               Welcome to Sign Up!                *");
             System.out.println("                    ****************************************************");
             System.out.println("                                   ________________________             ");
@@ -171,79 +171,79 @@ public class MemberController extends Controller {
         }
     }
 
-        public void doLogin () {
-            System.out.println("                    ╔════════════════════════════════════════════════════════════╗");
-            System.out.println("                    ║                                                            ║");
-            System.out.println("                    ║                       WELCOME TO                           ║");
-            System.out.println("                    ║                        F O O D                             ║");
-            System.out.println("                    ║                                                            ║");
-            System.out.println("                    ║ ╔════════════════════════════════════════════════════════╗ ║");
-            System.out.println("                    ║ ║                                                        ║ ║");
-            System.out.println("                    ║ ║              [   ]   [   ]   [   ]   [   ]             ║ ║");
-            System.out.println("                    ║ ║             (¯`v´¯) (¯`v´¯) (¯`v´¯) (¯`v´¯)            ║ ║");
-            System.out.println("                    ║ ║             `•.¸.•´ `•.¸.•´ `•.¸.•´ `•.¸.•´            ║ ║");
-            System.out.println("                    ║ ║                                                        ║ ║");
-            System.out.println("                    ║ ║      [  한식  ]  [  일식  ]  [  중식  ]  [  양식  ]    ║ ║");
-            System.out.println("                    ║ ║                                                        ║ ║");
-            System.out.println("                    ║ ║                 Username: [____________]               ║ ║");
-            System.out.println("                    ║ ║                 Password: [____________]               ║ ║");
-            System.out.println("                    ║ ║                                                        ║ ║");
+    public void doLogin () {
+        System.out.println("\u001B[33m                    ╔════════════════════════════════════════════════════════════╗");
+        System.out.println("                    ║                                                            ║");
+        System.out.println("                    ║                       WELCOME TO                           ║");
+        System.out.println("                    ║                        F O O D                             ║");
+        System.out.println("                    ║                                                            ║");
+        System.out.println("                    ║ ╔════════════════════════════════════════════════════════╗ ║");
+        System.out.println("                    ║ ║                                                        ║ ║");
+        System.out.println("                    ║ ║              [   ]   [   ]   [   ]   [   ]             ║ ║");
+        System.out.println("                    ║ ║             (¯`v´¯) (¯`v´¯) (¯`v´¯) (¯`v´¯)            ║ ║");
+        System.out.println("                    ║ ║             `•.¸.•´ `•.¸.•´ `•.¸.•´ `•.¸.•´            ║ ║");
+        System.out.println("                    ║ ║                                                        ║ ║");
+        System.out.println("                    ║ ║      [  한식  ]  [  일식  ]  [  중식  ]  [  양식  ]    ║ ║");
+        System.out.println("                    ║ ║                                                        ║ ║");
+        System.out.println("                    ║ ║                 Username: [____________]               ║ ║");
+        System.out.println("                    ║ ║                 Password: [____________]               ║ ║");
+        System.out.println("                    ║ ║                                                        ║ ║");
 //            System.out.println("                    ║ ║       [   로그인   ] [ 비회원로그인 ] [   가입   ]     ║ ║");
-            System.out.println("                    ║ ║                                                        ║ ║");
-            System.out.println("                    ║ ╚════════════════════════════════════════════════════════╝ ║");
-            System.out.println("                    ║                                                            ║");
-            System.out.println("                    ╚════════════════════════════════════════════════════════════╝");
+        System.out.println("                    ║ ║                                                        ║ ║");
+        System.out.println("                    ║ ╚════════════════════════════════════════════════════════╝ ║");
+        System.out.println("                    ║                                                            ║");
+        System.out.println("                    ╚════════════════════════════════════════════════════════════╝");
 
-            System.out.println("                  ___________________________________________");
-            System.out.println("                 /                                           \\");
-            System.out.print("                |   Enter your username:  ");
-            String loginId = sc.nextLine();
-            System.out.println("                |                           |             |   |");
+        System.out.println("                  ___________________________________________");
+        System.out.println("                 /                                           \\");
+        System.out.print("                |   Enter your username:  ");
+        String loginId = sc.nextLine();
+        System.out.println("                |                           |             |   |");
 
-            // 비밀번호 입력 창 표시
-            System.out.print("                |   Enter your password:  ");
-            String loginPassword = sc.nextLine();
-            System.out.println("                |                           |_____________|   |");
-            System.out.println("                 \\___________________________________________/");
+        // 비밀번호 입력 창 표시
+        System.out.print("                |   Enter your password:  ");
+        String loginPassword = sc.nextLine();
+        System.out.println("                |                           |_____________|   |");
+        System.out.println("                 \\___________________________________________/");
 
 //            System.out.printf("로그인 아이디 : ");
 //            String loginId = sc.nextLine();
 //            System.out.printf("로그인 비번 : ");
 //            String loginPassword = sc.nextLine();
 
-            Member member = memberService.getMemberByLoginId(loginId);
+        Member member = memberService.getMemberByLoginId(loginId);
 
-            if (member == null) {
-                System.out.println("해당회원은 존재하지 않습니다.");
-                return;
-            }
-
-            if (member.loginPassword.equals(loginPassword) == false) {
-                System.out.println("비밀번호가 일치하지 않습니다.");
-                return;
-            }
-
-            session.setLoginedMember(member);
-            Member loginedMember = session.getLoginedMember();
-
-            System.out.printf("로그인 성공! %s님 환영합니다!\n", loginedMember.name);
-
+        if (member == null) {
+            System.out.println("해당회원은 존재하지 않습니다.");
+            return;
         }
 
-        private void doLogout () {
-            session.setLoginedMember(null);
-            System.out.println("로그아웃 되었습니다.");
+        if (member.loginPassword.equals(loginPassword) == false) {
+            System.out.println("비밀번호가 일치하지 않습니다.");
+            return;
         }
 
-        private boolean isJoinableLoginId (String loginId){
+        session.setLoginedMember(member);
+        Member loginedMember = session.getLoginedMember();
+
+        System.out.printf("로그인 성공! %s님 환영합니다!\n", loginedMember.name);
+
+    }
+
+    private void doLogout () {
+        session.setLoginedMember(null);
+        System.out.println("로그아웃 되었습니다.");
+    }
+
+    private boolean isJoinableLoginId (String loginId){
 //        int index = memberService.getMemberIndexByLoginId(loginId);
-            Member member = memberService.getMemberByLoginId(loginId);
+        Member member = memberService.getMemberByLoginId(loginId);
 
 //        if ( index == -1 ) {
-            if (member == null) {
-                return true;
-            }
-
-            return false;
+        if (member == null) {
+            return true;
         }
+
+        return false;
+    }
     }

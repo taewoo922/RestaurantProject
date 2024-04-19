@@ -19,19 +19,19 @@ public class App {
 //        Container.getSession().setCurrentBoard(Container.articleService.getBoard(1));
     }
     public void start() {
-        System.out.println("                  _________________________________________________________________________________");
+        System.out.println("\u001B[32m                  _________________________________________________________________________________");
         System.out.println("                 /                                                                                 \\");
         System.out.println("                |                        Welcome to Nearby Restaurant Recommender                  |");
         System.out.println("                |                                                                                  |");
         System.out.println("                |      ________________________________________________________________________    |");
         System.out.println("                |     /                                                                        \\   |");
-        System.out.println("                |    |               [ 로그인 ]       [ 비회원로그인 ]         [ 가입 ]         |  |");
+        System.out.println("                |    |               [ 로그인 ]       [ 비회원로그인 ]         [ 회원 가입 ]    |  |");
         System.out.println("                |     \\________________________________________________________________________/   |");
         System.out.println("                |                                                                                  |");
         System.out.println("                |                      Today's Recommended Menu: 짬뽕 + 탕수육                     |");
         System.out.println("                 \\________________________________________________________________________________/");
 
-        System.out.println("== 프로그램 시작 ==");
+        System.out.println("\u001B[38m == 프로그램 시작 ==");
 
 //        Scanner sc = new Scanner(System.in);╝
 
