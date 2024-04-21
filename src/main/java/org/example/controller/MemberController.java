@@ -233,7 +233,8 @@ public class MemberController extends Controller {
         System.out.println("                     *                                                       *");
         System.out.println("                     *                    📢 공 지 사 항 📢                 *");
         System.out.println("                     *                                                       *");
-//        System.out.println("                     *    📌 보기에서 원하는 메뉴를 고르고 입력해주세요!     *");
+        System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+        System.out.println("                     *                📌 EX) 지역 서울                       *");
         System.out.println("                     *                                                       *");
         System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
         System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");

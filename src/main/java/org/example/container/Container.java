@@ -182,6 +182,7 @@ public class Container {
         articleService = new ArticleService();
         memberService = new MemberService();
         districtService = new DistrictService();
+        nonmemberService = new NonmemberService();
         //서울
         seoulService = new SeoulService();
         seoulFoodService = new SeoulFoodService();

@@ -25,17 +25,17 @@ public class App {
         System.out.println("                |                                                                                  |");
         System.out.println("                |      ________________________________________________________________________    |");
         System.out.println("                |     /                                                                        \\   |");
-        System.out.println("                |    |               [ 로그인 ]       [ 비회원로그인 ]         [ 회원 가입 ]    |  |");
+        System.out.println("                |    |         [ 회원 로그인 ]       [ 비회원 로그인 ]         [ 회원 가입 ]    |  |");
         System.out.println("                |     \\________________________________________________________________________/   |");
         System.out.println("                |                                                                                  |");
         System.out.println("                |                      Today's Recommended Menu: 짬뽕 + 탕수육                     |");
         System.out.println("                 \\________________________________________________________________________________/");
 
-        System.out.println("\u001B[38m == 프로그램 시작 ==");
+//        System.out.println("\u001B[38m == 프로그램 시작 ==");
 
 //        Scanner sc = new Scanner(System.in);╝
 
-        System.out.println("== 접속 페이지==");
+//        System.out.println("== 접속 페이지==");
         System.out.println("접속 방식을 입력해 주세요");
         System.out.println("1. 회원 로그인 : 회원 로그인");
         System.out.println("2. 비회원 로그인: 비회원 로그인");

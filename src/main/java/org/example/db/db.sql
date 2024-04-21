@@ -38,7 +38,7 @@ memberId = 3,
 boardId = 3;
 
 SELECT * FROM article;
-
+SELECT * FROM `member` WHERE id = 1;
 ALTER TABLE article ADD COLUMN hit INT(10) UNSIGNED NOT NULL;
 
 CREATE TABLE articleReply (
@@ -67,13 +67,16 @@ articleId = 2;
 
 SELECT * FROM articleReply;
 
+ALTER TABLE `member` ADD COLUMN favoritefood CHAR(100) NOT NULL;
+
 CREATE TABLE `member` (
 	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	regDate DATETIME NOT NULL,
 	updateDate DATETIME NOT NULL,
 	loginId CHAR(100) NOT NULL UNIQUE,
 	loginPassword CHAR(100) NOT NULL,
-	`name` CHAR(100) NOT NULL
+	`name` CHAR(100) NOT NULL,
+	favoritefood CHAR(100) NOT NULL
 );
 INSERT INTO `member`
 SET regDate = NOW(),
@@ -179,14 +182,15 @@ food = '양식',
 foodtype = '파스타, 리조또, 스테이크, 수제버거, 스튜, 라자냐, 케밥',
 boardId = 3;
 
+
+SELECT * FROM MEMBER;
+ALTER TABLE `member` ADD COLUMN favoritefood CHAR(100) NOT NULL;
+DESC MEMBER;
+
 SELECT *
 FROM seoulTown
 WHERE foodtype = '분식'
 AND town = '성동';
-
-SELECT *
-FROM seoulFood
-WHERE foodtype LIKE CONCAT('%','죽','%');
 
 CREATE TABLE seoulFood (
 	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -353,8 +357,6 @@ CREATE TABLE incheonTown (
 	boardId INT(10) UNSIGNED NOT NULL,
 	INDEX boardId(`boardId`)
 	);
-
-SELECT * FROM incheonTown;
 
 INSERT INTO incheonFood
 SET regDate = NOW(),
@@ -777,3 +779,23 @@ SET regDate = NOW(),
 foodtype = '찜,탕',
 town = '제주시,서귀포시',
 boardId = 4;
+
+CREATE TABLE nonmember (
+	id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	regDate DATETIME NOT NULL,
+	foodtype CHAR(100) NOT NULL,
+	randommenu CHAR(100) NOT NULL
+	);
+
+INSERT INTO nonmember
+SET regDate = NOW(),
+foodtype = '한식',
+radommenu = ' ';
+
+SELECT *
+FROM nonmember
+WHERE foodtype = '한식'
+ORDER BY RAND() LIMIT 1;
+
+SELECT * FROM nonmember;
+
