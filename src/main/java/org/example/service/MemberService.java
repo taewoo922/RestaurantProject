@@ -14,8 +14,8 @@ public class MemberService {
 //    public void join(Member member) {
 //        memberDao.join(member);
 
-    public int join(String loginId, String loginPw, String name, String favoritefood) {
-        Member member = new Member(loginId, loginPw, name,favoritefood);
+    public int join(String loginId, String loginPassword, String name, String favoritefood) {
+        Member member = new Member(loginId, loginPassword, name, favoritefood);
         return memberDao.join(member);
 //        memberDao.join(member);
     }

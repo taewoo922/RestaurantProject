@@ -27,22 +27,12 @@ public class MemberDao extends Dao {
         sb.append(String.format("updateDate = NOW(), "));
         sb.append(String.format("loginId = '%s', ", member.loginId));
         sb.append(String.format("loginPassword = '%s', ", member.loginPassword));
-        sb.append(String.format("`name` = '%s' ", member.name));
+        sb.append(String.format("`name` = '%s', ", member.name));
+        sb.append(String.format("favoritefood = '%s' ", member.favoritefood));
 
         return dbConnection.insert(sb.toString());
     }
-//    public int getMemberIndexByLoginId(String loginId) {
-//        int i = 0;
-//
-//        for ( Member member : members ) {
-//            if ( member.loginId.equals(loginId) ) {
-//                return i;
-//            }
-//            i++;
-//        }
-//
-//        return -1;
-//    }
+
 
     public Member getMemberByLoginId(String loginId) {
         StringBuilder sb = new StringBuilder();

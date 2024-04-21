@@ -9,14 +9,14 @@ import java.util.Scanner;
 
 public class App {
     public App (){
-//        DBConnection.DB_NAME = "sbs_proj";
-//        DBConnection.DB_USER = "sbsst";
-//        DBConnection.DB_PASSWORD = "sbs123414";
-//        DBConnection.DB_PORT = 3306;
-//
-//        Container.getDBConnection().connect();
-//
-//        Container.getSession().setCurrentBoard(Container.articleService.getBoard(1));
+        DBConnection.DB_NAME = "sbs_proj";
+        DBConnection.DB_USER = "sbsst";
+        DBConnection.DB_PASSWORD = "sbs123414";
+        DBConnection.DB_PORT = 3306;
+
+        Container.getDBConnection().connect();
+
+        Container.getSession().setCurrentBoard(Container.articleService.getBoard(1));
     }
     public void start() {
         System.out.println("\u001B[32m                  _________________________________________________________________________________");
@@ -51,7 +51,7 @@ public class App {
         DistrictController districtController = new DistrictController();
 
         while ( true ) {
-            System.out.printf("명령어) ");
+            System.out.printf("입력 :  ");
             String cmd = Container.getScanner().nextLine();
             cmd = cmd.trim();
 

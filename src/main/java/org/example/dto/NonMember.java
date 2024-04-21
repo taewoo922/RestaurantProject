@@ -13,10 +13,11 @@ import java.util.Map;
 public class NonMember extends Dto {
 //    public int id;
 //    public String regDate;
-    public String loginId;
-    public String loginPassword;
-    public String name;
+//    public String loginId;
+//    public String loginPassword;
+//    public String name;
     public String randommenu;
+    public String foodtype;
 
 //    public NonMember(String loginId, String loginPassword, String name, String randommenu) {
 //        this.loginId = loginId;
@@ -27,9 +28,10 @@ public class NonMember extends Dto {
 
     public NonMember(Map<String, Object> row) {
         super(row);
-        this.loginId = (String) row.get("loginId");
-        this.loginPassword = (String) row.get("loginPassword");
-        this.name = (String) row.get("name");
+//        this.loginId = (String) row.get("loginId");
+//        this.loginPassword = (String) row.get("loginPassword");
+//        this.name = (String) row.get("name");
         this.randommenu = (String) row.get("randommenu");
+        this.foodtype = (String) row.get("foodtype");
     }
 }

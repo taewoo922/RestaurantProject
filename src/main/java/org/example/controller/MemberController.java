@@ -67,15 +67,14 @@ public class MemberController extends Controller {
             System.out.println("                                  |________________________|           ");
             System.out.println("                                                                        ");
             System.out.print("사용할 로그인 아이디를 입력하세요 : ");
-//            loginId = sc.nextLine();
-            String id = sc.nextLine();
-//            if ( isJoinableLoginId(loginId) == false ) {
-//                System.out.printf("%s(은)는 이미 사용중인 아이디 입니다.\n", loginId);
-//                continue;
-//            }
-//
-//            break;
-//        }
+            loginId = sc.nextLine();
+//            String id = sc.nextLine();
+            if ( isJoinableLoginId(loginId) == false ) {
+                System.out.printf("%s(은)는 이미 사용중인 아이디 입니다.\n", loginId);
+                continue;
+            }
+            break;
+        }
 
             String loginPassword = null;
             String loginPasswordConfirm = null;
@@ -128,7 +127,7 @@ public class MemberController extends Controller {
             System.out.println("\n\n                ****************************************************");
             System.out.println("                *               Thank you for signing up!          *");
             System.out.println("                ****************************************************");
-            System.out.println("                아이디 : " + id);
+            System.out.println("                아이디 : " + loginId);
             System.out.println("                비밀번호 : " + loginPassword);
             System.out.println("                이름 : " + name);
             System.out.println("                선호하는 음식종류 : " + favoriteFood);
@@ -165,13 +164,14 @@ public class MemberController extends Controller {
 //        String name = sc.nextLine();
 
 //        memberService.join(loginId, loginPassword, name, favoriteFood);
-            memberService.join(id, loginPassword, name, favoriteFood);
+            memberService.join(loginId, loginPassword, name, favoriteFood);
 
             System.out.printf("%s 회원이 생성되었습니다. 환영합니다!\n", name);
         }
-    }
+
 
     public void doLogin () {
+        String[] menus = {"한식", "일식", "중식", "양식"};
         System.out.println("\u001B[33m                    ╔════════════════════════════════════════════════════════════╗");
         System.out.println("                    ║                                                            ║");
         System.out.println("                    ║                       WELCOME TO                           ║");
@@ -194,17 +194,17 @@ public class MemberController extends Controller {
         System.out.println("                    ║                                                            ║");
         System.out.println("                    ╚════════════════════════════════════════════════════════════╝");
 
-        System.out.println("                  ___________________________________________");
-        System.out.println("                 /                                           \\");
-        System.out.print("                |   Enter your username:  ");
+        System.out.println("                              ___________________________________________");
+        System.out.println("                             /                                           \\");
+        System.out.print("                             |   Enter your username:");
         String loginId = sc.nextLine();
-        System.out.println("                |                           |             |   |");
+//        System.out.println("                            |                           |             |   |");
 
         // 비밀번호 입력 창 표시
-        System.out.print("                |   Enter your password:  ");
+        System.out.print("                             |   Enter your password:");
         String loginPassword = sc.nextLine();
-        System.out.println("                |                           |_____________|   |");
-        System.out.println("                 \\___________________________________________/");
+//        System.out.println("                            |                           |_____________|   |");
+        System.out.println("                             \\___________________________________________/");
 
 //            System.out.printf("로그인 아이디 : ");
 //            String loginId = sc.nextLine();
@@ -226,7 +226,21 @@ public class MemberController extends Controller {
         session.setLoginedMember(member);
         Member loginedMember = session.getLoginedMember();
 
-        System.out.printf("로그인 성공! %s님 환영합니다!\n", loginedMember.name);
+        System.out.printf("                     *         📢 로그인 성공! %s님 환영합니다! 📢      *\n", loginedMember.name);
+//        System.out.printf("                            로그인 성공! %s님 환영합니다!\n", loginedMember.name);
+        System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n", loginedMember.name);
+        System.out.println("                     ********************************************************");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+        System.out.println("                     *                                                       *");
+//        System.out.println("                     *    📌 보기에서 원하는 메뉴를 고르고 입력해주세요!     *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+        System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     ********************************************************");
+//        System.out.print("                             |   Enter your username:");
+
 
     }
 

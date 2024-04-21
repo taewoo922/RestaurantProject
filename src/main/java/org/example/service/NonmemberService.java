@@ -5,6 +5,9 @@ import org.example.dao.MemberDao;
 import org.example.dao.NonmemberDao;
 import org.example.dto.Member;
 import org.example.dto.NonMember;
+import org.example.dto.Seoul.SeoulTown;
+
+import java.util.List;
 
 public class NonmemberService {
     private NonmemberDao nonmemberDao;
@@ -13,8 +16,12 @@ public class NonmemberService {
         nonmemberDao = Container.nonmemberDao;
     }
 
-    public NonMember getrandommenu(String food) {
-        return nonmemberDao.getrandommenu(food);
+//    public NonMember getrandommenu (String foodtype) {
+//        return nonmemberDao.getrandommenu(foodtype);
+//    }
+
+    public List<NonMember> getrandommenu(String foodtype) {
+        return nonmemberDao.getrandommenu(foodtype);
     }
 
 }
