@@ -302,7 +302,7 @@ public class DistrictController extends Controller{
         }
 
 
-        System.out.printf("               인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheon.foodtype);
+        System.out.printf("                                           인천지역에 %s(은)는 \n               %s(이)가 있습니다.\n", food, incheon.foodtype);
         System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
@@ -329,19 +329,19 @@ public class DistrictController extends Controller{
             IncheonTown incheontown = printincheontown.get(i);
 
             System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
-            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
-            System.out.println("                     ********************************************************");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
-            System.out.println("                     *                📌 EX) 지역 서울                       *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
-            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     ********************************************************");
         }
+        System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+        System.out.println("                     ********************************************************");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+        System.out.println("                     *                📌 EX) 지역 서울                       *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+        System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     ********************************************************");
     }
 
     private void showDaejeon() {
@@ -359,7 +359,7 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        System.out.printf("               대전지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, daejeon.foodtype);
+        System.out.printf("                                           대전지역에 %s(은)는 \n               %s(이)가 있습니다.\n", food, daejeon.foodtype);
         System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
@@ -416,7 +416,7 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        System.out.printf("               대구지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, daegu.foodtype);
+        System.out.printf("                                           대구지역에 %s(은)는\n               %s(이)가 있습니다.\n", food, daegu.foodtype);
         System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
@@ -473,7 +473,7 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        System.out.printf("               광주지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, gwangju.foodtype);
+        System.out.printf("                                           광주지역에 %s(은)는\n               %s(이)가 있습니다.\n", food, gwangju.foodtype);
         System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
@@ -530,7 +530,7 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        System.out.printf("               울산지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, ulsan.foodtype);
+        System.out.printf("                                           울산지역에 %s(은)는\n               %s(이)가 있습니다.\n", food, ulsan.foodtype);
         System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
@@ -587,7 +587,7 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        System.out.printf("               부산지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, busan.foodtype);
+        System.out.printf("                                           부산지역에 %s(은)는\n               %s(이)가 있습니다.\n", food, busan.foodtype);
         System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
@@ -645,7 +645,7 @@ public class DistrictController extends Controller{
             return ;
         }
 
-        System.out.printf("               제주지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, jeju.foodtype);
+        System.out.printf("                                           제주지역에 %s(은)는\n               %s(이)가 있습니다.\n", food, jeju.foodtype);
         System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
