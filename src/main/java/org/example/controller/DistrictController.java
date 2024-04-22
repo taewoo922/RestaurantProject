@@ -173,372 +173,517 @@ public class DistrictController extends Controller{
     }
 
     private void showSeoul() {
-        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
-        System.out.printf("메뉴를 선택해 주세요\n");
+        System.out.println("                                            == 메뉴목록 ==\n"
+                +"                                            ==   한식   ==\n"
+                +"                                            ==   양식   ==\n"
+                +"                                            ==   중식   ==\n"
+                +"                                            ==   일식   ==\n");
+        System.out.printf("                                        메뉴를 선택해 주세요 : ");
         String food = sc.nextLine();
 
         Seoul seoul = seoulService.getSeoulByFood(food);
 
         if ( seoul == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                              해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        System.out.printf("서울지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, seoul.foodtype);
-        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        System.out.printf("                                           서울지역에 %s(은)는 \n               %s(이)가 있습니다.\n", food, seoul.foodtype);
+        System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
         SeoulFood seoulfood = seoulFoodService.getSeoulFoodByFoodType(foodtype);
 
         if ( seoulfood == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                                          해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
 
-        System.out.printf("서울지역에 %s 중 원하시는 위치를 입력해주세요.\n", seoulfood.town);
+        System.out.printf("               서울지역에 %s 중 원하시는 위치를 입력해주세요.\n", seoulfood.town);
+        System.out.printf("               지역 입력 : ");
         String town = sc.nextLine();
 
         List<SeoulTown> printseoultown = seoulTownService.getSeoulTownByResname(foodtype, town);
         if (printseoultown == null) {
-            System.out.println("해당지역은 지원하지 않습니다.");
+            System.out.println("               해당지역은 지원하지 않습니다.");
             return;
         }
 
-        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
+        System.out.println("               번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
         for ( int i = printseoultown.size() - 1; i >= 0 ; i-- ) {
             SeoulTown seoultown = printseoultown.get(i);
 
-            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", seoultown.id, seoultown.foodtype, seoultown.town, seoultown.resname, seoultown.address, seoultown.num);
+            System.out.printf("              %4d | %4s  | %4s | %4s | %6s | %4s\n", seoultown.id, seoultown.foodtype, seoultown.town, seoultown.resname, seoultown.address, seoultown.num);
+            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+            System.out.println("                     ********************************************************");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+            System.out.println("                     *                📌 EX) 지역 서울                       *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     ********************************************************");
         }
     }
 
     private void showGyeonggi() {
-        System.out.println("== 메뉴목록 ==\n" + "==   한식   ==\n" + "==   양식   ==\n" + "==   중식   ==\n" + "==   일식   ==\n" + "==  동남아  ==\n");
-        System.out.printf("메뉴를 선택해 주세요\n");
+        System.out.println("                                            == 메뉴목록 ==\n"
+                +"                                            ==   한식   ==\n"
+                +"                                            ==   양식   ==\n"
+                +"                                            ==   중식   ==\n"
+                +"                                            ==   일식   ==\n");
+        System.out.printf("                                        메뉴를 선택해 주세요 : ");
         String food = sc.nextLine();
 
         Gyeonggi gyeonggi = gyeonggiService.getGyeonggiByFood(food);
         if (gyeonggi == null) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                              해당메뉴는 존재하지 않습니다.");
             return;
         }
 
-        System.out.printf("경기지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, gyeonggi.foodtype);
-        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        System.out.printf("                                           경기지역에 %s(은)는 \n               %s(이)가 있습니다.\n", food, gyeonggi.foodtype);
+        System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
         GyeonggiFood gyeonggifood = gyeonggiFoodService.getGyeonggiFoodByFoodType(foodtype);
         if (gyeonggifood == null) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                                          해당메뉴는 존재하지 않습니다.");
             return;
         }
 
-        System.out.printf("경기지역에 %s 중 원하시는 위치를 입력해주세요.\n", gyeonggifood.town);
+        System.out.printf("               경기지역에 %s 중 원하시는 위치를 입력해주세요.\n", gyeonggifood.town);
+        System.out.printf("               지역 입력 : ");
         String town = sc.nextLine();
 
         List<GyeonggiTown> printgyeonggitown = gyeonggiTownService.getGyeonggiTownByResname(foodtype, town);
         if (printgyeonggitown == null) {
-            System.out.println("해당지역은 지원하지 않습니다.");
+            System.out.println("               해당지역은 지원하지 않습니다.");
             return;
         }
 
 
-        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
+        System.out.println("               번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
 
         for (int i = printgyeonggitown.size() - 1; i >= 0; i--) {
             GyeonggiTown gyeonggitown = printgyeonggitown.get(i);
 
-            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", gyeonggitown.id, gyeonggitown.regDate, gyeonggitown.food, gyeonggitown.town, gyeonggitown.resname, gyeonggitown.address, gyeonggitown.num);
-
+            System.out.printf("              %4d | %4s  | %4s | %4s | %6s | %4s\n", gyeonggitown.id, gyeonggitown.regDate, gyeonggitown.food, gyeonggitown.town, gyeonggitown.resname, gyeonggitown.address, gyeonggitown.num);
+            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+            System.out.println("                     ********************************************************");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+            System.out.println("                     *                📌 EX) 지역 서울                       *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     ********************************************************");
         }
     }
     private void showIncheon() {
-        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
-        System.out.printf("메뉴를 선택해 주세요\n");
+        System.out.println("                                            == 메뉴목록 ==\n"
+                +"                                            ==   한식   ==\n"
+                +"                                            ==   양식   ==\n"
+                +"                                            ==   중식   ==\n"
+                +"                                            ==   일식   ==\n");
+        System.out.printf("                                        메뉴를 선택해 주세요 : ");
         String food = sc.nextLine();
 
         Incheon incheon = incheonService.getIncheonByFood(food);
         if ( incheon == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                              해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
 
-        System.out.printf("인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheon.foodtype);
-        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        System.out.printf("               인천지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, incheon.foodtype);
+        System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
         IncheonFood incheonFood = incheonFoodService.getIncheonFoodByFoodType(foodtype);
         if ( foodtype == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                                          해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        System.out.printf("인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFood.town);
+        System.out.printf("               인천지역에 %s 중 원하시는 위치를 입력해주세요.\n", incheonFood.town);
+        System.out.printf("               지역 입력 : ");
         String town = sc.nextLine();
 
         List<IncheonTown> printincheontown = incheonTownService.getIncheonTownByResname(foodtype, town);
         if (printincheontown == null) {
-            System.out.println("해당지역은 지원하지 않습니다.");
+            System.out.println("               해당지역은 지원하지 않습니다.");
             return;
         }
 
-        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
+        System.out.println("               번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
 
 
         for (int i = printincheontown.size() - 1; i >= 0; i--) {
             IncheonTown incheontown = printincheontown.get(i);
 
-            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
-
+            System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", incheontown.id, incheontown.regDate, incheontown.food, incheontown.town, incheontown.resname, incheontown.address, incheontown.num);
+            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+            System.out.println("                     ********************************************************");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+            System.out.println("                     *                📌 EX) 지역 서울                       *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     ********************************************************");
         }
     }
 
     private void showDaejeon() {
-        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
-        System.out.printf("메뉴를 선택해 주세요\n");
+        System.out.println("                                            == 메뉴목록 ==\n"
+                +"                                            ==   한식   ==\n"
+                +"                                            ==   양식   ==\n"
+                +"                                            ==   중식   ==\n"
+                +"                                            ==   일식   ==\n");
+        System.out.printf("                                        메뉴를 선택해 주세요 : ");
         String food = sc.nextLine();
 
         Daejeon daejeon = daejeonService.getDaejeonByFood(food);
         if ( daejeon == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                              해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        System.out.printf("대전지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, daejeon.foodtype);
-        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        System.out.printf("               대전지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, daejeon.foodtype);
+        System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
         DaejeonFood daejeonFood = daejeonFoodService.getDaejeonFoodByFoodType(foodtype);
         if ( foodtype == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                                          해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        System.out.printf("대전지역에 %s 중 원하시는 위치를 입력해주세요.\n", daejeonFood.town);
+        System.out.printf("               대전지역에 %s 중 원하시는 위치를 입력해주세요.\n", daejeonFood.town);
+        System.out.printf("               지역 입력 : ");
         String town = sc.nextLine();
 
         List<DaejeonTown> printdaejeontown = daejeonTownService.getDaejeonTownByResname(foodtype, town);
         if (printdaejeontown == null) {
-            System.out.println("해당지역은 지원하지 않습니다.");
+            System.out.println("               해당지역은 지원하지 않습니다.");
             return;
         }
 
-        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
+        System.out.println("               번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
 
 
         for (int i = printdaejeontown.size() - 1; i >= 0; i--) {
             DaejeonTown daejeontown = printdaejeontown.get(i);
 
-            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", daejeontown.id, daejeontown.regDate, daejeontown.food, daejeontown.town, daejeontown.resname, daejeontown.address, daejeontown.num);
-
+            System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", daejeontown.id, daejeontown.regDate, daejeontown.food, daejeontown.town, daejeontown.resname, daejeontown.address, daejeontown.num);
+            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+            System.out.println("                     ********************************************************");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+            System.out.println("                     *                📌 EX) 지역 서울                       *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     ********************************************************");
         }
     }
 
     private void showDaegu() {
-        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
-        System.out.printf("메뉴를 선택해 주세요\n");
+        System.out.println("                                            == 메뉴목록 ==\n"
+                +"                                            ==   한식   ==\n"
+                +"                                            ==   양식   ==\n"
+                +"                                            ==   중식   ==\n"
+                +"                                            ==   일식   ==\n");
+        System.out.printf("                                        메뉴를 선택해 주세요 : ");
         String food = sc.nextLine();
 
         Daegu daegu = daeguService.getDaeguByFood(food);
         if ( daegu == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                              해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        System.out.printf("대구지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, daegu.foodtype);
-        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        System.out.printf("               대구지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, daegu.foodtype);
+        System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
         DaeguFood daeguFood = daeguFoodService.getDaeguFoodByFoodType(foodtype);
         if ( foodtype == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                                          해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        System.out.printf("대구지역에 %s 중 원하시는 위치를 입력해주세요.\n", daeguFood.town);
+        System.out.printf("               대구지역에 %s 중 원하시는 위치를 입력해주세요.\n", daeguFood.town);
+        System.out.printf("               지역 입력 : ");
         String town = sc.nextLine();
 
         List<DaeguTown> printdaegutown = daeguTownService.getDaeguTownByResname(foodtype, town);
         if (printdaegutown == null) {
-            System.out.println("해당지역은 지원하지 않습니다.");
+            System.out.println("               해당지역은 지원하지 않습니다.");
             return;
         }
 
-        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
+        System.out.println("               번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
 
 
         for (int i = printdaegutown.size() - 1; i >= 0; i--) {
             DaeguTown daegutown = printdaegutown.get(i);
 
-            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", daegutown.id, daegutown.regDate, daegutown.food, daegutown.town, daegutown.resname, daegutown.address, daegutown.num);
-
+            System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", daegutown.id, daegutown.regDate, daegutown.food, daegutown.town, daegutown.resname, daegutown.address, daegutown.num);
+            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+            System.out.println("                     ********************************************************");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+            System.out.println("                     *                📌 EX) 지역 서울                       *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     ********************************************************");
         }
     }
 
     private void showGwangju() {
-        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
-        System.out.printf("메뉴를 선택해 주세요\n");
+        System.out.println("                                            == 메뉴목록 ==\n"
+                +"                                            ==   한식   ==\n"
+                +"                                            ==   양식   ==\n"
+                +"                                            ==   중식   ==\n"
+                +"                                            ==   일식   ==\n");
+        System.out.printf("                                        메뉴를 선택해 주세요 : ");
         String food = sc.nextLine();
 
         Gwangju gwangju = gwangjuService.getGwangjuByFood(food);
         if ( gwangju == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                              해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        System.out.printf("광주지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, gwangju.foodtype);
-        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        System.out.printf("               광주지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, gwangju.foodtype);
+        System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
         GwangjuFood gwangjuFood = gwangjuFoodService.getGwangjuFoodByFoodType(foodtype);
         if ( foodtype == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                                          해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        System.out.printf("광주지역에 %s 중 원하시는 위치를 입력해주세요.\n", gwangjuFood.town);
+        System.out.printf("               광주지역에 %s 중 원하시는 위치를 입력해주세요.\n", gwangjuFood.town);
+        System.out.printf("               지역 입력 : ");
         String town = sc.nextLine();
 
         List<GwangjuTown> printgwangjutown = gwangjuTownService.getGwangjuTownByResname(foodtype, town);
         if (printgwangjutown == null) {
-            System.out.println("해당지역은 지원하지 않습니다.");
+            System.out.println("               해당지역은 지원하지 않습니다.");
             return;
         }
 
-        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
+        System.out.println("               번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
 
 
         for (int i = printgwangjutown.size() - 1; i >= 0; i--) {
             GwangjuTown gwangjutown = printgwangjutown.get(i);
 
-            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", gwangjutown.id, gwangjutown.regDate, gwangjutown.food, gwangjutown.town, gwangjutown.resname, gwangjutown.address, gwangjutown.num);
-
+            System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", gwangjutown.id, gwangjutown.regDate, gwangjutown.food, gwangjutown.town, gwangjutown.resname, gwangjutown.address, gwangjutown.num);
+            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+            System.out.println("                     ********************************************************");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+            System.out.println("                     *                📌 EX) 지역 서울                       *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     ********************************************************");
         }
     }
 
     private void showUlsan() {
-        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
-        System.out.printf("메뉴를 선택해 주세요\n");
+        System.out.println("                                            == 메뉴목록 ==\n"
+                +"                                            ==   한식   ==\n"
+                +"                                            ==   양식   ==\n"
+                +"                                            ==   중식   ==\n"
+                +"                                            ==   일식   ==\n");
+        System.out.printf("                                        메뉴를 선택해 주세요 : ");
         String food = sc.nextLine();
 
         Ulsan ulsan = ulsanService.getUlsanByFood(food);
         if ( ulsan == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                              해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        System.out.printf("울산지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, ulsan.foodtype);
-        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        System.out.printf("               울산지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, ulsan.foodtype);
+        System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
         UlsanFood ulsanFood = ulsanFoodService.getUlsanFoodByFoodType(foodtype);
         if ( foodtype == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                                          해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        System.out.printf("울산지역에 %s 중 원하시는 위치를 입력해주세요.\n", ulsanFood.town);
+        System.out.printf("               울산지역에 %s 중 원하시는 위치를 입력해주세요.\n", ulsanFood.town);
+        System.out.printf("               지역 입력 : ");
         String town = sc.nextLine();
 
         List<UlsanTown> printulsantown = ulsanTownService.getUlsanTownByResname(foodtype, town);
         if (printulsantown == null) {
-            System.out.println("해당지역은 지원하지 않습니다.");
+            System.out.println("               해당지역은 지원하지 않습니다.");
             return;
         }
 
-        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
+        System.out.println("               번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
 
 
         for (int i = printulsantown.size() - 1; i >= 0; i--) {
             UlsanTown ulsantown = printulsantown.get(i);
 
-            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", ulsantown.id, ulsantown.regDate, ulsantown.food, ulsantown.town, ulsantown.resname, ulsantown.address, ulsantown.num);
-
+            System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", ulsantown.id, ulsantown.regDate, ulsantown.food, ulsantown.town, ulsantown.resname, ulsantown.address, ulsantown.num);
+            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+            System.out.println("                     ********************************************************");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+            System.out.println("                     *                📌 EX) 지역 서울                       *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     ********************************************************");
         }
     }
 
     private void showBusan() {
-        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
-        System.out.printf("메뉴를 선택해 주세요\n");
+        System.out.println("                                            == 메뉴목록 ==\n"
+                +"                                            ==   한식   ==\n"
+                +"                                            ==   양식   ==\n"
+                +"                                            ==   중식   ==\n"
+                +"                                            ==   일식   ==\n");
+        System.out.printf("                                        메뉴를 선택해 주세요 : ");
         String food = sc.nextLine();
 
         Busan busan = busanService.getBusanByFood(food);
         if ( busan == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                              해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        System.out.printf("부산지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, busan.foodtype);
-        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        System.out.printf("               부산지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, busan.foodtype);
+        System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
         BusanFood busanFood = busanFoodService.getBusanFoodByFoodType(foodtype);
         if ( foodtype == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                                          해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
 
-        System.out.printf("부산지역에 %s 중 원하시는 위치를 입력해주세요.\n", busanFood.town);
+        System.out.printf("               부산지역에 %s 중 원하시는 위치를 입력해주세요.\n", busanFood.town);
+        System.out.printf("               지역 입력 : ");
         String town = sc.nextLine();
 
         List<BusanTown> printbusantown = busanTownService.getBusanTownByResname(foodtype, town);
         if (printbusantown == null) {
-            System.out.println("해당지역은 지원하지 않습니다.");
+            System.out.println("               해당지역은 지원하지 않습니다.");
             return;
         }
 
-        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
+        System.out.println("               번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
 
 
         for (int i = printbusantown.size() - 1; i >= 0; i--) {
             BusanTown busantown = printbusantown.get(i);
 
-            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", busantown.id, busantown.regDate, busantown.food, busantown.town, busantown.resname, busantown.address, busantown.num);
-
+            System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", busantown.id, busantown.regDate, busantown.food, busantown.town, busantown.resname, busantown.address, busantown.num);
+            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+            System.out.println("                     ********************************************************");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+            System.out.println("                     *                📌 EX) 지역 서울                       *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     ********************************************************");
         }
     }
 
     private void showJeju() {
-        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
-        System.out.printf("메뉴를 선택해 주세요\n");
+        System.out.println("                                            == 메뉴목록 ==\n"
+                +"                                            ==   한식   ==\n"
+                +"                                            ==   양식   ==\n"
+                +"                                            ==   중식   ==\n"
+                +"                                            ==   일식   ==\n");
+        System.out.printf("                                        메뉴를 선택해 주세요 : ");
         String food = sc.nextLine();
 
         Jeju jeju = jejuService.getJejuByFood(food);
         if ( jeju == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                              해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        System.out.printf("제주지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, jeju.foodtype);
-        System.out.printf("원하시는 종류를 입력해주세요.\n");
+        System.out.printf("               제주지역에 %s(은)는 \n%s(이)가 있습니다.\n", food, jeju.foodtype);
+        System.out.printf("                                         원하시는 종류를 입력해주세요 : ");
         String foodtype = sc.nextLine();
 
         JejuFood jejuFood = jejuFoodService.getJejuFoodByFoodType(foodtype);
         if ( foodtype == null ) {
-            System.out.println("해당메뉴는 존재하지 않습니다.");
+            System.out.println("                                          해당메뉴는 존재하지 않습니다.");
             return ;
         }
 
-        System.out.printf("제주지역에 %s 중 원하시는 위치를 입력해주세요.\n", jejuFood.town);
+        System.out.printf("               제주지역에 %s 중 원하시는 위치를 입력해주세요.\n", jejuFood.town);
+        System.out.printf("               지역 입력 : ");
         String town = sc.nextLine();
 
         List<JejuTown> printjejutown = jejuTownService.getJejuTownByResname(foodtype, town);
         if (printjejutown == null) {
-            System.out.println("해당지역은 지원하지 않습니다.");
+            System.out.println("               해당지역은 지원하지 않습니다.");
             return;
         }
 
-        System.out.println(" 번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
+        System.out.println("               번호 |   메뉴   |  지역  |   식당이름   |              주소              |    전화번호    ");
 
 
         for (int i = printjejutown.size() - 1; i >= 0; i--) {
             JejuTown jejutown = printjejutown.get(i);
 
-            System.out.printf(" %4d | %4s  | %4s | %10s | %6s | %4s\n", jejutown.id, jejutown.regDate, jejutown.food, jejutown.town, jejutown.resname, jejutown.address, jejutown.num);
-
+            System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", jejutown.id, jejutown.regDate, jejutown.food, jejutown.town, jejutown.resname, jejutown.address, jejutown.num);
+            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+            System.out.println("                     ********************************************************");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+            System.out.println("                     *                📌 EX) 지역 서울                       *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+            System.out.println("                     *                                                       *");
+            System.out.println("                     ********************************************************");
         }
     }
 

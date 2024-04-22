@@ -40,8 +40,13 @@ public class NonmemberController extends Controller {
     }
 
     public void doLogin() {
-        System.out.println("== 메뉴목록 ==\n"+"==   한식   ==\n"+"==   양식   ==\n"+"==   중식   ==\n"+"==   일식   ==\n"+"==  동남아  ==\n");
-        System.out.printf("메뉴를 선택해 주세요\n");
+        System.out.println("                                                   == 메뉴목록 ==\n"
+                +"                                                   ==   한식   ==\n"
+                +"                                                   ==   양식   ==\n"
+                +"                                                   ==   중식   ==\n"
+                +"                                                   ==   일식   ==\n"
+                +"                                                   ==  동남아  ==\n");
+        System.out.printf("                                             메뉴를 선택해 주세요 : ");
         String foodtype = sc.nextLine();
 
 //        Seoul seoul = seoulService.getSeoulByFood(food);
@@ -53,11 +58,27 @@ public class NonmemberController extends Controller {
             return;
         }
 
-        System.out.println(" 번호 |   종류   |  추천 메뉴  ");
+        System.out.println("                                             종류   |  추천 메뉴  ");
         for ( int i = printrandommenu.size() - 1; i >= 0 ; i-- ) {
             NonMember nonMember = printrandommenu.get(i);
 
-            System.out.printf(" %4d | %4s  | %4s \n", nonMember.id, nonMember.foodtype, nonMember.randommenu);
+            System.out.printf("                                            %4s  | %4s \n", nonMember.foodtype, nonMember.randommenu);
+            System.out.println("\u001B[32m                  _________________________________________________________________________________");
+            System.out.println("                 /                                                                                 \\");
+            System.out.println("                |                        Welcome to Nearby Restaurant Recommender                  |");
+            System.out.println("                |                                                                                  |");
+            System.out.println("                |      ________________________________________________________________________    |");
+            System.out.println("                |     /                                                                        \\   |");
+            System.out.println("                |    |         [ 회원 로그인 ]       [ 비회원 로그인 ]         [ 회원 가입 ]    |  |");
+            System.out.println("                |     \\________________________________________________________________________/   |");
+            System.out.println("                |                                                                                  |");
+            System.out.println("                |                      Today's Recommended Menu: 짬뽕 + 탕수육                     |");
+            System.out.println("                 \\________________________________________________________________________________/");
+            System.out.println("");
+            System.out.println("                                            접속 방식을 입력해 주세요");
+            System.out.println("                                            1. 회원 로그인 : 회원 로그인");
+            System.out.println("                                            2. 비회원 로그인: 비회원 로그인");
+            System.out.println("                                            3. 회원가입 : 회원 가입");
         }
 
 

@@ -53,20 +53,20 @@ public class MemberController extends Controller {
         String loginId = null;
 
         while (true) {
-            System.out.println("\u001B[34m                    ****************************************************");
-            System.out.println("                    *               Welcome to Sign Up!                *");
-            System.out.println("                    ****************************************************");
-            System.out.println("                                   ________________________             ");
-            System.out.println("                                  |                        |            ");
-            System.out.println("                                  |    ----------------    |            ");
-            System.out.println("                                  |   |                  |   |           ");
-            System.out.println("                                  |   |                  |   |           ");
-            System.out.println("                                  |   |                  |   |           ");
-            System.out.println("                                  |   |                  |   |           ");
-            System.out.println("                                  |   |__________________|   |           ");
-            System.out.println("                                  |________________________|           ");
+            System.out.println("\u001B[34m                            ****************************************************");
+            System.out.println("                            *               Welcome to Sign Up!                *");
+            System.out.println("                            ****************************************************");
+            System.out.println("                                         ________________________             ");
+            System.out.println("                                        |                        |            ");
+            System.out.println("                                        |    ----------------    |            ");
+            System.out.println("                                        |   |                  |   |           ");
+            System.out.println("                                        |   |                  |   |           ");
+            System.out.println("                                        |   |                  |   |           ");
+            System.out.println("                                        |   |                  |   |           ");
+            System.out.println("                                        |   |__________________|   |           ");
+            System.out.println("                                        |________________________|           ");
             System.out.println("                                                                        ");
-            System.out.print("사용할 로그인 아이디를 입력하세요 : ");
+            System.out.print("                                   사용할 로그인 아이디를 입력하세요 : ");
             loginId = sc.nextLine();
 //            String id = sc.nextLine();
             if ( isJoinableLoginId(loginId) == false ) {
@@ -80,61 +80,60 @@ public class MemberController extends Controller {
             String loginPasswordConfirm = null;
 
             while (true) {
-                System.out.printf("사용할 비밀번호를 입력하세요 : ");
+                System.out.printf("                                   사용할 비밀번호를 입력하세요 : ");
                 loginPassword = sc.nextLine();
-                System.out.print("사용할 비밀번호를 한번 더 입력하세요: ");
+                System.out.print("                                   사용할 비밀번호를 한번 더 입력하세요: ");
                 loginPasswordConfirm = sc.nextLine();
 
                 if (loginPassword.equals(loginPasswordConfirm) == false) {
-                    System.out.println("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+                    System.out.println("                             비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
                     continue;
                 }
 
                 break;
             }
 
-            System.out.print("이름을 입력하세요 : ");
+            System.out.print("                                   이름을 입력하세요 : ");
             String name = sc.nextLine();
 
-            System.out.println("           ___________________________________________________________________________");
-            System.out.println("          |                   |                   |                 |                 |");
-            System.out.println("          |      \u001B[31m" + menus[0] + "         \u001B[34m|       \u001B[31m" + menus[1] + "        \u001B[34m|       \u001B[31m" + menus[2] + "      \u001B[34m|       \u001B[31m" + menus[3] + "      \u001B[34m|");
-            System.out.println("\u001B[34m          |___________________|___________________|_________________|_________________|");
-            System.out.println("          |                   |                   |                 |                 |");
-            System.out.println("          |  ┌─────────────┐  |  ┌─────────────┐  |  ┌───────────┐  |   ┌──────────┐  |");
-            System.out.println("          |  │             │  |  │             │  |  │           │  |   │          │  |");
-            System.out.println("          |  │             │  |  │             │  |  │           │  |   │          │  |");
-            System.out.println("                 __  __               ______             _   _              _   _    ");
-            System.out.println("                |  \\/  |             |  ____|           | \\ | |            | | | |  ");
-            System.out.println("                | \\  / |             | |__              |  \\| |            | | | |  ");
-            System.out.println("                | |\\/| |             |  __|             | . ` |            | | | |  ");
-            System.out.println("                | |  | |             | |____            | |\\  |            | |_| |  ");
-            System.out.println("                |_|  |_|             |______|           |_| \\_|             \\___/   ");
+            System.out.println("                    ___________________________________________________________________________");
+            System.out.println("                   |                   |                   |                 |                 |");
+            System.out.println("                   |      \u001B[31m" + menus[0] + "         \u001B[34m|       \u001B[31m" + menus[1] + "        \u001B[34m|       \u001B[31m" + menus[2] + "      \u001B[34m|       \u001B[31m" + menus[3] + "      \u001B[34m|");
+            System.out.println("\u001B[34m                   |___________________|___________________|_________________|_________________|");
+            System.out.println("                   |                   |                   |                 |                 |");
+            System.out.println("                   |  ┌─────────────┐  |  ┌─────────────┐  |  ┌───────────┐  |   ┌──────────┐  |");
+            System.out.println("                   |  │             │  |  │             │  |  │           │  |   │          │  |");
+            System.out.println("                   |  │             │  |  │             │  |  │           │  |   │          │  |");
+            System.out.println("                          __  __               ______             _   _              _   _    ");
+            System.out.println("                         |  \\/  |             |  ____|           | \\ | |            | | | |  ");
+            System.out.println("                         | \\  / |             | |__              |  \\| |            | | | |  ");
+            System.out.println("                         | |\\/| |             |  __|             | . ` |            | | | |  ");
+            System.out.println("                         | |  | |             | |____            | |\\  |            | |_| |  ");
+            System.out.println("                         |_|  |_|             |______|           |_| \\_|             \\___/   ");
 //            System.out.println("  |  │             │  |  │             │  |  │           │  |   │          │  |");
-            System.out.println("          |  │             │  |  │             │  |  │           │  |   │          │  |");
-            System.out.println("          |  │             │  |  │             │  |  │           │  |   │          │  |");
-            System.out.println("          |  └─────────────┘  |  └─────────────┘  |  └───────────┘  |   └──────────┘  |");
-            System.out.println("          |___________________|___________________|_________________|_________________|");
+            System.out.println("                   |  │             │  |  │             │  |  │           │  |   │          │  |");
+            System.out.println("                   |  └─────────────┘  |  └─────────────┘  |  └───────────┘  |   └──────────┘  |");
+            System.out.println("                   |___________________|___________________|_________________|_________________|");
 
-            System.out.println("                     ______________________________________");
-            System.out.println("                    /                                      \\");
-            System.out.printf("                    |  선호하는 음식 종류를 입력해주세요 :  ");
+            System.out.println("                                        ______________________________________");
+            System.out.println("                                       /                                      \\");
+            System.out.printf("                                       |  선호하는 음식 종류를 입력해주세요 :  ");
             String favoriteFood = sc.nextLine();
-            System.out.println("                    \\______________________________________/");
+            System.out.println("                                       \\______________________________________/");
 //            System.out.print("선호하는 음식 종류를 입력하세요 : ");
 //            String favoriteFood = sc.nextLine();
 
-            System.out.println("\n\n                ****************************************************");
-            System.out.println("                *               Thank you for signing up!          *");
-            System.out.println("                ****************************************************");
-            System.out.println("                아이디 : " + loginId);
-            System.out.println("                비밀번호 : " + loginPassword);
-            System.out.println("                이름 : " + name);
-            System.out.println("                선호하는 음식종류 : " + favoriteFood);
+            System.out.println("\n\n                            ****************************************************");
+            System.out.println("                            *               Thank you for signing up!          *");
+            System.out.println("                            ****************************************************");
+            System.out.println("                            아이디 : " + loginId);
+            System.out.println("                            비밀번호 : " + loginPassword);
+            System.out.println("                            이름 : " + name);
+            System.out.println("                            선호하는 음식종류 : " + favoriteFood);
 
             memberService.join(loginId, loginPassword, name, favoriteFood);
 
-            System.out.printf("                 %s 회원이 생성되었습니다. 환영합니다!\n", name);
+            System.out.printf("                             %s 회원이 생성되었습니다. 환영합니다!\n", name);
 
             System.out.println("\u001B[32m                  _________________________________________________________________________________");
             System.out.println("                 /                                                                                 \\");
@@ -148,10 +147,10 @@ public class MemberController extends Controller {
             System.out.println("                |                      Today's Recommended Menu: 짬뽕 + 탕수육                     |");
             System.out.println("                 \\________________________________________________________________________________/");
 
-            System.out.println("접속 방식을 입력해 주세요");
-            System.out.println("1. 회원 로그인 : 회원 로그인");
-            System.out.println("2. 비회원 로그인: 비회원 로그인");
-            System.out.println("3. 회원가입 : 회원 가입");
+            System.out.println("                                            접속 방식을 입력해 주세요");
+            System.out.println("                                            1. 회원 로그인 : 회원 로그인");
+            System.out.println("                                            2. 비회원 로그인: 비회원 로그인");
+            System.out.println("                                            3. 회원가입 : 회원 가입");
         }
 
 
@@ -170,7 +169,7 @@ public class MemberController extends Controller {
         System.out.println("                    ║ ║                                                        ║ ║");
         System.out.println("                    ║ ║      [  한식  ]  [  일식  ]  [  중식  ]  [  양식  ]    ║ ║");
         System.out.println("                    ║ ║                                                        ║ ║");
-        System.out.println("                    ║ ║                 Username: [____________]               ║ ║");
+        System.out.println("                    ║ ║                    ID   : [____________]               ║ ║");
         System.out.println("                    ║ ║                 Password: [____________]               ║ ║");
         System.out.println("                    ║ ║                                                        ║ ║");
 //            System.out.println("                    ║ ║       [   로그인   ] [ 비회원로그인 ] [   가입   ]     ║ ║");
@@ -181,7 +180,7 @@ public class MemberController extends Controller {
 
         System.out.println("                              ___________________________________________");
         System.out.println("                             /                                           \\");
-        System.out.print("                             |   Enter your username:");
+        System.out.print("                             |   Enter your id:");
         String loginId = sc.nextLine();
 //        System.out.println("                            |                           |             |   |");
 
@@ -246,10 +245,10 @@ public class MemberController extends Controller {
         System.out.println("                |                      Today's Recommended Menu: 짬뽕 + 탕수육                     |");
         System.out.println("                 \\________________________________________________________________________________/");
 
-        System.out.println("접속 방식을 입력해 주세요");
-        System.out.println("1. 회원 로그인 : 회원 로그인");
-        System.out.println("2. 비회원 로그인: 비회원 로그인");
-        System.out.println("3. 회원가입 : 회원 가입");
+        System.out.println("                                                접속 방식을 입력해 주세요");
+        System.out.println("                                                1. 회원 로그인 : 회원 로그인");
+        System.out.println("                                                2. 비회원 로그인: 비회원 로그인");
+        System.out.println("                                                3. 회원가입 : 회원 가입");
     }
 
     private boolean isJoinableLoginId (String loginId){

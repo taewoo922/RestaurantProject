@@ -36,10 +36,11 @@ public class App {
 //        Scanner sc = new Scanner(System.in);╝
 
 //        System.out.println("== 접속 페이지==");
-        System.out.println("접속 방식을 입력해 주세요");
-        System.out.println("1. 회원 로그인 : 회원 로그인");
-        System.out.println("2. 비회원 로그인: 비회원 로그인");
-        System.out.println("3. 회원가입 : 회원 가입");
+        System.out.println("");
+        System.out.println("                                            접속 방식을 입력해 주세요");
+        System.out.println("                                            1. 회원 로그인 : 회원 로그인");
+        System.out.println("                                            2. 비회원 로그인: 비회원 로그인");
+        System.out.println("                                            3. 회원가입 : 회원 가입");
 
 
 
@@ -51,7 +52,7 @@ public class App {
         DistrictController districtController = new DistrictController();
 
         while ( true ) {
-            System.out.printf("입력 :  ");
+            System.out.printf("                                            입력 :");
             String cmd = Container.getScanner().nextLine();
             cmd = cmd.trim();
 
