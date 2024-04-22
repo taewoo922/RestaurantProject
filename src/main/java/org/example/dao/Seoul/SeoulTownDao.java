@@ -54,7 +54,8 @@ public class SeoulTownDao extends Dao {
 
         sb.append(String.format("SELECT * "));
         sb.append(String.format("FROM seoulTown "));
-        sb.append(String.format("WHERE foodtype = '%s' ", foodtype));
+        sb.append(String.format("WHERE foodtype LIKE CONCAT('%%','%s','%%')", foodtype));
+//        sb.append(String.format("WHERE foodtype = '%s' ", foodtype));
         sb.append(String.format("AND town = '%s'", town));
 
         List<SeoulTown> seoulTowns = new ArrayList<>();

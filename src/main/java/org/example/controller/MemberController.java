@@ -98,8 +98,8 @@ public class MemberController extends Controller {
 
             System.out.println("           ___________________________________________________________________________");
             System.out.println("          |                   |                   |                 |                 |");
-            System.out.println("          |      " + menus[0] + "         |       " + menus[1] + "        |       " + menus[2] + "      |       " + menus[3] + "      |");
-            System.out.println("          |___________________|___________________|_________________|_________________|");
+            System.out.println("          |      \u001B[31m" + menus[0] + "         \u001B[34m|       \u001B[31m" + menus[1] + "        \u001B[34m|       \u001B[31m" + menus[2] + "      \u001B[34m|       \u001B[31m" + menus[3] + "      \u001B[34m|");
+            System.out.println("\u001B[34m          |___________________|___________________|_________________|_________________|");
             System.out.println("          |                   |                   |                 |                 |");
             System.out.println("          |  ┌─────────────┐  |  ┌─────────────┐  |  ┌───────────┐  |   ┌──────────┐  |");
             System.out.println("          |  │             │  |  │             │  |  │           │  |   │          │  |");
@@ -132,41 +132,26 @@ public class MemberController extends Controller {
             System.out.println("                이름 : " + name);
             System.out.println("                선호하는 음식종류 : " + favoriteFood);
 
-            System.out.printf("로그인 아이디 : ");
-//            loginId = sc.nextLine();
-
-//            if ( isJoinableLoginId(loginId) == false ) {
-//                System.out.printf("%s(은)는 이미 사용중인 아이디 입니다.\n", loginId);
-//                continue;
-//            }
-//
-//            break;
-//        }
-
-//        String loginPassword = null;
-//        String loginPasswordConfirm = null;
-
-//        while ( true ) {
-//            System.out.printf("로그인 비번 : ");
-//            loginPassword = sc.nextLine();
-//            System.out.printf("로그인 비번확인 : ");
-//            loginPasswordConfirm = sc.nextLine();
-//
-//            if ( loginPassword.equals(loginPasswordConfirm) == false ) {
-//                System.out.println("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
-//                continue;
-//            }
-//
-//            break;
-//        }
-
-//        System.out.printf("이름 : ");
-//        String name = sc.nextLine();
-
-//        memberService.join(loginId, loginPassword, name, favoriteFood);
             memberService.join(loginId, loginPassword, name, favoriteFood);
 
-            System.out.printf("%s 회원이 생성되었습니다. 환영합니다!\n", name);
+            System.out.printf("                 %s 회원이 생성되었습니다. 환영합니다!\n", name);
+
+            System.out.println("\u001B[32m                  _________________________________________________________________________________");
+            System.out.println("                 /                                                                                 \\");
+            System.out.println("                |                        Welcome to Nearby Restaurant Recommender                  |");
+            System.out.println("                |                                                                                  |");
+            System.out.println("                |      ________________________________________________________________________    |");
+            System.out.println("                |     /                                                                        \\   |");
+            System.out.println("                |    |         [ 회원 로그인 ]       [ 비회원 로그인 ]         [ 회원 가입 ]    |  |");
+            System.out.println("                |     \\________________________________________________________________________/   |");
+            System.out.println("                |                                                                                  |");
+            System.out.println("                |                      Today's Recommended Menu: 짬뽕 + 탕수육                     |");
+            System.out.println("                 \\________________________________________________________________________________/");
+
+            System.out.println("접속 방식을 입력해 주세요");
+            System.out.println("1. 회원 로그인 : 회원 로그인");
+            System.out.println("2. 비회원 로그인: 비회원 로그인");
+            System.out.println("3. 회원가입 : 회원 가입");
         }
 
 
@@ -248,6 +233,23 @@ public class MemberController extends Controller {
     private void doLogout () {
         session.setLoginedMember(null);
         System.out.println("로그아웃 되었습니다.");
+
+        System.out.println("\u001B[32m                  _________________________________________________________________________________");
+        System.out.println("                 /                                                                                 \\");
+        System.out.println("                |                        Welcome to Nearby Restaurant Recommender                  |");
+        System.out.println("                |                                                                                  |");
+        System.out.println("                |      ________________________________________________________________________    |");
+        System.out.println("                |     /                                                                        \\   |");
+        System.out.println("                |    |         [ 회원 로그인 ]       [ 비회원 로그인 ]         [ 회원 가입 ]    |  |");
+        System.out.println("                |     \\________________________________________________________________________/   |");
+        System.out.println("                |                                                                                  |");
+        System.out.println("                |                      Today's Recommended Menu: 짬뽕 + 탕수육                     |");
+        System.out.println("                 \\________________________________________________________________________________/");
+
+        System.out.println("접속 방식을 입력해 주세요");
+        System.out.println("1. 회원 로그인 : 회원 로그인");
+        System.out.println("2. 비회원 로그인: 비회원 로그인");
+        System.out.println("3. 회원가입 : 회원 가입");
     }
 
     private boolean isJoinableLoginId (String loginId){

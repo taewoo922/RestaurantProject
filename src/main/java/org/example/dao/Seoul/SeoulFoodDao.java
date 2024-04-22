@@ -18,13 +18,13 @@ public class SeoulFoodDao extends Dao {
         dbConnection = Container.getDBConnection();
     }
 
-    public SeoulFood getSeoulFoodByFoodType(String town) {
+    public SeoulFood getSeoulFoodByFoodType(String foodtype) {
 
         StringBuilder sb = new StringBuilder();
 
         sb.append(String.format("SELECT * "));
         sb.append(String.format("FROM seoulFood "));
-        sb.append(String.format("WHERE foodtype LIKE CONCAT('%%','%s','%%')", town));
+        sb.append(String.format("WHERE foodtype LIKE CONCAT('%%','%s','%%')", foodtype));
 //        sb.append(String.format("WHERE foodtype = '%s'", town));
 
         Map<String, Object> row = dbConnection.selectRow(sb.toString());

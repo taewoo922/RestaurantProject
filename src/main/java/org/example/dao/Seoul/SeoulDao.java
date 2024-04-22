@@ -39,6 +39,7 @@ public class SeoulDao extends Dao {
 
         sb.append(String.format("SELECT * "));
         sb.append(String.format("FROM district "));
+//        sb.append(String.format("WHERE food LIKE CONCAT('%%','%s','%%')", food));
         sb.append(String.format("WHERE food = '%s'", food));
 
         Map<String, Object> row = dbConnection.selectRow(sb.toString());
