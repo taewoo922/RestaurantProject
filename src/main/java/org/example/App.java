@@ -16,7 +16,7 @@ public class App {
 
         Container.getDBConnection().connect();
 
-        Container.getSession().setCurrentBoard(Container.articleService.getBoard(1));
+//        Container.getSession().setCurrentBoard(Container.articleService.getBoard(1));
     }
     public void start() {
         System.out.println("\u001B[32m                  _________________________________________________________________________________");
@@ -47,8 +47,8 @@ public class App {
 
         NonmemberController nonmemberController = new NonmemberController();
         MemberController memberController = new MemberController();
-        ArticleController articleController = new ArticleController();
-        ExportController exportController = new ExportController();
+//        ArticleController articleController = new ArticleController();
+//        ExportController exportController = new ExportController();
         DistrictController districtController = new DistrictController();
 
         while ( true ) {
@@ -76,18 +76,18 @@ public class App {
 
             Controller controller = null;
 
-            if ( controllerName.equals("게시물") ) {
-                controller = articleController;
-            }
-            else if ( controllerName.equals("회원") ) {
+//            if ( controllerName.equals("게시물") ) {
+//                controller = articleController;
+//            }
+            if ( controllerName.equals("회원") ) {
                 controller = memberController;
             }
             else if ( controllerName.equals("지역") ) {
                 controller = districtController;
             }
-            else if ( controllerName.equals("export") ) {
-                controller = exportController;
-            }
+//            else if ( controllerName.equals("export") ) {
+//                controller = exportController;
+//            }
             else if ( controllerName.equals("비회원") ) {
                 controller = nonmemberController;
             }

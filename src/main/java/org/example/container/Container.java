@@ -2,7 +2,7 @@ package org.example.container;
 
 import org.example.controller.NonmemberController;
 import org.example.controller.Session;
-import org.example.dao.ArticleDao;
+//import org.example.dao.ArticleDao;
 import org.example.dao.Busan.BusanDao;
 import org.example.dao.Busan.BusanFoodDao;
 import org.example.dao.Busan.BusanTownDao;
@@ -69,7 +69,7 @@ public class Container {
     public static Scanner sc;
     public static DBConnection dbConnection;
     public static Session session;
-    public static ArticleDao articleDao;
+//    public static ArticleDao articleDao;
     public static MemberDao memberDao;
     public static NonmemberDao nonmemberDao;
     public static DistrictDao districtDao;
@@ -102,7 +102,7 @@ public class Container {
     public static JejuTownDao jejuTownDao;
 
 
-    public static ArticleService articleService;
+//    public static ArticleService articleService;
     public static MemberService memberService;
     public static NonmemberService nonmemberService;
     public static DistrictService districtService;
@@ -133,12 +133,12 @@ public class Container {
     public static JejuService jejuService;
     public static JejuFoodService jejuFoodService;
     public static JejuTownService jejuTownService;
-    public static ExportService exportService;
+//    public static ExportService exportService;
 
 
     static {
         districtDao = new DistrictDao();
-        articleDao = new ArticleDao();
+//        articleDao = new ArticleDao();
         memberDao = new MemberDao();
         nonmemberDao = new NonmemberDao();
         //서울
@@ -179,7 +179,7 @@ public class Container {
         jejuTownDao = new JejuTownDao();
 
 
-        articleService = new ArticleService();
+//        articleService = new ArticleService();
         memberService = new MemberService();
         districtService = new DistrictService();
         nonmemberService = new NonmemberService();
@@ -220,7 +220,7 @@ public class Container {
         jejuFoodService = new JejuFoodService();
         jejuTownService = new JejuTownService();
 
-        exportService = new ExportService();
+//        exportService = new ExportService();
 
     }
 

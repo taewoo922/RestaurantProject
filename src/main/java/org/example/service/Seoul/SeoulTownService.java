@@ -2,7 +2,7 @@ package org.example.service.Seoul;
 
 import org.example.container.Container;
 import org.example.dao.Seoul.SeoulTownDao;
-import org.example.dto.Article;
+//import org.example.dto.Article;
 import org.example.dto.Seoul.SeoulTown;
 
 import java.util.List;

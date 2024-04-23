@@ -215,19 +215,19 @@ public class DistrictController extends Controller{
             SeoulTown seoultown = printseoultown.get(i);
 
             System.out.printf("              %4d | %4s  | %4s | %4s | %6s | %4s\n", seoultown.id, seoultown.foodtype, seoultown.town, seoultown.resname, seoultown.address, seoultown.num);
-            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
-            System.out.println("                     ********************************************************");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
-            System.out.println("                     *                📌 EX) 지역 서울                       *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
-            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     ********************************************************");
         }
+        System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+        System.out.println("                     ********************************************************");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+        System.out.println("                     *                📌 EX) 지역 서울                       *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+        System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     ********************************************************");
     }
 
     private void showGyeonggi() {
@@ -272,19 +272,19 @@ public class DistrictController extends Controller{
             GyeonggiTown gyeonggitown = printgyeonggitown.get(i);
 
             System.out.printf("              %4d | %4s  | %4s | %4s | %6s | %4s\n", gyeonggitown.id, gyeonggitown.regDate, gyeonggitown.food, gyeonggitown.town, gyeonggitown.resname, gyeonggitown.address, gyeonggitown.num);
-            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
-            System.out.println("                     ********************************************************");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
-            System.out.println("                     *                📌 EX) 지역 서울                       *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
-            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     ********************************************************");
         }
+        System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+        System.out.println("                     ********************************************************");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+        System.out.println("                     *                📌 EX) 지역 서울                       *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+        System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     ********************************************************");
     }
     private void showIncheon() {
         System.out.println("                                            == 메뉴목록 ==\n"
@@ -386,19 +386,19 @@ public class DistrictController extends Controller{
             DaejeonTown daejeontown = printdaejeontown.get(i);
 
             System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", daejeontown.id, daejeontown.regDate, daejeontown.food, daejeontown.town, daejeontown.resname, daejeontown.address, daejeontown.num);
-            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
-            System.out.println("                     ********************************************************");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
-            System.out.println("                     *                📌 EX) 지역 서울                       *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
-            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     ********************************************************");
         }
+        System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+        System.out.println("                     ********************************************************");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+        System.out.println("                     *                📌 EX) 지역 서울                       *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+        System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     ********************************************************");
     }
 
     private void showDaegu() {
@@ -443,19 +443,19 @@ public class DistrictController extends Controller{
             DaeguTown daegutown = printdaegutown.get(i);
 
             System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", daegutown.id, daegutown.regDate, daegutown.food, daegutown.town, daegutown.resname, daegutown.address, daegutown.num);
-            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
-            System.out.println("                     ********************************************************");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
-            System.out.println("                     *                📌 EX) 지역 서울                       *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
-            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     ********************************************************");
         }
+        System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+        System.out.println("                     ********************************************************");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+        System.out.println("                     *                📌 EX) 지역 서울                       *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+        System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     ********************************************************");
     }
 
     private void showGwangju() {
@@ -500,19 +500,19 @@ public class DistrictController extends Controller{
             GwangjuTown gwangjutown = printgwangjutown.get(i);
 
             System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", gwangjutown.id, gwangjutown.regDate, gwangjutown.food, gwangjutown.town, gwangjutown.resname, gwangjutown.address, gwangjutown.num);
-            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
-            System.out.println("                     ********************************************************");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
-            System.out.println("                     *                📌 EX) 지역 서울                       *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
-            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     ********************************************************");
         }
+        System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+        System.out.println("                     ********************************************************");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+        System.out.println("                     *                📌 EX) 지역 서울                       *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+        System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     ********************************************************");
     }
 
     private void showUlsan() {
@@ -557,19 +557,19 @@ public class DistrictController extends Controller{
             UlsanTown ulsantown = printulsantown.get(i);
 
             System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", ulsantown.id, ulsantown.regDate, ulsantown.food, ulsantown.town, ulsantown.resname, ulsantown.address, ulsantown.num);
-            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
-            System.out.println("                     ********************************************************");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
-            System.out.println("                     *                📌 EX) 지역 서울                       *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
-            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     ********************************************************");
         }
+        System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+        System.out.println("                     ********************************************************");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+        System.out.println("                     *                📌 EX) 지역 서울                       *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+        System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     ********************************************************");
     }
 
     private void showBusan() {
@@ -615,19 +615,19 @@ public class DistrictController extends Controller{
             BusanTown busantown = printbusantown.get(i);
 
             System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", busantown.id, busantown.regDate, busantown.food, busantown.town, busantown.resname, busantown.address, busantown.num);
-            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
-            System.out.println("                     ********************************************************");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
-            System.out.println("                     *                📌 EX) 지역 서울                       *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
-            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     ********************************************************");
         }
+        System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+        System.out.println("                     ********************************************************");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+        System.out.println("                     *                📌 EX) 지역 서울                       *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+        System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     ********************************************************");
     }
 
     private void showJeju() {
@@ -672,19 +672,19 @@ public class DistrictController extends Controller{
             JejuTown jejutown = printjejutown.get(i);
 
             System.out.printf("              %4d | %4s  | %4s | %10s | %6s | %4s\n", jejutown.id, jejutown.regDate, jejutown.food, jejutown.town, jejutown.resname, jejutown.address, jejutown.num);
-            System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
-            System.out.println("                     ********************************************************");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                    📢 공 지 사 항 📢                 *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
-            System.out.println("                     *                📌 EX) 지역 서울                       *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
-            System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
-            System.out.println("                     *                                                       *");
-            System.out.println("                     ********************************************************");
         }
+        System.out.printf("                           📌 보기에서 원하는 메뉴를 고르고 입력해주세요\n");
+        System.out.println("                     ********************************************************");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                    📢 공 지 사 항 📢                 *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *                📌 입력 방법 - 지역 명칭               *");
+        System.out.println("                     *                📌 EX) 지역 서울                       *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     *    - 서울     - 경기     - 인천     - 대전     - 대구 *");
+        System.out.println("                     *    - 광주     - 울산     - 부산     - 제주            *");
+        System.out.println("                     *                                                       *");
+        System.out.println("                     ********************************************************");
     }
 
     private void addseoultown() {

@@ -3,7 +3,7 @@ package org.example.dao.Seoul;
 import org.example.container.Container;
 import org.example.dao.Dao;
 import org.example.db.DBConnection;
-import org.example.dto.Article;
+//import org.example.dto.Article;
 import org.example.dto.Seoul.SeoulTown;
 
 import java.util.ArrayList;
